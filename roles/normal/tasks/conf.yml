@@ -1,0 +1,13 @@
+---
+
+- name: config i3
+  copy: src=i3/ dest={{ ansible_user_dir }}/.i3
+
+- name: config i3status
+  template: src=i3status.conf.j2 dest={{ ansible_user_dir }}/.i3status.conf
+
+- name: config roxterm
+  copy: src=roxterm/ dest={{ ansible_user_dir }}/.config/roxterm.sourceforge.net
+
+- name: confir xsessionrc
+  copy: src=xsessionrc dest={{ ansible_user_dir }}/.xsessionrc

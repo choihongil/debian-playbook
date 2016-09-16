@@ -1,0 +1,16 @@
+---
+
+- name: Install backports packages
+  apt: name={{ item }} default_release=jessie-backports state=latest
+  with_items:
+    - powerline
+  become: yes
+
+- name: Install packages
+  apt: name={{ item }} state=latest
+  with_items:
+    - zsh
+    - vim-nox
+    - ranger
+    - cifs-utils
+  become: yes

@@ -1,0 +1,16 @@
+#!/usr/bin/zsh
+
+SINK=$(pactl list short sinks | grep 'RUNNING' | awk '{ print $2 }')
+
+case $1 in
+    up)
+        pactl set-sink-volume $SINK +10%; volnoti-show $(pamixer --get-volume)
+        ;;
+    down)
+        pactl set-sink-volume $SINK -10%; volnoti-show $(pamixer --get-volume)
+        ;;
+    mute)
+        [[ $(pacmd dump | grep $SINK | grep 'set-sink-mute' | awk '{ print $NF }') == 'yes' ]] && TOGGLE_MUTE='no' || TOGGLE_MUTE='yes'
+        pactl set-sink-mute $SINK $TOGGLE_MUTE; [[ $(pamixer --get-mute) = true ]] && volnoti-show -m || volnoti-show $(pamixer --get-volume)
+        ;;
+esac

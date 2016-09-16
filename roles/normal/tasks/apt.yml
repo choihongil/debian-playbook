@@ -1,0 +1,17 @@
+---
+
+- name: be sure sources exist
+  copy: src=apt/ dest=/etc/apt/
+  become: yes
+
+- name: add apt key of chrome
+  apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub
+  become: yes
+
+- name: add apt key of spotify
+  apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=BBEBDCB318AD50EC6865090613B00F1FD2C19886
+  become: yes
+
+- name: update-cache
+  apt: update-cache=yes
+  become: yes
