@@ -1,0 +1,10 @@
+[roxterm profile]
+always_show_tabs=0
+disable_menu_access=1
+disable_menu_shortcuts=1
+disable_tab_menu_shortcuts=1
+scroll_on_keystroke=1
+scrollback_lines=10000
+term=xterm-256color
+colour_scheme=
+font=Monospace 10

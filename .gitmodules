@@ -1,0 +1,3 @@
+[submodule "roles/base/files/vim/.vim/bundle/Vundle.vim"]
+	path = roles/base/files/vim/.vim/bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim
