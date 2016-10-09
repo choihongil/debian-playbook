@@ -13,6 +13,8 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+" vim
+Plugin 'mkitt/tabline.vim'
 " color scheme
 Plugin 'w0ng/vim-hybrid'
 " rails
@@ -27,13 +29,6 @@ Plugin 'Shougo/vimproc.vim'
 Plugin 'Quramy/tsuquyomi'
 " typescript syntax
 Plugin 'leafgarland/typescript-vim'
-" html
-Plugin 'mattn/emmet-vim'
-Plugin 'tpope/vim-surround'
-" ansible-yaml
-Plugin 'chase/vim-ansible-yaml'
-" ranger
-Plugin 'francoiscabrol/ranger.vim'
 
 call vundle#end()
 :filetype plugin indent on

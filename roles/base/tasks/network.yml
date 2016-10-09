@@ -1,0 +1,50 @@
+---
+
+- name: wireless network interface name
+  set_fact:
+    wireless_nic_name: "{{ item }}"
+  with_items: "{{ ansible_interfaces }}"
+  when:
+    - ansible_{{ item }}.module is defined
+    - ansible_{{ item }}.module == "iwlwifi"
+
+- name: wired network interface name
+  set_fact:
+    wired_nic_name: "{{ item }}"
+  with_items: "{{ ansible_interfaces }}"
+  when:
+    - ansible_{{ item }}.module is defined
+    - ansible_{{ item }}.module != "iwlwifi"
+
+- name: be sure network settings exist
+  copy: src=systemd/network/ dest=/etc/systemd/network/
+  become: yes
+  notify:
+    - restart systemd-networkd
+
+- name: be sure wpa_supplicant settings exist
+  copy: src=wpa_supplicant.conf dest=/etc/ force=no owner={{ ansible_user_uid }} group={{ ansible_user_gid }}
+  become: yes
+
+- name: be sure wpa_supplicant systemd service exist
+  copy: src=systemd/system/ dest=/etc/systemd/system/
+  become: yes
+  notify:
+    - restart wpa_supplicant
+
+- name: be sure networkd-resolved is started
+  systemd: name=systemd-resolved state=started enabled=yes
+  become: yes
+
+- name: stat of resolv.conf
+  stat: path=/etc/resolv.conf
+  register: resolv
+
+- name: delete /etc/resolv.conf unless symbolic link
+  file: path=/etc/resolv.conf state=absent
+  when: resolv.stat.exists and not resolv.stat.islnk
+  become: yes
+
+- name: make /etc/resolv.conf symbolic link
+  file: src=/run/systemd/resolve/resolv.conf dest=/etc/resolv.conf state=link
+  become: yes

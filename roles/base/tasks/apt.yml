@@ -1,0 +1,13 @@
+---
+
+- name: be sure sources exist
+  copy: src=apt/ dest=/etc/apt/
+  become: yes
+
+- name: add apt key of chrome
+  apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub
+  become: yes
+
+- name: update-cache
+  apt: update-cache=yes cache_valid_time=3600
+  become: yes
