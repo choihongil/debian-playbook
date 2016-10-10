@@ -18,4 +18,11 @@
     - cifs-utils
     - apt-transport-https
     - docker-engine
+    - nodejs
+  become: yes
+
+- name: Install pip packages
+  pip: name={{ item }}
+  with_items:
+    - docker-compose
   become: yes

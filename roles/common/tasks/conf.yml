@@ -15,3 +15,8 @@
 
 #- name: install vim plugins
 #  shell: vim -u {{ ansible_user_dir }}/.vim/plugin.vim +PluginInstall +qall
+
+# curl -L -o docker-compose-zsh-completion https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/zsh/_docker-compose
+- name: docker-compose zsh completion
+  copy: src=docker-compose-zsh-completion dest=/usr/local/share/zsh/site-functions/_docker-compose
+  become: yes
