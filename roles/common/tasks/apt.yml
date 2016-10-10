@@ -3,7 +3,14 @@
 - name: be sure sources exist
   copy: src=apt/ dest=/etc/apt/
   become: yes
+  notify: 
+    - update apt cache
+- meta: flush_handlers
 
-- name: update-cache
-  apt: update-cache=yes cache_valid_time=3600
+- name: add apt key of docker
+  apt_key: keyserver=hkp://p80.pool.sks-keyservers.net:80 id=58118E89F3A912897C070ADBF76221572C52609D
+  become: yes
+
+- name: add apt key of nodejs
+  apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key
   become: yes
