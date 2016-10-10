@@ -6,8 +6,8 @@
 - name: config zsh
   copy: src=zshrc dest={{ ansible_user_dir }}/.zshrc
 
-- name: change login shell
-  user: name={{ ansible_user_id }} shell=/usr/bin/zsh
+- name: set zsh as login shell and add docker to groups
+  user: name={{ ansible_user_id }} shell=/usr/bin/zsh groups=docker append=yes
   become: yes
 
 #- name: config vim

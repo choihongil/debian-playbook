@@ -4,6 +4,7 @@
   apt: name={{ item }} default_release=jessie-backports state=latest
   with_items:
     - powerline
+    - tmux
   become: yes
 
 - name: Install packages
@@ -12,5 +13,9 @@
     - zsh
     - vim-nox
     - ranger
+    - curl
+    - exuberant-ctags
     - cifs-utils
+    - apt-transport-https
+    - docker-engine
   become: yes
