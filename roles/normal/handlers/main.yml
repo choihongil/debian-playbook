@@ -3,7 +3,3 @@
 - name: restart systemd-networkd
   systemd: name=systemd-networkd state=restarted enabled=yes
   become: true
-
-- name: restart wpa_supplicant
-  systemd: name=wpa_supplicant@{{ wireless_nic_name }} state=restarted enabled=yes
-  become: true

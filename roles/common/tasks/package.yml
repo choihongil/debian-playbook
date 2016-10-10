@@ -16,7 +16,6 @@
     - curl
     - exuberant-ctags
     - cifs-utils
-    - apt-transport-https
     - docker-engine
     - nodejs
   become: yes

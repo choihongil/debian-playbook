@@ -16,6 +16,10 @@
     - ansible_{{ item }}.module is defined
     - ansible_{{ item }}.module != "iwlwifi"
 
+- name: remove 70-persistent-net.rules
+  file: path=/etc/udev/rules.d/70-persistent-net.rules state=absent
+  become: yes
+
 - name: be sure network settings exist
   copy: src=systemd/network/ dest=/etc/systemd/network/
   become: yes
@@ -29,8 +33,11 @@
 - name: be sure wpa_supplicant systemd service exist
   copy: src=systemd/system/ dest=/etc/systemd/system/
   become: yes
-  notify:
-    - restart wpa_supplicant
+
+- name: be sure wpa_supplicant@.service is started when wireless network interface exists
+  systemd: name=wpa_supplicant@{{ wireless_nic_name }} state=started enabled=yes
+  when: wireless_nic_name is defined
+  become: true
 
 - name: be sure networkd-resolved is started
   systemd: name=systemd-resolved state=started enabled=yes
