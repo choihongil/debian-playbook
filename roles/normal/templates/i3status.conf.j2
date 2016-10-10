@@ -15,13 +15,13 @@ order += "ipv6"
 order += "disk /"
 order += "run_watch DHCP"
 order += "run_watch VPN"
-order += "wireless {{ wireless_nic_name }}"
+order += "wireless {{ wireless_nic_name | default('wlan0') }}"
 order += "ethernet {{ wired_nic_name | default('eth0') }}"
 order += "battery 0"
 order += "load"
 order += "tztime local"
 
-wireless {{ wireless_nic_name }} {
+wireless {{ wireless_nic_name | default('wlan0') }} {
         format_up = "W: (%quality at %essid) %ip"
         format_down = "W: down"
 }

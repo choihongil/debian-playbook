@@ -1,12 +1,5 @@
 ---
 
-- name: be sure sources exist
-  copy: src=apt/ dest=/etc/apt/
-  become: yes
-  notify: 
-    - update apt cache
-- meta: flush_handlers
-
 - name: add apt key of docker
   apt_key: keyserver=hkp://p80.pool.sks-keyservers.net:80 id=58118E89F3A912897C070ADBF76221572C52609D
   become: yes
@@ -14,3 +7,14 @@
 - name: add apt key of nodejs
   apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key
   become: yes
+
+- name: be sure apt-transport-https installed
+  apt: name=apt-transport-https state=latest
+  become: yes
+
+- name: be sure sources exist
+  copy: src=apt/ dest=/etc/apt/
+  become: yes
+  notify: 
+    - update apt cache
+- meta: flush_handlers
