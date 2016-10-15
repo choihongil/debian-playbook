@@ -1,0 +1,1 @@
+ACTION=="change", KERNEL=="card0", SUBSYSTEM=="drm", RUN+="{{ ansible_user_dir }}/.local/bin/monitor_hotplug.sh"

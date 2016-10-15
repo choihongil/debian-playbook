@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Spotify
+Comment=Spotify Client
+Exec=/usr/bin/spotify %U
+Icon=spotify_icon
+Terminal=false
+Type=Application
+StartupNotify=true
+Encoding=UTF-8
+Categories=Music;Application;
+MimeType=x-scheme-handler/spotify;
