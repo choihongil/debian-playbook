@@ -10,6 +10,9 @@
   user: name={{ ansible_user_id }} shell=/usr/bin/zsh groups=docker append=yes
   become: yes
 
+- name: config tmux
+  copy: src=tmux.conf dest={{ ansible_user_dir }}/.tmux.conf
+
 #- name: config vim
 #  copy: src=vim/ dest={{ ansible_user_dir }}
 
