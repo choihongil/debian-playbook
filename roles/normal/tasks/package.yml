@@ -17,6 +17,7 @@
   with_items:
     - firmware-iwlwifi
     - wpasupplicant
+    - fonts-noto
     - fonts-noto-cjk
     - lightdm
     - i3status
