@@ -45,11 +45,24 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :let mapleader = ","
 
+":nnoremap <Leader>] :tabnew | :vimgrep /\<<C-r><C-w>\>/ **/*<CR>
+:nnoremap <Leader>p :cprevious<CR>
+:nnoremap <Leader>n :cnext<CR>
+:nnoremap <Leader>q :cclose<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " window split
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :set splitbelow
 :set splitright
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" autocmd
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufRead,BufNewFile *.scss set filetype=sass
+" sudo gem install anbt-sql-formatter --no-document
+:autocmd filetype sql set formatprg=anbt-sql-formatter
+:autocmd QuickFixCmdPost *grep* cwindow
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " other
@@ -67,9 +80,9 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " powerline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if strlen($POWERLINE_ROOT) > 0
+:if strlen($POWERLINE_ROOT) > 0
   :set laststatus=2
-  python from powerline.vim import setup as powerline_setup
-  python powerline_setup()
-  python del powerline_setup
-endif
+  :python3 from powerline.vim import setup as powerline_setup
+  :python3 powerline_setup()
+  :python3 del powerline_setup
+:endif
