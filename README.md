@@ -3,8 +3,17 @@
 
 # Install
 ```
-sudo apt install git python-setuptools python-dev sudo
+su
+apt install sudo
+usermod -aG sudo $USER
+
+sudo apt install git python-setuptools
 sudo easy_install pip
-sudo pip install ansible markupsafe
+
+# install ansible
+
 git clone https://github.com/choihongil/debian-playbook.git
+git submodule update --init
+
+ansible-playbook normal.yml -K
 ```

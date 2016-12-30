@@ -1,21 +1,5 @@
 ---
 
-- name: wireless network interface name
-  set_fact:
-    wireless_nic_name: "{{ item }}"
-  with_items: "{{ ansible_interfaces }}"
-  when:
-    - ansible_{{ item }}.module is defined
-    - ansible_{{ item }}.module == "iwlwifi"
-
-- name: wired network interface name
-  set_fact:
-    wired_nic_name: "{{ item }}"
-  with_items: "{{ ansible_interfaces }}"
-  when:
-    - ansible_{{ item }}.module is defined
-    - ansible_{{ item }}.module != "iwlwifi"
-
 - name: remove 70-persistent-net.rules
   file: path=/etc/udev/rules.d/70-persistent-net.rules state=absent
   become: yes
