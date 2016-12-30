@@ -1,1 +1,1 @@
-deb http://ftp.jp.debian.org/debian jessie-backports main
+deb http://ftp.jp.debian.org/debian jessie-backports main contrib non-free

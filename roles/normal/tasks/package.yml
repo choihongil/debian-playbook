@@ -2,44 +2,12 @@
 
 - name: Install backports packages
   apt: name={{ item }} default_release=jessie-backports state=latest
-  with_items:
-    - linux-image-amd64
-    - systemd
-    - xserver-xorg-video-intel
-    - i3-wm
-    - pulseaudio-module-bluetooth
-    - blueman
-    - mpv
+  with_items: "{{ backports_packages | union(node_backports_packages) }}"
   become: yes
 
 - name: Install packages
   apt: name={{ item }} state=latest
-  with_items:
-    - firmware-iwlwifi
-    - wpasupplicant
-    - fonts-noto
-    - fonts-noto-cjk
-    - lightdm
-    - i3status
-    - i3lock
-    - dmenu
-    - dunst
-    - xinput
-    - udisks2
-    - gettext
-    - python-gobject
-    - pavucontrol
-    - roxterm
-    - fcitx
-    - fcitx-googlepinyin
-    - fcitx-hangul
-    - fcitx-mozc
-    - cups
-    - feh
-    - transmission-gtk
-    - google-chrome-stable
-    - skypeforlinux
-    - spotify-client
+  with_items: "{{ stable_packages | union(node_stable_packages) }}"
   become: yes
 
 - name: Install pip packages

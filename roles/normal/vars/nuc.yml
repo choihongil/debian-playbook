@@ -1,0 +1,7 @@
+---
+wireless_nic_name: 
+wired_nic_name: 
+
+node_backports_packages: []
+node_stable_packages:
+  - firmware-iwlwifi

@@ -1,0 +1,8 @@
+---
+wireless_nic_name: wlp58s0
+wired_nic_name: enx00051be070f7
+
+node_backports_packages:
+  - firmware-atheros
+  - firmware-misc-nonfree
+node_stable_packages: []

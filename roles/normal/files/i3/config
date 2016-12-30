@@ -186,12 +186,14 @@ bindsym XF86AudioMute exec ${HOME}/.i3/bin/volume_control mute
 # sleep
 bindsym XF86Sleep exec systemctl suspend
 
+# map capslock to escape
+exec setxkbmap -option caps:escape
+# disable touchpad while typing
+exec syndaemon -i 1 -d
 # autostart udiskie
 exec udiskie --tray
 # autostart blueman-applet
 exec blueman-applet
-# autostart volnoti
-exec --no-startup-id volnoti -t 2
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
