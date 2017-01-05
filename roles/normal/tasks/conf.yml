@@ -17,18 +17,12 @@
   copy: src=synaptics.conf dest=/etc/X11/xorg.conf.d/50-synaptics.conf
   become: yes
 
-#- name: config spotify
-#  copy: src=spotify.desktop dest={{ ansible_user_dir }}/.local/share/applications/spotify.desktop
+- name: config external monitor udev rules
+  template: src=udev/rules.d/90-monitor-hotplug.rules.j2 dest=/etc/udev/rules.d/90-monitor-hotplug.rules
+  become: yes
 
-#- name: config external monitor udev rules
-#  template: src=udev/rules.d/90-monitor-hotplug.rules.j2 dest=/etc/udev/rules.d/90-monitor-hotplug.rules
-#  become: yes
+- name: be sure {{ ansible_user_dir }}/.local/bin folder exists
+  file: path={{ ansible_user_dir }}/.local/bin state=directory
 
-#- name: be sure {{ ansible_user_dir }}/.local/bin folder exists
-#  file: path={{ ansible_user_dir }}/.local/bin state=directory
-
-#- name: config udev monitor_hotplug programs
-#  template: src=udev/bin/monitor_hotplug.sh.j2 dest={{ ansible_user_dir }}/.local/bin/monitor_hotplug.sh
-
-#- name: confir xsessionrc
-#  copy: src=xsessionrc dest={{ ansible_user_dir }}/.xsessionrc
+- name: config udev monitor_hotplug programs
+  template: src=udev/bin/monitor_hotplug.sh.j2 dest={{ ansible_user_dir }}/.local/bin/monitor_hotplug.sh mode: '0755'
