@@ -1,15 +1,19 @@
 ---
 
 - name: add apt key of chrome
-  apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub
+  apt_key:
+    url: https://dl-ssl.google.com/linux/linux_signing_key.pub
   become: yes
 
 - name: add apt key of skypeforlinux
-  apt_key: url=https://repo.skype.com/data/SKYPE-GPG-KEY
+  apt_key:
+    url: https://repo.skype.com/data/SKYPE-GPG-KEY
   become: yes
 
 - name: be sure sources exist
-  copy: src=apt/ dest=/etc/apt/
+  copy:
+    src: apt/
+    dest: /etc/apt/
   become: yes
   notify:
     - update apt cache

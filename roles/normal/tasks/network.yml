@@ -1,41 +1,64 @@
 ---
 
 - name: remove 70-persistent-net.rules
-  file: path=/etc/udev/rules.d/70-persistent-net.rules state=absent
+  file:
+    path: /etc/udev/rules.d/70-persistent-net.rules
+    state: absent
   become: yes
 
 - name: be sure network settings exist
-  copy: src=systemd/network/ dest=/etc/systemd/network/
+  copy:
+    src: systemd/network/
+    dest: /etc/systemd/network/
   become: yes
   notify:
     - restart systemd-networkd
 
 - name: be sure wpa_supplicant settings exist
-  copy: src=wpa_supplicant.conf dest=/etc/ force=no owner={{ ansible_user_uid }} group={{ ansible_user_gid }}
+  copy:
+    src: wpa_supplicant.conf
+    dest: /etc/
+    force: no
+    owner: "{{ ansible_user_uid }}"
+    group: "{{ ansible_user_gid }}"
   become: yes
 
 - name: be sure wpa_supplicant systemd service exist
-  copy: src=systemd/system/ dest=/etc/systemd/system/
+  copy:
+    src: systemd/system/
+    dest: /etc/systemd/system/
   become: yes
 
 - name: be sure wpa_supplicant@.service is started when wireless network interface exists
-  systemd: name=wpa_supplicant@{{ wireless_nic_name }} state=started enabled=yes
+  systemd:
+    name: wpa_supplicant@{{ wireless_nic_name }}
+    state: started
+    enabled: yes
   when: wireless_nic_name is defined
   become: true
 
 - name: be sure networkd-resolved is started
-  systemd: name=systemd-resolved state=started enabled=yes
+  systemd:
+    name: systemd-resolved
+    state: started
+    enabled: yes
   become: yes
 
 - name: stat of resolv.conf
-  stat: path=/etc/resolv.conf
+  stat:
+    path: /etc/resolv.conf
   register: resolv
 
 - name: delete /etc/resolv.conf unless symbolic link
-  file: path=/etc/resolv.conf state=absent
+  file:
+    path: /etc/resolv.conf
+    state: absent
   when: resolv.stat.exists and not resolv.stat.islnk
   become: yes
 
 - name: make /etc/resolv.conf symbolic link
-  file: src=/run/systemd/resolve/resolv.conf dest=/etc/resolv.conf state=link
+  file:
+    src: /run/systemd/resolve/resolv.conf
+    dest: /etc/resolv.conf
+    state: link
   become: yes
