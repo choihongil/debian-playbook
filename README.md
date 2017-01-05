@@ -4,13 +4,13 @@
 # Install
 ```
 su
-apt install sudo
+echo 'deb http://ftp.jp.debian.org/debian jessie-backports/main' > /etc/apt/source.list.d/jessie-backports.list
+apt update
+apt -t jessie-backports install ansible
+apt install sudo git python-setuptools
+easy_install pip
 usermod -aG sudo $USER
 
-sudo apt install git python-setuptools
-sudo easy_install pip
-
-# install ansible
 
 git clone https://github.com/choihongil/debian-playbook.git
 git submodule update --init

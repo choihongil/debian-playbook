@@ -31,3 +31,4 @@ stable_packages:
   - transmission-gtk
   - google-chrome-stable
   - skypeforlinux
+  - slack-desktop
