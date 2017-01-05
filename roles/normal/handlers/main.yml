@@ -1,5 +1,8 @@
 ---
 
 - name: restart systemd-networkd
-  systemd: name=systemd-networkd state=restarted enabled=yes
+  systemd:
+    name: systemd-networkd
+    state: restarted
+    enabled: yes
   become: true

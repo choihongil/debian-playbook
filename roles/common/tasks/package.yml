@@ -1,14 +1,19 @@
 ---
 
 - name: Install backports packages
-  apt: name={{ item }} default_release=jessie-backports state=latest
+  apt:
+    name: "{{ item }}"
+    default_release: jessie-backports
+    state: latest
   with_items:
     - powerline
     - tmux
   become: yes
 
 - name: Install packages
-  apt: name={{ item }} state=latest
+  apt:
+    name: "{{ item }}"
+    state: latest
   with_items:
     - zsh
     - vim-nox
@@ -21,7 +26,8 @@
   become: yes
 
 - name: Install pip packages
-  pip: name={{ item }}
+  pip:
+    name: "{{ item }}"
   with_items:
     - docker-compose
   become: yes

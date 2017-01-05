@@ -1,31 +1,49 @@
 ---
 
 - name: config git
-  copy: src=gitconfig dest={{ ansible_user_dir }}/.gitconfig
+  copy:
+    src: gitconfig
+    dest: "{{ ansible_user_dir }}/.gitconfig"
 
 - name: config zsh
-  copy: src=zshrc dest={{ ansible_user_dir }}/.zshrc
+  copy:
+    src: zshrc
+    dest: "{{ ansible_user_dir }}/.zshrc"
 
 - name: set zsh as login shell and add docker to groups
-  user: name={{ ansible_user_id }} shell=/usr/bin/zsh groups=docker append=yes
+  user:
+    name: "{{ ansible_user_id }}"
+    shell: /usr/bin/zsh
+    groups: docker
+    append: yes
   become: yes
 
 - name: be sure {{ ansible_user_dir }}/.config/ranger folder exists
-  file: path={{ ansible_user_dir }}/.config/ranger state=directory
+  file:
+    path: "{{ ansible_user_dir }}/.config/ranger"
+    state: directory
 
 - name: config ranger
-  copy: src=ranger.rc.conf dest={{ ansible_user_dir }}/.config/ranger/rc.conf
+  copy:
+    src: ranger.rc.conf
+    dest: "{{ ansible_user_dir }}/.config/ranger/rc.conf"
 
 - name: config tmux
-  copy: src=tmux.conf dest={{ ansible_user_dir }}/.tmux.conf
+  copy:
+    src: tmux.conf
+    dest: "{{ ansible_user_dir }}/.tmux.conf"
 
 - name: config vim
-  copy: src=vim/ dest={{ ansible_user_dir }}
+  copy:
+    src: vim/
+    dest: "{{ ansible_user_dir }}"
 
 - name: install vim plugins
   shell: vim -u {{ ansible_user_dir }}/.vim/plugin.vim +PluginInstall +qall
 
 # curl -L -o docker-compose-zsh-completion https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/zsh/_docker-compose
 - name: docker-compose zsh completion
-  copy: src=docker-compose-zsh-completion dest=/usr/local/share/zsh/site-functions/_docker-compose
+  copy:
+    src: docker-compose-zsh-completion
+    dest: /usr/local/share/zsh/site-functions/_docker-compose
   become: yes
