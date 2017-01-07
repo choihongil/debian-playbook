@@ -4,7 +4,7 @@ export DISPLAY=:0
 export XAUTHORITY='{{ ansible_user_dir }}/.Xauthority'
 status=`cat /sys/class/drm/card0-DP-1/status`
 if [ $status = 'connected' ]; then
-    xrandr --output DP1 --auto --right-of LVDS1
+    xrandr --output DP1 --auto --right-of {{ node_output }}
 else
     xrandr --output DP1 --off
 fi

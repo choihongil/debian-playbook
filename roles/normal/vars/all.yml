@@ -1,34 +1,36 @@
 ---
 backports_packages:
+  - blueman
+  - i3-wm
+  - mpv
   - linux-image-amd64
+  - pulseaudio-module-bluetooth
   - systemd
   - xserver-xorg-video-intel
-  - i3-wm
-  - pulseaudio-module-bluetooth
-  - blueman
-  - mpv
 stable_packages:
-  - wpasupplicant
-  - fonts-noto
-  - fonts-noto-cjk
-  - lightdm
-  - i3status
-  - i3lock
+  - cups
   - dmenu
   - dunst
-  - xinput
-  - udisks2
-  - gettext
-  - python-gobject
-  - pavucontrol
-  - roxterm
   - fcitx
   - fcitx-googlepinyin
   - fcitx-hangul
   - fcitx-mozc
-  - cups
   - feh
-  - transmission-gtk
+  - fonts-noto
+  - fonts-noto-cjk
+  - gettext
   - google-chrome-stable
+  - i3lock
+  - i3status
+  - lightdm
+  - pavucontrol
+  - powertop
+  - python-gobject
+  - roxterm
   - skypeforlinux
   - slack-desktop
+  - wpasupplicant
+  - transmission-gtk
+  - udisks2
+  - xbacklight
+  - xinput
