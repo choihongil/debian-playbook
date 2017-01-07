@@ -6,3 +6,5 @@ node_backports_packages:
   - firmware-atheros
   - firmware-misc-nonfree
 node_stable_packages: []
+
+node_output: eDP1
