@@ -24,9 +24,6 @@ Plugin 'tpope/vim-surround'
 " javascript
 Plugin 'isRuslan/vim-es6'
 Plugin 'ternjs/tern_for_vim'
-" yaml
-Plugin 'chase/vim-ansible-yaml'
-Plugin 'stephpy/vim-yaml'
 " ranger
 Plugin 'francoiscabrol/ranger.vim'
 

@@ -183,17 +183,12 @@ bindsym XF86AudioLowerVolume    exec --no-startup-id    pactl set-sink-volume 0 
 bindsym XF86AudioMute           exec --no-startup-id    pactl set-sink-mute 0 toggle
 bindsym XF86MonBrightnessDown   exec                    xbacklight -dec 10
 bindsym XF86MonBrightnessUp     exec                    xbacklight -inc 10
-# https://github.com/acrisci/playerctl/releases
-bindsym XF86AudioPlay           exec                    playerctl play
-bindsym XF86AudioPause          exec                    playerctl pause
-bindsym XF86AudioNext           exec                    playerctl next
-bindsym XF86AudioPrev           exec                    playerctl previous
 bindsym XF86Sleep               exec                    systemctl suspend
 
 # map capslock to escape
 exec setxkbmap -option caps:escape
 # disable touchpad while typing
-exec syndaemon -i 1 -d
+exec syndaemon -i 1 -kd
 # autostart udiskie
 exec udiskie --tray
 # autostart blueman-applet
