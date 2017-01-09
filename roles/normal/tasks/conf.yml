@@ -15,6 +15,13 @@
     src: roxterm/
     dest: "{{ ansible_user_dir }}/.config/roxterm.sourceforge.net"
 
+- name: add lpadmin group to user for cups
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: lpadmin
+    append: yes
+  become: yes
+
 - name: /etc/X11/xorg.conf.d directory exist
   file:
     path: /etc/X11/xorg.conf.d

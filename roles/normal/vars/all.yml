@@ -25,6 +25,7 @@ stable_packages:
   - lightdm
   - pavucontrol
   - powertop
+  - printer-driver-escpr
   - python-gobject
   - roxterm
   - skypeforlinux
