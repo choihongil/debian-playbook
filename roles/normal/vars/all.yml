@@ -18,8 +18,10 @@ stable_packages:
   - feh
   - fonts-noto
   - fonts-noto-cjk
+  - fswebcam
   - gettext
   - google-chrome-stable
+  - guvcview
   - i3lock
   - i3status
   - lightdm
