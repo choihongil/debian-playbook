@@ -1,5 +1,5 @@
 ---
-wireless_nic_name: 
+wireless_nic_name: wlp2s0
 wired_nic_name: 
 
 node_backports_packages: []

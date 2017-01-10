@@ -22,31 +22,34 @@
     append: yes
   become: yes
 
-- name: /etc/X11/xorg.conf.d directory exist
-  file:
-    path: /etc/X11/xorg.conf.d
-    state: directory
-  become: yes
+# For laptop
+- block:
+  - name: /etc/X11/xorg.conf.d directory exist
+    file:
+      path: /etc/X11/xorg.conf.d
+      state: directory
+    become: yes
 
-- name: config synaptics
-  copy:
-    src: synaptics.conf
-    dest: /etc/X11/xorg.conf.d/50-synaptics.conf
-  become: yes
+  - name: config synaptics
+    copy:
+      src: synaptics.conf
+      dest: /etc/X11/xorg.conf.d/50-synaptics.conf
+    become: yes
 
-- name: config external monitor udev rules
-  template:
-    src: udev/rules.d/90-monitor-hotplug.rules.j2
-    dest: /etc/udev/rules.d/90-monitor-hotplug.rules
-  become: yes
+  - name: config external monitor udev rules
+    template:
+      src: udev/rules.d/90-monitor-hotplug.rules.j2
+      dest: /etc/udev/rules.d/90-monitor-hotplug.rules
+    become: yes
 
-- name: be sure {{ ansible_user_dir }}/.local/bin folder exists
-  file:
-    path: "{{ ansible_user_dir }}/.local/bin"
-    state: directory
+  - name: be sure {{ ansible_user_dir }}/.local/bin folder exists
+    file:
+      path: "{{ ansible_user_dir }}/.local/bin"
+      state: directory
 
-- name: config udev monitor_hotplug programs
-  template:
-    src: udev/bin/monitor_hotplug.sh.j2
-    dest: "{{ ansible_user_dir }}/.local/bin/monitor_hotplug.sh"
-    mode: "0755"
+  - name: config udev monitor_hotplug programs
+    template:
+      src: udev/bin/monitor_hotplug.sh.j2
+      dest: "{{ ansible_user_dir }}/.local/bin/monitor_hotplug.sh"
+      mode: "0755"
+  when: ansible_form_factor == 'Laptop'
