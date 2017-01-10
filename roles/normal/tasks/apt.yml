@@ -10,6 +10,11 @@
     url: https://repo.skype.com/data/SKYPE-GPG-KEY
   become: yes
 
+- name: import gpg key for slacktechnologies/slack
+  apt_key:
+    url: https://packagecloud.io/slacktechnologies/slack/gpgkey
+  become: yes
+
 - name: be sure sources exist
   copy:
     src: apt/

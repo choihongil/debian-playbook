@@ -11,9 +11,7 @@ apt install sudo git python-setuptools
 easy_install pip
 usermod -aG sudo $USER
 
-
-git clone https://github.com/choihongil/debian-playbook.git
-git submodule update --init
+git clone --recursive https://github.com/choihongil/debian-playbook.git
 
 ansible-playbook normal.yml -K
 ```
