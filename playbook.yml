@@ -1,0 +1,15 @@
+---
+- hosts: local
+  tasks:
+    - group_by:
+        key: virt_{{ ansible_virtualization_role }}
+
+- hosts: virt_host
+  gather_facts: false
+  roles:
+    - physical
+
+- hosts: virt_guest
+  gather_facts: false
+  roles:
+    - common

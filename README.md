@@ -13,5 +13,5 @@ usermod -aG sudo $USER
 
 git clone --recursive https://github.com/choihongil/debian-playbook.git
 
-ansible-playbook normal.yml -K
+ansible-playbook -Ki local playbook.yml
 ```
