@@ -1,13 +1,13 @@
 ---
 
-- name: Install apt dependent packages
-  apt:
-    name: "{{ item }}"
-    state: latest
-  with_items:
-    - apt-transport-https
-    - software-properties-common
-  become: yes
+#- name: Install apt dependent packages
+#  apt:
+#    name: "{{ item }}"
+#    state: latest
+#  with_items:
+#    - apt-transport-https
+#    - software-properties-common
+#  become: yes
 
 - name: be sure sources.list exist
   copy:

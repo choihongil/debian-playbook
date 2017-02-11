@@ -6,3 +6,12 @@
     state: latest
   with_items: "{{ stable_packages | union(node_stable_packages) }}"
   become: yes
+
+- name: Install from internet
+  apt:
+    deb: "{{ item }}"
+  with_items:
+    - https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    - https://repo.skype.com/latest/skypeforlinux-64-alpha.deb
+    - https://downloads.slack-edge.com/linux_releases/slack-desktop-2.4.2-amd64.deb
+  become: yes

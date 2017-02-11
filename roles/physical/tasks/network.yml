@@ -1,10 +1,10 @@
 ---
 
-- name: remove 70-persistent-net.rules
-  file:
-    path: /etc/udev/rules.d/70-persistent-net.rules
-    state: absent
-  become: yes
+#- name: remove 70-persistent-net.rules
+#  file:
+#    path: /etc/udev/rules.d/70-persistent-net.rules
+#    state: absent
+#  become: yes
 
 - name: be sure network settings exist
   copy:
