@@ -4,7 +4,7 @@
 # Install
 ```
 su
-apt install sudo git ansible
+apt install sudo git ansible apt-transport-https
 usermod -aG sudo $USER
 
 git clone --recursive https://github.com/choihongil/debian-playbook.git
