@@ -12,8 +12,16 @@
     - man-db
     - nodejs
     - powerline
+    - python-pip
     - ranger
     - vim-nox
     - tmux
     - zsh
+  become: yes
+
+- name: Install pip packages
+  pip:
+    name: "{{ item }}"
+  with_items:
+    - docker-compose
   become: yes
