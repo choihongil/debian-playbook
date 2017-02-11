@@ -2,8 +2,8 @@
 
 - name: config i3
   copy:
-    src: i3/
-    dest: "{{ ansible_user_dir }}/.i3"
+    src: i3.config
+    dest: "{{ ansible_user_dir }}/.i3/config"
 
 - name: config i3status
   template:
@@ -16,6 +16,11 @@
     groups: lpadmin
     append: yes
   become: yes
+
+- name: config lilyterm
+  copy:
+    src: lilyterm.conf
+    dest: "{{ ansible_user_dir }}/.config/lilyterm/default.conf
 
 # For laptop
 - block:
