@@ -11,7 +11,7 @@ stable_packages:
   - feh
   - fonts-noto
   - fswebcam
-    #- google-chrome-stable
+  - fwupd
   - guvcview
   - i3-wm
   - i3lock
@@ -23,8 +23,6 @@ stable_packages:
   - powertop
   - printer-driver-escpr
   - pulseaudio-module-bluetooth
-    #- skypeforlinux
-    #- slack-desktop
   - wpasupplicant
   - transmission-gtk
   - udiskie
