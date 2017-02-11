@@ -1,12 +1,42 @@
 ---
 
+- name: Install apt dependent packages
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - apt-transport-https
+    - software-properties-common
+  become: yes
+
+- name: be sure sources.list exist
+  copy:
+    src: sources.list
+    dest: /etc/apt/sources.list
+  become: yes
+  notify:
+    - update apt cache
+
+- name: add docker repository
+  apt_repository:
+    repo: deb https://apt.dockerproject.org/repo/ debian-stretch main
+    filename: docker
+    update_cache: no
+  become: yes
+
 - name: add apt key of docker
   apt_key:
-    keyserver: hkp://p80.pool.sks-keyservers.net:80
-    id: 58118E89F3A912897C070ADBF76221572C52609D
+    url: https://yum.dockerproject.org/gpg
   become: yes
   notify: 
     - update apt cache
+
+- name: add nodejs repository
+  apt_repository:
+    repo: deb https://deb.nodesource.com/node_6.x jessie main
+    filename: nodesource
+    update_cache: no
+  become: yes
 
 - name: add apt key of nodejs
   apt_key:
@@ -15,17 +45,4 @@
   notify: 
     - update apt cache
 
-- name: be sure apt-transport-https installed
-  apt:
-    name: apt-transport-https
-    state: latest
-  become: yes
-
-- name: be sure sources exist
-  copy:
-    src: apt/
-    dest: /etc/apt/
-  become: yes
-  notify: 
-    - update apt cache
 - meta: flush_handlers

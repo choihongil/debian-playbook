@@ -1,13 +1,6 @@
 ---
-backports_packages:
-  - blueman
-  - i3-wm
-  - mpv
-  - linux-image-amd64
-  - pulseaudio-module-bluetooth
-  - systemd
-  - xserver-xorg-video-intel
 stable_packages:
+  - blueman
   - cups
   - dmenu
   - dunst
@@ -17,23 +10,23 @@ stable_packages:
   - fcitx-mozc
   - feh
   - fonts-noto
-  - fonts-noto-cjk
   - fswebcam
-  - gettext
   - google-chrome-stable
   - guvcview
+  - i3-wm
   - i3lock
   - i3status
   - lightdm
+  - lilyterm
+  - mpv
   - pavucontrol
   - powertop
   - printer-driver-escpr
-  - python-gobject
-  - roxterm
+  - pulseaudio-module-bluetooth
   - skypeforlinux
   - slack-desktop
   - wpasupplicant
   - transmission-gtk
-  - udisks2
+  - udiskie
   - xbacklight
   - xinput

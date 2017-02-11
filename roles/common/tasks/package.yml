@@ -1,33 +1,19 @@
 ---
 
-- name: Install backports packages
-  apt:
-    name: "{{ item }}"
-    default_release: jessie-backports
-    state: latest
-  with_items:
-    - powerline
-    - tmux
-  become: yes
-
 - name: Install packages
   apt:
     name: "{{ item }}"
     state: latest
   with_items:
-    - zsh
-    - vim-nox
-    - ranger
-    - curl
-    - exuberant-ctags
     - cifs-utils
+    - curl
     - docker-engine
+    - exuberant-ctags
+    - man-db
     - nodejs
-  become: yes
-
-- name: Install pip packages
-  pip:
-    name: "{{ item }}"
-  with_items:
-    - docker-compose
+    - powerline
+    - ranger
+    - vim-nox
+    - tmux
+    - zsh
   become: yes

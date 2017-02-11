@@ -1,23 +1,8 @@
 ---
 
-- name: Install backports packages
-  apt:
-    name: "{{ item }}"
-    default_release: jessie-backports
-    state: latest
-  with_items: "{{ backports_packages | union(node_backports_packages) }}"
-  become: yes
-
 - name: Install packages
   apt:
     name: "{{ item }}"
     state: latest
   with_items: "{{ stable_packages | union(node_stable_packages) }}"
-  become: yes
-
-- name: Install pip packages
-  pip:
-    name: "{{ item }}"
-  with_items:
-    - udiskie
   become: yes
