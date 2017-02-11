@@ -20,7 +20,7 @@
 - name: config lilyterm
   copy:
     src: lilyterm.conf
-    dest: "{{ ansible_user_dir }}/.config/lilyterm/default.conf
+    dest: "{{ ansible_user_dir }}/.config/lilyterm/default.conf"
 
 # For laptop
 - block:
