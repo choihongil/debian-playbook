@@ -3,7 +3,7 @@ wireless_nic_name: wlp58s0
 wired_nic_name: enx00051be070f7
 
 peculiar_backports_packages: []
-peruliar_stable_packages:
+peculiar_stable_packages:
   - firmware-atheros
   - firmware-misc-nonfree
 

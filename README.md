@@ -11,4 +11,6 @@ usermod -aG sudo $USER
 git clone --recursive https://github.com/choihongil/debian-playbook.git
 
 ansible-playbook -Ki local playbook.yml
+or
+ansible-playbook -Ki local --skip-tags=download playbook.yml
 ```
