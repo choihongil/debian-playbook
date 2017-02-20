@@ -4,7 +4,8 @@
 # Install
 ```
 su
-apt install sudo git ansible apt-transport-https
+apt install sudo git apt-transport-https python3-pip
+pip3 install ansible
 usermod -aG sudo $USER
 
 git clone --recursive https://github.com/choihongil/debian-playbook.git

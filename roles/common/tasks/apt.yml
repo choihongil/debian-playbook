@@ -8,32 +8,24 @@
   notify:
     - update apt cache
 
-- name: add docker repository
-  apt_repository:
-    repo: deb https://apt.dockerproject.org/repo/ debian-stretch main
-    filename: docker
-    update_cache: no
-  become: yes
-
 - name: add apt key of docker
   apt_key:
     url: https://yum.dockerproject.org/gpg
   become: yes
-  notify: 
-    - update apt cache
 
-- name: add nodejs repository
+- name: add docker repository
   apt_repository:
-    repo: deb https://deb.nodesource.com/node_6.x jessie main
-    filename: nodesource
-    update_cache: no
+    repo: deb https://apt.dockerproject.org/repo/ debian-stretch main
+    filename: docker
   become: yes
 
 - name: add apt key of nodejs
   apt_key:
     url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
   become: yes
-  notify: 
-    - update apt cache
 
-- meta: flush_handlers
+- name: add nodejs repository
+  apt_repository:
+    repo: deb https://deb.nodesource.com/node_6.x jessie main
+    filename: nodesource
+  become: yes

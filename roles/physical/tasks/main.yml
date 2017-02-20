@@ -5,6 +5,7 @@
     - "{{ ansible_product_name | replace(' ', '_') | lower }}.yml"
     - nuc.yml
 
+- include: apt.yml
 - include: package.yml
 - include: network.yml
 - include: conf.yml

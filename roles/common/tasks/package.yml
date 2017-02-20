@@ -12,7 +12,7 @@
     - man-db
     - nodejs
     - powerline
-    - python-pip
+    - python3-pip
     - ranger
     - vim-nox
     - tmux
@@ -22,6 +22,9 @@
 - name: Install pip packages
   pip:
     name: "{{ item }}"
+    executable: pip3
   with_items:
     - docker-compose
+    - mps-youtube
+    - youtube_dl
   become: yes

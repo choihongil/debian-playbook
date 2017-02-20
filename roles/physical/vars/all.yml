@@ -23,6 +23,7 @@ stable_packages:
   - powertop
   - printer-driver-escpr
   - pulseaudio-module-bluetooth
+  - syncthing
   - wpasupplicant
   - transmission-gtk
   - udiskie
