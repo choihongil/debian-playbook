@@ -29,3 +29,14 @@
     repo: deb https://deb.nodesource.com/node_6.x jessie main
     filename: nodesource
   become: yes
+
+- name: add apt key of yarn
+  apt_key:
+    url: https://dl.yarnpkg.com/debian/pubkey.gpg
+  become: yes
+
+- name: add yarn repository
+  apt_repository:
+    repo: deb https://dl.yarnpkg.com/debian/ stable main
+    filename: yarn
+  become: yes

@@ -16,6 +16,7 @@
     - ranger
     - vim-nox
     - tmux
+    - yarn
     - zsh
   become: yes
 
