@@ -1,5 +1,10 @@
 ---
 
+- name: ensure {{ ansible_user_dir }}/.i3 folder exists
+  file:
+    path: "{{ ansible_user_dir }}/.i3"
+    state: directory
+
 - name: config i3
   copy:
     src: i3.config
@@ -10,12 +15,17 @@
     src: i3status.conf.j2
     dest: "{{ ansible_user_dir }}/.i3status.conf"
 
-- name: add lpadmin group to user for cups
+- name: add lpadmin and systemd-journal groups to user
   user:
     name: "{{ ansible_user_id }}"
-    groups: lpadmin
+    groups: lpadmin,systemd-journal
     append: yes
   become: yes
+
+- name: ensure {{ ansible_user_dir }}/.config/lilyterm folder exists
+  file:
+    path: "{{ ansible_user_dir }}/.config/lilyterm"
+    state: directory
 
 - name: config lilyterm
   copy:

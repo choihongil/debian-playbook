@@ -3,7 +3,6 @@
 - include_vars: "{{ item }}"
   with_first_found:
     - "{{ ansible_product_name | replace(' ', '_') | lower }}.yml"
-    - nuc.yml
 
 - include: apt.yml
 - include: package.yml
