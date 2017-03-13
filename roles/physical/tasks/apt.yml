@@ -1,32 +1,12 @@
 ---
 
-- name: add apt key of chrome
+- name: add apt key of syncthing
   apt_key:
-    url: https://dl-ssl.google.com/linux/linux_signing_key.pub
+    url: https://syncthing.net/release-key.txt
   become: yes
-  notify:
-    - update apt cache
 
-- name: add apt key of skypeforlinux
-  apt_key:
-    url: https://repo.skype.com/data/SKYPE-GPG-KEY
+- name: add syncthing repository
+  apt_repository:
+    repo: deb https://apt.syncthing.net/ syncthing stable
+    filename: syncthing
   become: yes
-  notify:
-    - update apt cache
-
-- name: import gpg key for slacktechnologies/slack
-  apt_key:
-    url: https://packagecloud.io/slacktechnologies/slack/gpgkey
-  become: yes
-  notify:
-    - update apt cache
-
-- name: be sure sources exist
-  copy:
-    src: apt/
-    dest: /etc/apt/
-  become: yes
-  notify:
-    - update apt cache
-- meta: flush_handlers
-

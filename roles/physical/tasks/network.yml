@@ -1,11 +1,5 @@
 ---
 
-- name: remove 70-persistent-net.rules
-  file:
-    path: /etc/udev/rules.d/70-persistent-net.rules
-    state: absent
-  become: yes
-
 - name: be sure network settings exist
   copy:
     src: systemd/network/
@@ -34,7 +28,7 @@
     name: wpa_supplicant@{{ wireless_nic_name }}
     state: started
     enabled: yes
-  when: wireless_nic_name is defined
+  when: wireless_nic_name in ansible_interfaces
   become: true
 
 - name: be sure networkd-resolved is started

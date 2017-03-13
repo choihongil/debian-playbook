@@ -5,6 +5,11 @@
     src: gitconfig
     dest: "{{ ansible_user_dir }}/.gitconfig"
 
+- name: config git ignore
+  copy:
+    src: git/
+    dest: "{{ ansible_user_dir }}/.config"
+
 - name: config zsh
   copy:
     src: zshrc

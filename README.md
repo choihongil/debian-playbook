@@ -4,14 +4,13 @@
 # Install
 ```
 su
-echo 'deb http://ftp.jp.debian.org/debian jessie-backports/main' > /etc/apt/source.list.d/jessie-backports.list
-apt update
-apt -t jessie-backports install ansible
-apt install sudo git python-setuptools
-easy_install pip
+apt install sudo git apt-transport-https python3-pip
+pip3 install ansible
 usermod -aG sudo $USER
 
 git clone --recursive https://github.com/choihongil/debian-playbook.git
 
 ansible-playbook -Ki local playbook.yml
+or
+ansible-playbook -Ki local --skip-tags=download playbook.yml
 ```
