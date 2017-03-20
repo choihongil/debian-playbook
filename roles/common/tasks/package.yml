@@ -9,15 +9,15 @@
     - curl
     - docker-engine
     - exuberant-ctags
+    - fish
+    - fonts-powerline
     - man-db
     - nodejs
-    - powerline
+    - openssh-server
     - python3-pip
-    - ranger
     - vim-nox
     - tmux
     - yarn
-    - zsh
   become: yes
 
 - name: Install pip packages
@@ -27,5 +27,7 @@
   with_items:
     - docker-compose
     - mps-youtube
+    - powerline-status
+    - ranger-fm
     - youtube_dl
   become: yes

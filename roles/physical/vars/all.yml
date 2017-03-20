@@ -4,6 +4,7 @@ stable_packages:
   - cups
   - dmenu
   - dunst
+  - dbus-user-session
   - fcitx
   - fcitx-googlepinyin
   - fcitx-hangul
@@ -23,7 +24,6 @@ stable_packages:
   - powertop
   - printer-driver-escpr
   - pulseaudio-module-bluetooth
-  - syncthing
   - wpasupplicant
   - transmission-gtk
   - udiskie
