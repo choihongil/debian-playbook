@@ -1,32 +1,36 @@
 ---
 
-- name: config git
+- name: ensure config folders exists
+  file:
+    path: "{{ ansible_user_dir }}/{{ item }}"
+    state: directory
+  with_items:
+    - .config/fish
+    - .config/git
+    - .config/ranger
+
+- name: gitconfig
   copy:
     src: gitconfig
     dest: "{{ ansible_user_dir }}/.gitconfig"
 
-- name: config git ignore
+- name: gitignore
   copy:
-    src: git/
-    dest: "{{ ansible_user_dir }}/.config"
+    src: gitignore
+    dest: "{{ ansible_user_dir }}/.config/git/ignore"
 
-- name: config zsh
+- name: config fish
   copy:
-    src: zshrc
-    dest: "{{ ansible_user_dir }}/.zshrc"
+    src: fish.config
+    dest: "{{ ansible_user_dir }}/.config/fish/config.fish"
 
-- name: set zsh as login shell and add docker to groups
+- name: set fish as login shell and add docker to groups
   user:
     name: "{{ ansible_user_id }}"
-    shell: /usr/bin/zsh
+    shell: /usr/bin/fish
     groups: docker
     append: yes
   become: yes
-
-- name: be sure {{ ansible_user_dir }}/.config/ranger folder exists
-  file:
-    path: "{{ ansible_user_dir }}/.config/ranger"
-    state: directory
 
 - name: config ranger
   copy:
@@ -43,12 +47,10 @@
     src: vim/
     dest: "{{ ansible_user_dir }}"
 
+- name: config vundle
+  git:
+    repo: https://github.com/VundleVim/Vundle.vim.git
+    dest: "{{ ansible_user_dir }}/.vim/bundle/Vundle.vim"
+
 - name: install vim plugins
   shell: vim -u {{ ansible_user_dir }}/.vim/plugin.vim +PluginInstall +qall
-
-# curl -L -o docker-compose-zsh-completion https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/zsh/_docker-compose
-- name: docker-compose zsh completion
-  copy:
-    src: docker-compose-zsh-completion
-    dest: /usr/local/share/zsh/site-functions/_docker-compose
-  become: yes

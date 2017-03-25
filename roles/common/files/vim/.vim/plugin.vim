@@ -7,6 +7,7 @@
 " https://github.com/VundleVim/Vundle.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :filetype off
+:set shell=/bin/bash
 
 set rtp+=~/.vim/bundle/Vundle.vim 
 call vundle#begin()

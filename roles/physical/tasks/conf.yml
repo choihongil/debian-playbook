@@ -1,9 +1,12 @@
 ---
 
-- name: ensure {{ ansible_user_dir }}/.i3 folder exists
+- name: ensure config folders exists
   file:
-    path: "{{ ansible_user_dir }}/.i3"
+    path: "{{ ansible_user_dir }}/{{ item }}"
     state: directory
+  with_items:
+    - .config/lilyterm
+    - .i3
 
 - name: config i3
   copy:
@@ -21,11 +24,6 @@
     groups: lpadmin,systemd-journal
     append: yes
   become: yes
-
-- name: ensure {{ ansible_user_dir }}/.config/lilyterm folder exists
-  file:
-    path: "{{ ansible_user_dir }}/.config/lilyterm"
-    state: directory
 
 - name: config lilyterm
   copy:
@@ -47,19 +45,15 @@
     become: yes
 
   - name: config external monitor udev rules
-    template:
-      src: udev/rules.d/90-monitor-hotplug.rules.j2
+    copy:
+      src: udev/rules.d/90-monitor-hotplug.rules
       dest: /etc/udev/rules.d/90-monitor-hotplug.rules
     become: yes
 
-  - name: be sure {{ ansible_user_dir }}/.local/bin folder exists
-    file:
-      path: "{{ ansible_user_dir }}/.local/bin"
-      state: directory
-
   - name: config udev monitor_hotplug programs
     template:
-      src: udev/bin/monitor_hotplug.sh.j2
-      dest: "{{ ansible_user_dir }}/.local/bin/monitor_hotplug.sh"
+      src: udev/bin/monitor_hotplug.j2
+      dest: /usr/local/bin/monitor_hotplug"
       mode: "0755"
+    become: yes
   when: ansible_form_factor == 'Laptop'
