@@ -52,7 +52,8 @@
 
   - name: config udev monitor_hotplug programs
     template:
-      src: udev/bin/monitor_hotplug.sh
+      src: udev/bin/monitor_hotplug.j2
       dest: /usr/local/bin/monitor_hotplug"
       mode: "0755"
+    become: yes
   when: ansible_form_factor == 'Laptop'
