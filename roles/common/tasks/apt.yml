@@ -26,7 +26,7 @@
 
 - name: add nodejs repository
   apt_repository:
-    repo: deb https://deb.nodesource.com/node_6.x jessie main
+    repo: deb https://deb.nodesource.com/node_8.x stretch main
     filename: nodesource
   become: yes
 
