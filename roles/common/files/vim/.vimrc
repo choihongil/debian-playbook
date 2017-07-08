@@ -73,3 +73,11 @@
   :python3 powerline_setup()
   :python3 del powerline_setup
 :endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ack
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+:if executable('ag')
+  :let g:ackprg = 'ag --vimgrep'
+:endif

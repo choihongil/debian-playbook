@@ -27,6 +27,8 @@ Plugin 'isRuslan/vim-es6'
 Plugin 'ternjs/tern_for_vim'
 " ranger
 Plugin 'francoiscabrol/ranger.vim'
+" grep
+Plugin 'mileszs/ack.vim'
 
 call vundle#end()
 :filetype plugin indent on
