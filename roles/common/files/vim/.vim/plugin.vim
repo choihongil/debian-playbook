@@ -20,13 +20,8 @@ Plugin 'w0ng/vim-hybrid'
 Plugin 'tpope/vim-rails'
 " html
 Plugin 'slim-template/vim-slim'
-Plugin 'mattn/emmet-vim'
-Plugin 'tpope/vim-surround'
 " javascript
-Plugin 'isRuslan/vim-es6'
-Plugin 'ternjs/tern_for_vim'
-" ranger
-Plugin 'francoiscabrol/ranger.vim'
+Plugin 'pangloss/vim-javascript'
 " grep
 Plugin 'mileszs/ack.vim'
 

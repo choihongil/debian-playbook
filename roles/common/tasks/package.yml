@@ -5,9 +5,10 @@
     name: "{{ item }}"
     state: latest
   with_items:
+    - avahi-daemon
     - cifs-utils
     - curl
-    - docker-engine
+    - docker-ce
     - exuberant-ctags
     - fish
     - fonts-powerline

@@ -10,12 +10,12 @@
 
 - name: add apt key of docker
   apt_key:
-    url: https://yum.dockerproject.org/gpg
+    url: https://download.docker.com/linux/debian/gpg
   become: yes
 
 - name: add docker repository
   apt_repository:
-    repo: deb https://apt.dockerproject.org/repo/ debian-stretch main
+    repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
     filename: docker
   become: yes
 
