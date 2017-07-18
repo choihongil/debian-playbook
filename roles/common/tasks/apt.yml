@@ -11,6 +11,7 @@
 - name: add apt key of docker
   apt_key:
     url: https://download.docker.com/linux/debian/gpg
+    keyring: /etc/apt/trusted.gpg.d/docker.gpg
   become: yes
 
 - name: add docker repository
@@ -22,6 +23,7 @@
 - name: add apt key of nodejs
   apt_key:
     url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    keyring: /etc/apt/trusted.gpg.d/nodejs.gpg
   become: yes
 
 - name: add nodejs repository
@@ -33,6 +35,7 @@
 - name: add apt key of yarn
   apt_key:
     url: https://dl.yarnpkg.com/debian/pubkey.gpg
+    keyring: /etc/apt/trusted.gpg.d/yarn.gpg
   become: yes
 
 - name: add yarn repository

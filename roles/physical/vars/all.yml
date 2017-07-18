@@ -1,8 +1,8 @@
 ---
 stable_packages:
+  - alacritty
   - blueman
   - cups
-  - dmenu
   - dunst
   - dbus-user-session
   - fcitx
@@ -13,6 +13,7 @@ stable_packages:
   - fonts-noto
   - fswebcam
   - fwupd
+  - google-chrome-stable
   - guvcview
   - i3-wm
   - i3lock
@@ -24,8 +25,11 @@ stable_packages:
   - powertop
   - printer-driver-escpr
   - pulseaudio-module-bluetooth
-  - wpasupplicant
+  - rofi
+  - skypeforlinux
+  - sway
   - transmission-gtk
   - udiskie
+  - wpasupplicant
   - xbacklight
   - xinput

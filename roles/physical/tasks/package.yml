@@ -6,27 +6,3 @@
     state: latest
   with_items: "{{ stable_packages | union(peculiar_stable_packages) }}"
   become: yes
-
-- name: Install from internet
-  apt:
-    deb: "{{ item }}"
-  with_items:
-    - https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    - https://repo.skype.com/latest/skypeforlinux-64-alpha.deb
-    - https://downloads.slack-edge.com/linux_releases/slack-desktop-2.4.2-amd64.deb
-  become: yes
-  tags: download
-
-- name: Unarchive wechat
-  unarchive:
-    src: https://github.com/geeeeeeeeek/electronic-wechat/releases/download/V2.0/linux-x64.tar.gz
-    dest: /usr/local/share
-    remote_src: yes
-  become: yes
-  tags: download
-
-- name: Copy wechat desktop file
-  copy:
-    src: wechat.desktop
-    dest: /usr/local/share/applications
-  become: yes
