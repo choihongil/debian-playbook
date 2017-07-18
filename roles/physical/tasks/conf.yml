@@ -5,8 +5,11 @@
     path: "{{ ansible_user_dir }}/{{ item }}"
     state: directory
   with_items:
+    - .config/fontconfig
     - .config/lilyterm
+    - .config/sway
     - .i3
+    - .local/share/fonts
 
 - name: config i3
   copy:
@@ -29,6 +32,24 @@
   copy:
     src: lilyterm.conf
     dest: "{{ ansible_user_dir }}/.config/lilyterm/default.conf"
+
+- name: prepare noto color emoji font
+  copy:
+    src: fonts/NotoColorEmoji.ttf
+    dest: "{{ ansible_user_dir }}/.local/share/fonts/"
+
+- name: fonts config
+  copy:
+    src: fonts/noto_color_emoji.conf
+    dest: "{{ ansible_user_dir }}/.config/fontconfig/"
+
+- name: fc-cache
+  command: fc-cache -fv
+
+- name: config sway
+  copy:
+    src: sway.config
+    dest: "{{ ansible_user_dir }}/.config/sway/config"
 
 # For laptop
 - block:
