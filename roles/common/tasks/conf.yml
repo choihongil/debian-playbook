@@ -11,13 +11,13 @@
 
 - name: gitconfig
   copy:
-    src: gitconfig
+    src: git/config
     dest: "{{ ansible_user_dir }}/.gitconfig"
 
 - name: gitignore
   copy:
-    src: gitignore
-    dest: "{{ ansible_user_dir }}/.config/git/ignore"
+    src: git/ignore
+    dest: "{{ ansible_user_dir }}/.config/git/"
 
 - name: config fish
   copy:

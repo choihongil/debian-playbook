@@ -2,7 +2,7 @@
 wireless_nic_name: wlp2s0
 wired_nic_name: enp3s0
 
-peculiar_backports_packages: []
+peculiar_testing_packages: []
 peculiar_stable_packages:
   - firmware-realtek
   - firmware-iwlwifi

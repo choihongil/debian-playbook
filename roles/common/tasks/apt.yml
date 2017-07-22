@@ -2,8 +2,22 @@
 
 - name: be sure sources.list exist
   copy:
-    src: sources.list
-    dest: /etc/apt/sources.list
+    src: apt/sources.list
+    dest: /etc/apt/
+  become: yes
+  notify:
+    - update apt cache
+
+- name: apt config
+  copy:
+    src: apt/apt.conf
+    dest: /etc/apt/
+  become: yes
+
+- name: add testing
+  copy:
+    src: apt/testing.list
+    dest: /etc/apt/sources.list.d/
   become: yes
   notify:
     - update apt cache
@@ -19,6 +33,8 @@
     repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
     filename: docker
   become: yes
+  notify:
+    - update apt cache
 
 - name: add apt key of nodejs
   apt_key:
@@ -31,6 +47,8 @@
     repo: deb https://deb.nodesource.com/node_8.x stretch main
     filename: nodesource
   become: yes
+  notify:
+    - update apt cache
 
 - name: add apt key of yarn
   apt_key:
@@ -43,3 +61,8 @@
     repo: deb https://dl.yarnpkg.com/debian/ stable main
     filename: yarn
   become: yes
+  notify:
+    - update apt cache
+
+- name: update when repository changed
+  meta: flush_handlers
