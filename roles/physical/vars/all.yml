@@ -13,12 +13,12 @@ stable_packages:
   - fonts-noto
   - fswebcam
   - fwupd
+  - gnome-backgrounds
   - google-chrome-stable
   - guvcview
   - i3-wm
   - i3lock
   - i3status
-  - lightdm
   - lilyterm
   - mpv
   - pavucontrol
@@ -26,6 +26,7 @@ stable_packages:
   - printer-driver-escpr
   - pulseaudio-module-bluetooth
   - rofi
+  - sddm
   - skypeforlinux
   - sway
   - transmission-gtk

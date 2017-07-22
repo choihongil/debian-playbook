@@ -11,6 +11,8 @@
     repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
     filename: google-chrome
   become: yes
+  notify:
+    - update apt cache
 
 - name: add apt key of skype
   apt_key:
@@ -23,9 +25,24 @@
     repo: deb [arch=amd64] https://repo.skype.com/deb stable main
     filename: skype-stable
   become: yes
+  notify:
+    - update apt cache
 
 - name: add sway and alacritty repository
   apt_repository:
     repo: ppa:s.noack/ppa
     codename: artful
   become: yes
+  notify:
+    - update apt cache
+
+- name: add chromium beta with hardware video decoding
+  apt_repository:
+    repo: ppa:saiarcot895/chromium-beta
+    codename: zesty
+  become: yes
+  notify:
+    - update apt cache
+
+- name: update when repository changed
+  meta: flush_handlers

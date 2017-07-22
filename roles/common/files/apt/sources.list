@@ -1,0 +1,12 @@
+
+# 
+
+# deb cdrom:[Debian GNU/Linux stretch-DI-rc2 _Stretch_ - Official Snapshot amd64 NETINST Binary-1 20170201-11:47]/ stretch main
+
+#deb cdrom:[Debian GNU/Linux stretch-DI-rc2 _Stretch_ - Official Snapshot amd64 NETINST Binary-1 20170201-11:47]/ stretch main
+
+deb http://ftp.jp.debian.org/debian/ stable main contrib non-free
+deb-src http://ftp.jp.debian.org/debian/ stable main contrib non-free
+
+deb http://security.debian.org/debian-security stable/updates main contrib non-free
+deb-src http://security.debian.org/debian-security stable/updates main contrib non-free
