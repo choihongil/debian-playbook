@@ -22,6 +22,7 @@ stable_packages:
   - lilyterm
   - mpv
   - pavucontrol
+  - pepperflashplugin-nonfree
   - powertop
   - printer-driver-escpr
   - pulseaudio-module-bluetooth

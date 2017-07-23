@@ -15,7 +15,6 @@
     - man-db
     - nodejs
     - openssh-server
-    - python3-pip
     - silversearcher-ag
     - vim-nox
     - tmux
@@ -25,6 +24,7 @@
 - name: Install pip packages
   pip:
     name: "{{ item }}"
+    extra_args: --user
   with_items:
     - docker-compose
     - mycli
