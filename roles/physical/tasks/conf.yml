@@ -6,7 +6,7 @@
     state: directory
   with_items:
     - .config/fontconfig
-    - .config/lilyterm
+    - .config/alacritty
     - .config/sway
     - .i3
     - .local/share/fonts
@@ -28,10 +28,20 @@
     append: yes
   become: yes
 
-- name: config lilyterm
+- name: config alacritty
   copy:
-    src: lilyterm.conf
-    dest: "{{ ansible_user_dir }}/.config/lilyterm/default.conf"
+    src: alacritty.yml
+    dest: "{{ ansible_user_dir }}/.config/alacritty/"
+
+- name: query x-terminal-emulator
+  shell: update-alternative --query x-terminal-emulator
+  register: terminal_emulator
+  ignore_errors: yes
+
+- name: install x-terminal-emulator alternatives
+  shell: update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 10
+  when: terminal_emulator|failed
+  become: yes
 
 - name: prepare noto color emoji font
   copy:
@@ -43,8 +53,14 @@
     src: fonts/noto_color_emoji.conf
     dest: "{{ ansible_user_dir }}/.config/fontconfig/"
 
+- name: fc-list
+  shell: fc-list | grep emoji
+  register: emoji_font
+  ignore_errors: yes
+
 - name: fc-cache
   command: fc-cache -fv
+  when: emoji_font|failed
 
 - name: config sway
   copy:
@@ -63,18 +79,5 @@
     copy:
       src: libinput.conf
       dest: /etc/X11/xorg.conf.d/40-libinput.conf
-    become: yes
-
-  - name: config external monitor udev rules
-    copy:
-      src: udev/rules.d/90-monitor-hotplug.rules
-      dest: /etc/udev/rules.d/90-monitor-hotplug.rules
-    become: yes
-
-  - name: config udev monitor_hotplug programs
-    template:
-      src: udev/bin/monitor_hotplug.j2
-      dest: /usr/local/bin/monitor_hotplug"
-      mode: "0755"
     become: yes
   when: ansible_form_factor == 'Laptop'

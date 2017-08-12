@@ -14,10 +14,24 @@
     dest: /etc/apt/
   become: yes
 
-- name: add testing
-  copy:
-    src: apt/testing.list
-    dest: /etc/apt/sources.list.d/
+- name: add testing repository
+  apt_repository:
+    repo: deb http://ftp.jp.debian.org/debian/ testing main contrib non-free
+    filename: testing
+  become: yes
+  notify:
+    - update apt cache
+
+- name: add apt key of debiancn
+  apt:
+    deb: https://repo.debiancn.org/pool/main/d/debiancn-keyring/debiancn-keyring_0~20161212_all.deb
+  notify:
+    - update apt cache
+
+- name: add debiancn repository
+  apt_repository:
+    repo: deb https://repo.debiancn.org/ buster main
+    filename: debiancn
   become: yes
   notify:
     - update apt cache
