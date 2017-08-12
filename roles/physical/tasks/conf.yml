@@ -34,7 +34,7 @@
     dest: "{{ ansible_user_dir }}/.config/alacritty/"
 
 - name: query x-terminal-emulator
-  shell: update-alternative --query x-terminal-emulator
+  shell: update-alternatives --query x-terminal-emulator
   register: terminal_emulator
   ignore_errors: yes
 
@@ -54,7 +54,7 @@
     dest: "{{ ansible_user_dir }}/.config/fontconfig/"
 
 - name: fc-list
-  shell: fc-list | grep emoji
+  shell: fc-list | grep Emoji
   register: emoji_font
   ignore_errors: yes
 

@@ -22,9 +22,15 @@
   notify:
     - update apt cache
 
+- name: confirm debiancn-keyring is installed
+  shell: apt list --installed | grep debiancn-keyring
+  register: debiancn_keyring
+  ignore_errors: yes
+
 - name: add apt key of debiancn
   apt:
     deb: https://repo.debiancn.org/pool/main/d/debiancn-keyring/debiancn-keyring_0~20161212_all.deb
+  when: debiancn_keyring|failed
   notify:
     - update apt cache
 
