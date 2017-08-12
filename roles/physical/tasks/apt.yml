@@ -14,6 +14,20 @@
   notify:
     - update apt cache
 
+- name: add apt key of wire
+  apt_key:
+    url: https://wire-app.wire.com/linux/releases.key
+    keyring: /etc/apt/trusted.gpg.d/wire.gpg
+  become: yes
+
+- name: add wire repository
+  apt_repository:
+    repo: deb https://wire-app.wire.com/linux/debian stable main
+    filename: wire
+  become: yes
+  notify:
+    - update apt cache
+
 - name: add apt key of skype
   apt_key:
     url: https://repo.skype.com/data/SKYPE-GPG-KEY

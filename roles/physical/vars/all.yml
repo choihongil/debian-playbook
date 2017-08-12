@@ -4,23 +4,19 @@ stable_packages:
   - blueman
   - cups
   - dunst
-  - dbus-user-session
+  - electronic-wechat
   - fcitx
   - fcitx-googlepinyin
   - fcitx-hangul
   - fcitx-mozc
   - feh
   - fonts-noto
-  - fswebcam
   - fwupd
-  - gnome-backgrounds
   - google-chrome-stable
-  - guvcview
-  - i3-wm
+  - i3
+  - i3blocks
   - i3lock
-  - i3status
-  - lilyterm
-  - mpv
+  - netease-cloud-music
   - pavucontrol
   - pepperflashplugin-nonfree
   - powertop
@@ -30,8 +26,8 @@ stable_packages:
   - sddm
   - skypeforlinux
   - sway
-  - transmission-gtk
   - udiskie
   - wpasupplicant
   - xbacklight
+  - xclip
   - xinput

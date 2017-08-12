@@ -1,0 +1,7 @@
+Package: alacritty
+Pin: origin "repo.debiancn.org"
+Pin-Priority: 600
+
+Package: blueman fish i3 linux-image-amd64 tmux vim-nox
+Pin: release a=testing
+Pin-Priority: 990
