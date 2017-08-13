@@ -16,11 +16,6 @@
     src: i3.config
     dest: "{{ ansible_user_dir }}/.i3/config"
 
-- name: config i3status
-  template:
-    src: i3status.conf.j2
-    dest: "{{ ansible_user_dir }}/.i3status.conf"
-
 - name: add lpadmin and systemd-journal groups to user
   user:
     name: "{{ ansible_user_id }}"
