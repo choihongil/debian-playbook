@@ -4,5 +4,5 @@
   apt:
     name: "{{ item }}"
     state: latest
-  with_items: "{{ stable_packages | union(peculiar_stable_packages) }}"
+  with_items: "{{ common_packages | union(peculiar_packages) }}"
   become: yes

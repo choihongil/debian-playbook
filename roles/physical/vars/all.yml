@@ -1,5 +1,5 @@
 ---
-stable_packages:
+common_packages:
   - alacritty
   - blueman
   - cups
