@@ -15,7 +15,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 " color scheme
-Plugin 'jacoborus/tender.vim'
+Plugin 'joshdick/onedark.vim'
 " rails
 Plugin 'tpope/vim-rails'
 " html
