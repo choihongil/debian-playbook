@@ -14,6 +14,12 @@
     dest: /etc/apt/
   become: yes
 
+- name: apt preference
+  copy:
+    src: apt/custom.pref
+    dest: /etc/apt/preferences.d/
+  become: yes
+
 - name: add testing repository
   apt_repository:
     repo: deb http://ftp.jp.debian.org/debian/ testing main contrib non-free
@@ -31,6 +37,7 @@
   apt:
     deb: https://repo.debiancn.org/pool/main/d/debiancn-keyring/debiancn-keyring_0~20161212_all.deb
   when: debiancn_keyring|failed
+  become: yes
   notify:
     - update apt cache
 

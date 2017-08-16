@@ -27,7 +27,7 @@
 :endif
 
 :syntax on
-:colorscheme tender
+:colorscheme onedark
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " indent

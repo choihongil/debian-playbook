@@ -18,6 +18,7 @@
   copy:
     src: git/ignore
     dest: "{{ ansible_user_dir }}/.config/git/"
+    force: no
 
 - name: config fish
   copy:
