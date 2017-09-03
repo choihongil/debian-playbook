@@ -16,9 +16,10 @@ common_packages:
   - i3
   - i3blocks
   - i3lock
+  - linux-headers-amd64
+  - linux-image-amd64
   - netease-cloud-music
   - pavucontrol
-  - pepperflashplugin-nonfree
   - powertop
   - printer-driver-escpr
   - pulseaudio-module-bluetooth
@@ -27,6 +28,8 @@ common_packages:
   - skypeforlinux
   - sway
   - udiskie
+  - vagrant
+  - virtualbox
   - wpasupplicant
   - xbacklight
   - xclip
