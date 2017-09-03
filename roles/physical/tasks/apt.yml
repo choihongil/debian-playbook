@@ -50,13 +50,5 @@
   notify:
     - update apt cache
 
-- name: add chromium beta with hardware video decoding
-  apt_repository:
-    repo: ppa:saiarcot895/chromium-beta
-    codename: zesty
-  become: yes
-  notify:
-    - update apt cache
-
 - name: update when repository changed
   meta: flush_handlers
