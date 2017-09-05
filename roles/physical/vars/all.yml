@@ -29,7 +29,7 @@ common_packages:
   - sway
   - udiskie
   - vagrant
-  - virtualbox
+  - virtualbox-qt
   - wpasupplicant
   - xbacklight
   - xclip
