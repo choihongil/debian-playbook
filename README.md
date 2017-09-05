@@ -14,5 +14,5 @@ pip3 install --user ansible
 
 git clone --recursive https://github.com/choihongil/debian-playbook.git
 
-ansible-playbook -Ki local playbook.yml
+ansible-playbook -Ki local --limit localhost playbook.yml
 ```
