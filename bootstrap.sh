@@ -43,5 +43,4 @@ case $OSTYPE in
 	    echo "Install virtualbox"
 	    brew cask install virtualbox
 	fi
-    linux*)
 esac
