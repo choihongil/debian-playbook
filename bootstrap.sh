@@ -9,11 +9,6 @@ case $OSTYPE in
 	    echo "Install brew"
 	    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	fi
-	# git
-	if [ ! $(brew list | grep git) ]; then
-	    echo "Install git"
-	    brew install git
-	fi
 	# ansible
 	if [ ! $(brew list | grep ansible) ]; then
 	    echo "Install ansible"

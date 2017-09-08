@@ -18,6 +18,7 @@ common_packages:
   - i3lock
   - linux-headers-amd64
   - linux-image-amd64
+  - nfs-kernel-server
   - netease-cloud-music
   - pavucontrol
   - powertop

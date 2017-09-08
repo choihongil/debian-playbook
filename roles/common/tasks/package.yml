@@ -15,7 +15,6 @@
     - nodejs
     - openssh-server
     - python3-dev
-    - rsync
     - silversearcher-ag
     - yarn
   become: yes
