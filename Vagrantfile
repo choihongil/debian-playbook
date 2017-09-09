@@ -13,7 +13,6 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "debian/stretch64"
-  config.disksize.size = '100GB'
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -54,7 +53,15 @@ Vagrant.configure("2") do |config|
   #   vb.gui = true
   #
     # Customize the amount of memory on the VM:
-    vb.memory = "2048"
+    vb.memory = "3072"
+
+    { home: 50, docker: 30 }.each_with_index do |(name, size), index|
+      filename = File.expand_path("~/VirtualBox VMs/#{name}.vdi")
+      unless File.exists? filename
+        vb.customize ['createmedium', 'disk', '--filename', filename, '--size', size * 1024]
+      end
+      vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', index + 1, '--type', 'hdd', '--medium', filename]
+    end
   end
   #
   # View the documentation for the provider you are using for more
@@ -71,18 +78,34 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
-    sudo export DEBIAN_FRONTEND=noninteractive
+    #export DEBIAN_FRONTEND=noninteractive
     sudo apt install --yes --no-install-recommends apt-transport-https curl python3-apt parted
 
-    # resize root partition
-    sudo swapoff -a
-    sudo sfdisk --no-reread /dev/sda < /vagrant/sda.dump
-    sudo partprobe
-    sudo resize2fs /dev/sda1
-    sudo mkswap /dev/sda5
-    swap_uuid=$(sudo blkid -s UUID -o value /dev/sda5)
-    sudo sed -i "s/^\(UUID=\)[a-z0-9-]\+\(.\+swap\)/\1${swap_uuid}\2/" /etc/fstab
-    sudo swapon -a
+    # add home partition
+    if ! sudo lsblk | grep sdb1 > /dev/null; then
+      sudo parted -s /dev/sdb mklabel msdos
+      sudo parted -s /dev/sdb mkpart primary 2048s 100%
+      sudo mkfs.ext4 /dev/sdb1
+      home_uuid=$(sudo blkid -s UUID -o value /dev/sdb1)
+      cp -a /home/vagrant /tmp
+      sudo sed -ie "$ a # /home was on /dev/sdb1\\\\nUUID=${home_uuid} /home           ext4    defaults        0       2" /etc/fstab
+    fi
+    # add docker partition
+    if ! sudo lsblk | grep sdc1 > /dev/null; then
+      sudo parted -s /dev/sdc mklabel msdos
+      sudo parted -s /dev/sdc mkpart primary 2048s 100%
+      sudo mkfs.ext4 /dev/sdc1
+      docker_uuid=$(sudo blkid -s UUID -o value /dev/sdc1)
+      sudo mkdir -p /var/lib/docker
+      sudo sed -ie "$ a # /var/lib/docker was on /dev/sdc1\\\\nUUID=${docker_uuid} /var/lib/docker ext4    defaults        0       2" /etc/fstab
+    fi
+    # mount added partions
+    if ! (df | grep ^/dev/sdb1 && df | grep ^/dev/sdc1) > /dev/null; then
+      sudo mount -a
+      if [ ! -d /home/vagrant ]; then
+        sudo mv /tmp/vagrant /home
+      fi
+    fi
 
     # install pip
     curl -LJO https://bootstrap.pypa.io/get-pip.py
