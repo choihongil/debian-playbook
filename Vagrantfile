@@ -39,7 +39,7 @@ Vagrant.configure("2") do |config|
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
   config.vm.synced_folder ".", "/vagrant", disabled: true
-  config.vm.synced_folder "~/vm_share", "/home/vagrant/host_share",
+  config.vm.synced_folder "~/vm_share", "/mnt/host_share",
     type: "nfs",
     nfs_version: 4,
     nfs_udp: false
