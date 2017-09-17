@@ -17,7 +17,17 @@
     src: amethyst
     dest: "{{ ansible_user_dir }}/.amethyst"
 
+- name: Allow 'sudo' group to have passwordless sudo
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^%sudo'
+    line: '%admin		ALL = (ALL) NOPASSWD: ALL'
+    validate: '/usr/sbin/visudo -cf %s'
+  become: yes
+
 - name: Ensure vm_share directory present
-  path: "{{ ansible_user_dir }}/vm_share"
-  state: directory
-  mode: 0755
+  file:
+    path: "{{ ansible_user_dir }}/vm_share"
+    state: directory
+    mode: 0755
