@@ -16,3 +16,8 @@
   copy:
     src: amethyst
     dest: "{{ ansible_user_dir }}/.amethyst"
+
+- name: Ensure vm_share directory present
+  path: "{{ ansible_user_dir }}/vm_share"
+  state: directory
+  mode: 0755

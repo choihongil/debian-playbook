@@ -55,7 +55,7 @@ Vagrant.configure("2") do |config|
     # Customize the amount of memory on the VM:
     vb.memory = "3072"
 
-    { home: 50, docker: 30 }.each_with_index do |(name, size), index|
+    { home: 50, docker: 50 }.each_with_index do |(name, size), index|
       filename = File.expand_path("~/VirtualBox VMs/#{name}.vdi")
       unless File.exists? filename
         vb.customize ['createmedium', 'disk', '--filename', filename, '--size', size * 1024]
