@@ -32,6 +32,7 @@ case $(uname) in
             echo "Install ansible"
             ~/.local/bin/pip3 install --user ansible
         fi
+        ANSIBLE_PLAYBOOK="${HOME}/.local/bin/ansible-playbook"
         ;;
     Darwin)
 	# brew
@@ -44,6 +45,7 @@ case $(uname) in
 	    echo "Install ansible"
 	    brew install ansible
 	fi
+        ANSIBLE_PLAYBOOK=/usr/local/bin/ansible-playbook
         ;;
 esac
 
@@ -55,4 +57,4 @@ fi
 # execute playbook
 echo "Execute ansible playbook"
 cd ~/debian-playbook
-~/.local/bin/ansible-playbook -Ki local --limit localhost playbook.yml
+${ANSIBLE_PLAYBOOK} -Ki local --limit localhost playbook.yml
