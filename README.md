@@ -1,1 +1,3 @@
-wget -qO- https://github.com/choihongil/debian-playbook/raw/master/bootstrap.sh | sh
+```
+sh -c "$(wget -qO- https://github.com/choihongil/debian-playbook/raw/master/bootstrap.sh)"
+```

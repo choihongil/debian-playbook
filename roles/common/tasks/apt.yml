@@ -29,7 +29,7 @@
     - update apt cache
 
 - name: confirm debiancn-keyring is installed
-  shell: apt list --installed | grep debiancn-keyring
+  shell: apt list --installed | grep debiancn-keyring 2>/dev/null
   register: debiancn_keyring
   ignore_errors: yes
 

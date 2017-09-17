@@ -1,0 +1,18 @@
+---
+
+- name: Install packages
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - amethyst
+    - google-chrome
+    - google-japanese-ime
+    - iterm2
+    - vagrant
+    - virtualbox
+
+- name: Config amethyst
+  copy:
+    src: amethyst
+    dest: "{{ ansible_user_dir }}/.amethyst"
