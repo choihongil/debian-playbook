@@ -41,7 +41,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.synced_folder "~/vm_share", "/mnt/host_share",
     type: "nfs",
-    nfs_version: 4,
+    #nfs_version: 4,
     nfs_udp: false
 
   # Provider-specific configuration so you can fine-tune various
@@ -79,7 +79,7 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
     #export DEBIAN_FRONTEND=noninteractive
-    sudo apt install --yes --no-install-recommends apt-transport-https curl python3-apt parted
+    sudo apt install --yes --no-install-recommends apt-transport-https curl parted
 
     # add home partition
     if ! sudo lsblk | grep sdb1 > /dev/null; then
@@ -108,7 +108,7 @@ Vagrant.configure("2") do |config|
     fi
 
     # install pip
-    curl -LJO https://bootstrap.pypa.io/get-pip.py
+    curl -LJO https://bootstrap.pypa.io/get-pip.py 2>/dev/null
     python3 get-pip.py --user
   SHELL
 

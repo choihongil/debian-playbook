@@ -11,7 +11,7 @@ common_packages:
   - fcitx-mozc
   - feh
   - fonts-noto
-  - fwupd
+  - fonts-powerline
   - google-chrome-stable
   - i3
   - i3blocks

@@ -9,6 +9,8 @@
     - google-chrome
     - google-japanese-ime
     - iterm2
+    - karabiner-elements
+    - slack
     - vagrant
     - virtualbox
 
@@ -17,11 +19,16 @@
     src: amethyst
     dest: "{{ ansible_user_dir }}/.amethyst"
 
+- name: Install powerline fonts
+  copy:
+    src: "Source Code Pro Medium for Powerline.otf"
+    dest: "{{ ansible_user_dir }}/Libray/Fonts/"
+
 - name: Allow 'sudo' group to have passwordless sudo
   lineinfile:
     path: /etc/sudoers
     state: present
-    regexp: '^%sudo'
+    regexp: '^%admin'
     line: '%admin		ALL = (ALL) NOPASSWD: ALL'
     validate: '/usr/sbin/visudo -cf %s'
   become: yes
