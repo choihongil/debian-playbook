@@ -1,0 +1,40 @@
+---
+
+- name: Install packages
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - amethyst
+    - google-chrome
+    - google-japanese-ime
+    - iterm2
+    - karabiner-elements
+    - slack
+    - vagrant
+    - virtualbox
+
+- name: Config amethyst
+  copy:
+    src: amethyst
+    dest: "{{ ansible_user_dir }}/.amethyst"
+
+- name: Install powerline fonts
+  copy:
+    src: "Source Code Pro Medium for Powerline.otf"
+    dest: "{{ ansible_user_dir }}/Libray/Fonts/"
+
+- name: Allow 'sudo' group to have passwordless sudo
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^%admin'
+    line: '%admin		ALL = (ALL) NOPASSWD: ALL'
+    validate: '/usr/sbin/visudo -cf %s'
+  become: yes
+
+- name: Ensure vm_share directory present
+  file:
+    path: "{{ ansible_user_dir }}/vm_share"
+    state: directory
+    mode: 0755

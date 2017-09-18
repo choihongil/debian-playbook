@@ -24,6 +24,8 @@ Plugin 'slim-template/vim-slim'
 Plugin 'pangloss/vim-javascript'
 " grep
 Plugin 'mileszs/ack.vim'
+" markdown
+Plugin 'shime/vim-livedown'
 
 call vundle#end()
 :filetype plugin indent on

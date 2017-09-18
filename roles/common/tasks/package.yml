@@ -6,24 +6,35 @@
     state: latest
   with_items:
     - avahi-daemon
+    - build-essential
     - cifs-utils
     - curl
     - docker-ce
     - exuberant-ctags
-    - fish
-    - fonts-powerline
     - nodejs
     - openssh-server
+    - python3-dev
     - rsync
     - silversearcher-ag
+    - yarn
+  become: yes
+
+- name: Install testing packages
+  apt:
+    name: "{{ item }}"
+    state: latest
+    default_release: testing
+  with_items:
+    - fish
+    - git
     - vim-nox
     - tmux
-    - yarn
   become: yes
 
 - name: Install pip packages
   pip:
     name: "{{ item }}"
+    executable: "{{ ansible_user_dir }}/.local/bin/pip"
     extra_args: --user
   with_items:
     - docker-compose

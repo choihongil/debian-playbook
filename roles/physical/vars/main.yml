@@ -11,13 +11,14 @@ common_packages:
   - fcitx-mozc
   - feh
   - fonts-noto
-  - fwupd
+  - fonts-powerline
   - google-chrome-stable
   - i3
   - i3blocks
   - i3lock
   - linux-headers-amd64
   - linux-image-amd64
+  - nfs-kernel-server
   - netease-cloud-music
   - pavucontrol
   - powertop
