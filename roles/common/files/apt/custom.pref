@@ -1,7 +1,7 @@
-Package: alacritty
-Pin: origin "repo.debiancn.org"
-Pin-Priority: 600
+Package: nodejs
+Pin: origin "deb.nodesource.com"
+Pin-Priority: 990
 
-Package: blueman fish git i3 linux-headers-amd64 linux-image-amd64 tmux vim-nox
+Package: blueman fish git linux-image-amd64 rofi tmux mpv python3-dev vim-nox i965-va-driver firmware-*
 Pin: release a=testing
 Pin-Priority: 990
