@@ -59,8 +59,8 @@
 
 - name: config vundle
   git:
-    repo: https://github.com/VundleVim/Vundle.vim.git
-    dest: "{{ ansible_user_dir }}/.vim/bundle/Vundle.vim"
+    repo: https://github.com/k-takata/minpac.git
+    dest: "{{ ansible_user_dir }}/.vim/pack/minpac/opt/minpac"
 
 - name: install vim plugins
-  shell: vim -u {{ ansible_user_dir }}/.vim/plugin.vim +PluginInstall +qall
+  shell: vim +PackUpdate

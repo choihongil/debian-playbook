@@ -22,7 +22,7 @@
 - name: Install powerline fonts
   copy:
     src: "Source Code Pro Medium for Powerline.otf"
-    dest: "{{ ansible_user_dir }}/Libray/Fonts/"
+    dest: "{{ ansible_user_dir }}/Library/Fonts/"
 
 - name: Allow 'sudo' group to have passwordless sudo
   lineinfile:
