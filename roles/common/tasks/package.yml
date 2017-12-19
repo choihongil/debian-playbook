@@ -8,27 +8,23 @@
     - avahi-daemon
     - build-essential
     - cifs-utils
+    - cowbuilder
     - curl
+    - dh-make
     - docker-ce
     - exuberant-ctags
+    - fish
+    - git
     - nodejs
     - openssh-server
     - python3-dev
     - rsync
+    - ruby-dev
     - silversearcher-ag
-    - yarn
-  become: yes
-
-- name: Install testing packages
-  apt:
-    name: "{{ item }}"
-    state: latest
-    default_release: testing
-  with_items:
-    - fish
-    - git
-    - vim-nox
     - tmux
+    - unar
+    - vim-nox
+    - yarn
   become: yes
 
 - name: Install pip packages
@@ -37,8 +33,33 @@
     executable: "{{ ansible_user_dir }}/.local/bin/pip"
     extra_args: --user
   with_items:
-    - docker-compose
     - mycli
     - pgcli
     - powerline-status
     - ranger-fm
+
+- name: Install gem packages
+  gem:
+    name: "{{ item }}"
+  with_items:
+    - package_cloud
+
+- name: Install minikube
+  get_url:
+    url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    dest: /usr/local/bin/minikube
+    mode: 0755
+  become: yes
+
+- name: Get latest kubectl version
+  uri:
+    url: https://storage.googleapis.com/kubernetes-release/release/stable.txt
+    return_content: yes
+  register: kubectl_version
+
+- name: Install kubectl
+  get_url:
+    url: https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_version.content | trim }}/bin/linux/amd64/kubectl
+    dest: /usr/local/bin/kubectl
+    mode: 0755
+  become: yes

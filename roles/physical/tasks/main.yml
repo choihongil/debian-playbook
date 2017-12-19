@@ -3,7 +3,7 @@
   with_first_found:
     - "{{ ansible_product_name | replace(' ', '_') | lower }}.yml"
 
-- include: apt.yml
-- include: package.yml
-- include: network.yml
-- include: conf.yml
+- import_tasks: apt.yml
+- import_tasks: package.yml
+- import_tasks: network.yml
+- import_tasks: conf.yml

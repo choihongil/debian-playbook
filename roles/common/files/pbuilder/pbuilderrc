@@ -1,0 +1,5 @@
+AUTO_DEBSIGN=${AUTO_DEBSIGN:-no}
+OTHERMIRROR="deb [trusted=yes] file:///var/cache/pbuilder/result ./"
+BINDMOUNTS="/var/cache/pbuilder/result"
+HOOKDIR="/var/cache/pbuilder/hooks"
+EXTRAPACKAGES="apt-utils"
