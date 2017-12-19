@@ -16,7 +16,7 @@
     src: i3.config
     dest: "{{ ansible_user_dir }}/.i3/config"
 
-- name: add lpadmin and systemd-journal groups to user
+- name: add lpadmin,systemd-journal groups to user
   user:
     name: "{{ ansible_user_id }}"
     groups: lpadmin,systemd-journal
@@ -61,6 +61,11 @@
   copy:
     src: sway.config
     dest: "{{ ansible_user_dir }}/.config/sway/config"
+
+- name: start sway
+  copy:
+    src: start-sway
+    dest: "{{ ansible_user_dir }}/.local/bin/"
 
 # For laptop
 - block:

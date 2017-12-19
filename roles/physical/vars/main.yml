@@ -4,7 +4,6 @@ common_packages:
   - blueman
   - cups
   - dunst
-  - electronic-wechat
   - fcitx
   - fcitx-googlepinyin
   - fcitx-hangul
@@ -13,13 +12,7 @@ common_packages:
   - fonts-noto
   - fonts-powerline
   - google-chrome-stable
-  - i3
-  - i3blocks
-  - i3lock
-  - linux-headers-amd64
   - linux-image-amd64
-  - nfs-kernel-server
-  - netease-cloud-music
   - pavucontrol
   - powertop
   - printer-driver-escpr
@@ -28,9 +21,9 @@ common_packages:
   - sddm
   - skypeforlinux
   - sway
+  - i3status
   - udiskie
   - vagrant
-  - virtualbox-qt
   - wpasupplicant
   - xbacklight
   - xclip

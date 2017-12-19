@@ -1,0 +1,10 @@
+#!/bin/sh
+
+export XKB_DEFAULT_OPTIONS=caps:escape
+export CLUTTER_IM_MODULE=xim
+export QT4_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
+
+exec sway
