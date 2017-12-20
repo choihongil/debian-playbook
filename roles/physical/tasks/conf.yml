@@ -28,25 +28,6 @@
     src: alacritty.yml
     dest: "{{ ansible_user_dir }}/.config/alacritty/"
 
-- name: prepare noto color emoji font
-  copy:
-    src: fonts/NotoColorEmoji.ttf
-    dest: "{{ ansible_user_dir }}/.local/share/fonts/"
-
-- name: fonts config
-  copy:
-    src: fonts/noto_color_emoji.conf
-    dest: "{{ ansible_user_dir }}/.config/fontconfig/"
-
-- name: fc-list
-  shell: fc-list | grep Emoji
-  register: emoji_font
-  ignore_errors: yes
-
-- name: fc-cache
-  command: fc-cache -fv
-  when: emoji_font|failed
-
 - name: config sway
   copy:
     src: sway.config

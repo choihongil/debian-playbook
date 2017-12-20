@@ -10,6 +10,7 @@ common_packages:
   - fcitx-mozc
   - feh
   - fonts-noto
+  - fonts-noto-color-emoji
   - fonts-powerline
   - google-chrome-stable
   - linux-image-amd64
