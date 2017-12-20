@@ -52,6 +52,16 @@
     src: tmux.conf
     dest: "{{ ansible_user_dir }}/.tmux.conf"
 
+- name: config pbuilder
+  copy:
+    src: pbuilder/pbuilderrc
+    dest: "{{ ansible_user_dir }}/.pbuilderrc"
+
+- name: pbuilder hooks
+  copy:
+    src: pbuilder/hooks
+    dest: /var/cache/pbuilder/
+
 - name: config vim
   copy:
     src: vim/
