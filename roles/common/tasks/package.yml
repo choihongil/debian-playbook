@@ -1,5 +1,14 @@
 ---
 
+- name: Install testing packages
+  apt:
+    name: "{{ item }}"
+    state: latest
+    default_release: testing
+  with_items:
+    - python3-dev
+  become: yes
+
 - name: Install packages
   apt:
     name: "{{ item }}"
@@ -17,7 +26,6 @@
     - git
     - nodejs
     - openssh-server
-    - python3-dev
     - rsync
     - ruby-dev
     - silversearcher-ag
