@@ -22,6 +22,7 @@
   copy:
     src: git/config
     dest: "{{ ansible_user_dir }}/.gitconfig"
+    force: no
 
 - name: gitignore
   copy:
