@@ -61,6 +61,7 @@
   copy:
     src: pbuilder/hooks
     dest: /var/cache/pbuilder/
+  become: yes
 
 - name: config vim
   copy:
