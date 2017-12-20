@@ -5,16 +5,7 @@
     path: "{{ ansible_user_dir }}/{{ item }}"
     state: directory
   with_items:
-    - .config/fontconfig
-    - .config/alacritty
     - .config/sway
-    - .i3
-    - .local/share/fonts
-
-- name: config i3
-  copy:
-    src: i3.config
-    dest: "{{ ansible_user_dir }}/.i3/config"
 
 - name: add lpadmin,systemd-journal groups to user
   user:
@@ -37,6 +28,11 @@
   copy:
     src: start-sway
     dest: "{{ ansible_user_dir }}/.local/bin/"
+
+- name: config mpv
+  copy:
+    src: mpv
+    dest: "{{ ansible_user_dir }}/.config/"
 
 # For laptop
 - block:
