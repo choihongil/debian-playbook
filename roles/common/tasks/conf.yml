@@ -15,7 +15,6 @@
     state: directory
   with_items:
     - .config/fish
-    - .config/git
     - .config/ranger
 
 - name: gitconfig
