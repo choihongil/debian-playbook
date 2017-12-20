@@ -33,10 +33,12 @@
     executable: "{{ ansible_user_dir }}/.local/bin/pip"
     extra_args: --user
   with_items:
+    - httpie
     - mycli
     - pgcli
     - powerline-status
     - ranger-fm
+    - youtube_dl
 
 - name: Install gem packages
   gem:
