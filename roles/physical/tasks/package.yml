@@ -33,13 +33,11 @@
     - printer-driver-escpr
     - pulseaudio-module-bluetooth
     - rofi
-    - sddm
     - skypeforlinux
     - sway
     - i3status
     - wpasupplicant
     - xbacklight
-    - xclip
   become: yes
 
 - name: Install peculiar packages
