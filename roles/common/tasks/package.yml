@@ -21,14 +21,14 @@
     - curl
     - dh-make
     - docker-ce
-    - exuberant-ctags
     - fish
     - git
+    - global
     - nodejs
     - openssh-server
+    - ripgrep
     - rsync
     - ruby-dev
-    - silversearcher-ag
     - tmux
     - unar
     - vim-nox
