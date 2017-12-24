@@ -91,8 +91,6 @@ if exists('*minpac#init')
   call minpac#add('w0rp/ale')
   " job
   call minpac#add('skywind3000/asyncrun.vim')
-  " grep
-  call minpac#add('mileszs/ack.vim')
   " markdown
   call minpac#add('shime/vim-livedown', { 'do': 'silent! !yarn global add livedown' })
 endif
@@ -126,11 +124,6 @@ if executable('fzf')
   " Colors
   command! -bang Colors
     \ call fzf#vim#colors({'left': '15%', 'options': '--reverse --margin 30%,0'}, <bang>0)
-endif
-
-" ack
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
 endif
 
 " asyncrun
