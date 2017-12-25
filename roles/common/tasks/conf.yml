@@ -70,6 +70,11 @@
     dest: /var/cache/pbuilder/
   become: yes
 
+- name: config global
+  copy:
+    src: globalrc
+    dest: "{{ ansible_user_dir }}/.globalrc"
+
 - name: config vim
   copy:
     src: vim/

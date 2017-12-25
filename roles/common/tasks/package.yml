@@ -21,6 +21,7 @@
     - curl
     - dh-make
     - docker-ce
+    - exuberant-ctags
     - fish
     - git
     - global
