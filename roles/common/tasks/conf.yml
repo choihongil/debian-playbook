@@ -80,7 +80,7 @@
     depth: 1
 
 - name: install fzf
-  shell: "{{ ansible_user_dir }}/.fzf/install --all --no-bash --no-zsh"
+  shell: "{{ ansible_user_dir }}/.fzf/install --bin"
 
 - name: install vim plugins
   shell: vim +PackUpdate
