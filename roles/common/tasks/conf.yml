@@ -15,6 +15,7 @@
     state: directory
   with_items:
     - .config/ranger
+    - .ssh
 
 - name: gitconfig
   copy:
@@ -50,6 +51,11 @@
   copy:
     src: tmux.conf
     dest: "{{ ansible_user_dir }}/.tmux.conf"
+
+- name: config ssh
+  copy:
+    src: ssh_config
+    dest: "{{ ansible_user_dir }}/.ssh/config"
 
 - name: config pbuilder
   copy:
