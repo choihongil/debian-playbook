@@ -1,24 +1,19 @@
 function custom_key_bindings
-  function fzf-container-widget -d "List container names"
-    docker ps --format "{{.Names}}" | fzf | read -l result
-    if [ -z $result ]
-      commandline -f repaint
-      return
+  function fzf-kubenetes-widget -d "List pod or container names"
+    set -l result ''
+    set -l cmd (commandline -b)
+    if string match -r '^kubectl\s+(?:exec|logs|attach)\s+$' $cmd >/dev/null
+      kubectl get pods --output jsonpath='{range .items[*]}{.metadata.name}{"\n"}' | fzf | read result
+    else if string match -r '^docker\s+kill\s+$' $cmd >/dev/null
+      docker ps --format "{{.Names}}" | fzf | read result
     end
 
-    commandline -i $result
-  end
-
-  function fzf-pod-widget -d "List pod names"
-    kubectl get pods | fzf | read -l result
-    if [ -z $result ]
-      commandline -f repaint
-      return
+    if test -n $result
+      commandline -i $result
     end
 
-    commandline -i $result
+    commandline -f repaint
   end
 
-  bind \c\[ fzf-container-widget
-  bind \co fzf-pod-widget
+  bind \co fzf-kubenetes-widget
 end
