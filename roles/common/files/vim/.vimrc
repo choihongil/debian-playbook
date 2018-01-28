@@ -106,7 +106,7 @@ endif
 " Plugin settings here.
 " colorscheme
 silent! packadd! oceanic-next
-silent! colorscheme oceanic-next
+silent! colorscheme OceanicNext
 
 " powerline
 if strlen($POWERLINE_ROOT) > 0
