@@ -9,13 +9,6 @@
     validate: '/usr/sbin/visudo -cf %s'
   become: yes
 
-- name: change default python to python3
-  file:
-    src: /usr/bin/python3
-    dest: /usr/bin/python
-    state: link
-  become: yes
-
 - name: ensure config folders exists
   file:
     path: "{{ ansible_user_dir }}/{{ item }}"
@@ -69,11 +62,6 @@
     src: pbuilder/hooks
     dest: /var/cache/pbuilder/
   become: yes
-
-- name: config global
-  copy:
-    src: globalrc
-    dest: "{{ ansible_user_dir }}/.globalrc"
 
 - name: config vim
   copy:

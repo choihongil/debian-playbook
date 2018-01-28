@@ -73,12 +73,11 @@ if exists('*minpac#init')
   " Additional plugins here.
   " color scheme
   call minpac#add('joshdick/onedark.vim', { 'type': 'opt' })
+  call minpac#add('mhartington/oceanic-next', { 'type': 'opt' })
   " fzf
   call minpac#add('junegunn/fzf.vim')
   " language server protocol
   "call minpac#add('autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'silent! !./install.sh' })
-  " gen_tags
-  call minpac#add('jsfaint/gen_tags.vim')
   " emoji
   call minpac#add('junegunn/vim-emoji')
   " rails
@@ -86,7 +85,16 @@ if exists('*minpac#init')
   " slim
   call minpac#add('slim-template/vim-slim')
   " javascript
-  call minpac#add('pangloss/vim-javascript')
+  "call minpac#add('pangloss/vim-javascript')
+  call minpac#add('othree/yajs.vim')
+  call minpac#add('othree/es.next.syntax.vim')
+  call minpac#add('maxmellon/vim-jsx-pretty')
+  " file explorer
+  call minpac#add('scrooloose/nerdtree')
+  " icon
+  call minpac#add('ryanoasis/vim-devicons')
+  " indent
+  call minpac#add('Yggdroot/indentLine')
   " lint
   call minpac#add('w0rp/ale')
   " job
@@ -97,8 +105,8 @@ endif
 
 " Plugin settings here.
 " colorscheme
-silent! packadd! onedark.vim
-silent! colorscheme onedark
+silent! packadd! oceanic-next
+silent! colorscheme oceanic-next
 
 " powerline
 if strlen($POWERLINE_ROOT) > 0
@@ -141,11 +149,6 @@ let g:LanguageClient_serverCommands = {
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-
-" gen_tags
-" disable ctags support
-let g:loaded_gentags#ctags = 1
-let g:gen_tags#gtags_auto_gen = 1
 
 " Define user commands for updating/cleaning the plugins.
 " Each of them loads minpac, reloads .vimrc to register the
