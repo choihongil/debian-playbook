@@ -26,9 +26,9 @@
     - git
     - nodejs
     - openssh-server
+    - ripgrep
     - rsync
     - ruby-dev
-    - silversearcher-ag
     - tmux
     - unar
     - vim-nox
