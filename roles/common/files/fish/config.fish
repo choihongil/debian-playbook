@@ -18,7 +18,7 @@ if test -z "$fish_user_paths"
   set fish_user_paths ~/.local/bin ~/.gem/ruby/2.3.0/bin ~/.yarn/bin ~/.fzf/bin
 end
 # ssh-agent
-if test -z $SSH_AGENT_PID
+if status --is-interactive; and test -z $SSH_AGENT_PID
   pkill ssh-agent
   eval (ssh-agent -c)
   ssh-add
