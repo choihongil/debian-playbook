@@ -56,6 +56,7 @@
   copy:
     src: ssh_config
     dest: "{{ ansible_user_dir }}/.ssh/config"
+    force: no
 
 - name: config pbuilder
   copy:
