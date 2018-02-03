@@ -85,8 +85,20 @@
     dest: "{{ ansible_user_dir }}/.fzf"
     depth: 1
 
+- name: check exists of file fzf
+  stat:
+    path: "{{ ansible_user_dir }}/.fzf/bin/fzf"
+  register: fzf
+
 - name: install fzf
   shell: "{{ ansible_user_dir }}/.fzf/install --bin"
+  when: fzf.stat.exists == False
+
+- name: check installation of vim plugins
+  stat:
+    path: "{{ ansible_user_dir }}/.vim/pack/minpac/start/fzf.vim"
+  register: minpac
 
 - name: install vim plugins
   shell: vim +PackUpdate
+  when: minpac.stat.exists == False
