@@ -91,6 +91,7 @@ if exists('*minpac#init')
   call minpac#add('maxmellon/vim-jsx-pretty')
   " file explorer
   call minpac#add('scrooloose/nerdtree')
+  call minpac#add('tiagofumo/vim-nerdtree-syntax-highlight')
   " icon
   call minpac#add('ryanoasis/vim-devicons')
   " indent
@@ -119,8 +120,8 @@ endif
 " fzf
 if executable('fzf')
   set runtimepath+=~/.fzf
-  " Rg
-  command! -bang -nargs=* Rg
+  " RG
+  command! -bang -nargs=* RG
     \ call fzf#vim#grep(
     \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
     \   <bang>0 ? fzf#vim#with_preview('up:60%')
@@ -132,7 +133,15 @@ if executable('fzf')
   " Colors
   command! -bang Colors
     \ call fzf#vim#colors({'left': '15%', 'options': '--reverse --margin 30%,0'}, <bang>0)
+  " map
+  nnoremap <C-g> :RG 
+  nnoremap <C-k> :GFiles<CR>
+  nnoremap <C-l> :Files<CR>
 endif
+
+" NERDTree
+nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-h> :NERDTreeFind<CR>
 
 " asyncrun
 " https://github.com/skywind3000/asyncrun.vim/wiki/Quickfix-Best-Practice

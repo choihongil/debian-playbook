@@ -25,7 +25,6 @@
     - feh
     - fonts-noto
     - fonts-noto-color-emoji
-    - fonts-powerline
     - google-chrome-stable
     - linux-image-amd64
     - pavucontrol
@@ -47,3 +46,22 @@
     default_release: testing
   with_items: "{{ peculiar_packages }}"
   become: yes
+
+- name: ensure local font folder exists
+  file:
+    path: "{{ ansible_user_dir }}/.local/share/fonts"
+    state: directory
+
+- name: Install NerdFont
+  get_url:
+    url: https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Medium/complete/Sauce%20Code%20Pro%20Medium%20Nerd%20Font%20Complete.ttf
+    dest: "{{ ansible_user_dir }}/.local/share/fonts/Sauce Code Pro Medium Nerd Font Complete.ttf"
+
+- name: Check Install NerdFont
+  shell: "fc-list | grep Sauce | wc -l"
+  register: font_count
+  changed_when: False
+
+- name: fc-cache
+  shell: "fc-cache -fv"
+  when: font_count.stdout|int == 0
