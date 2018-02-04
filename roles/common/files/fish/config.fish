@@ -19,7 +19,7 @@ if test -z "$fish_user_paths"
 end
 # ssh-agent
 set -x SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/openssh_agent"
-if not ssh-add -l > /dev/null
+if status --is-interactive; and not ssh-add -l > /dev/null
   ssh-add
   if test -f $HOME/.ssh/id_rsa_personal
     ssh-add $HOME/.ssh/id_rsa_personal
