@@ -9,6 +9,19 @@
     validate: '/usr/sbin/visudo -cf %s'
   become: yes
 
+- name: copy ssh-agent.service
+  copy:
+    src: systemd/user
+    dest: "{{ ansible_user_dir }}/.config/systemd/"
+
+- name: autostart ssh-agent.service
+  systemd:
+    name: ssh-agent
+    daemon_reload: yes
+    enabled: yes
+    state: started
+    user: yes
+
 - name: ensure config folders exists
   file:
     path: "{{ ansible_user_dir }}/{{ item }}"

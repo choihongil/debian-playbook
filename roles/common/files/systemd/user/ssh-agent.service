@@ -1,0 +1,10 @@
+[Unit]
+Description=OpenSSH Agent
+ConditionPathExists=/usr/lib/openssh/agent-launch
+
+[Service]
+ExecStart=/usr/lib/openssh/agent-launch start
+ExecStopPost=/usr/lib/openssh/agent-launch stop
+
+[Install]
+WantedBy=default.target
