@@ -18,7 +18,7 @@ if test -z "$fish_user_paths"
   set fish_user_paths ~/.local/bin ~/.gem/ruby/2.3.0/bin ~/.yarn/bin ~/.fzf/bin
 end
 # ssh-agent
-set -x SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/openssh_agent"
+set -x SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
 if status --is-interactive; and not ssh-add -l > /dev/null
   ssh-add
   if test -f $HOME/.ssh/id_rsa_personal
