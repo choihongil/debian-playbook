@@ -1,10 +1,12 @@
 [Unit]
 Description=OpenSSH Agent
-ConditionPathExists=/usr/lib/openssh/agent-launch
 
 [Service]
-ExecStart=/usr/lib/openssh/agent-launch start
-ExecStopPost=/usr/lib/openssh/agent-launch stop
+Type=simple
+Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket
+ExecStart=/usr/bin/ssh-agent -D -a $SSH_AUTH_SOCK
+ExecStartPost=/bin/systemctl --user set-environment SSH_AUTH_SOCK=${SSH_AUTH_SOCK}
+ExecStopPost=/bin/systemctl --user set-environment SSH_AUTH_SOCK=
 
 [Install]
 WantedBy=default.target
