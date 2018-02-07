@@ -19,9 +19,9 @@
     src: amethyst
     dest: "{{ ansible_user_dir }}/.amethyst"
 
-- name: Install powerline fonts
-  copy:
-    src: "Source Code Pro Medium for Powerline.otf"
+- name: Install NerdFont
+  get_url:
+    url: https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Medium/complete/Sauce%20Code%20Pro%20Medium%20Nerd%20Font%20Complete.ttf
     dest: "{{ ansible_user_dir }}/Library/Fonts/"
 
 - name: Allow 'sudo' group to have passwordless sudo
