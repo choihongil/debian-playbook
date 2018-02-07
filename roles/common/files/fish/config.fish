@@ -4,6 +4,7 @@ set -x FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --glob "!.g
 set -x FZF_DEFAULT_OPTS '--height 40% --reverse --border'
 set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 # minikube
+set -x MINIKUBE_WANTREPORTERRORPROMPT false
 set -x MINIKUBE_HOME $HOME
 set -x CHANGE_MINIKUBE_NONE_USER true
 set -x KUBECONFIG "$HOME/.kube/config"

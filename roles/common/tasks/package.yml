@@ -61,6 +61,7 @@
   get_url:
     url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     dest: /usr/local/bin/minikube
+    force: yes
     mode: 0755
   become: yes
 
@@ -75,4 +76,5 @@
     url: https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_version.content | trim }}/bin/linux/amd64/kubectl
     dest: /usr/local/bin/kubectl
     mode: 0755
+    force: yes
   become: yes
