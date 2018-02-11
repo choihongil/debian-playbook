@@ -41,6 +41,17 @@
     - ranger-fm
     - youtube_dl
 
+  # /usr/bin/ruby2.3: No such file or directory -- /usr/share/rubygems-integration/all/gems/rake-10.5.0/bin/rake (LoadError)
+- name: symbolic link of rake
+  file:
+    path: /usr/share/rubygems-integration/all/gems/rake-12.3.0/exe
+    state: directory
+
+- file:
+    src: /usr/bin/rake
+    dest: /usr/share/rubygems-integration/all/gems/rake-12.3.0/exe/rake
+    state: link
+
 - name: Install gem packages
   gem:
     name: "{{ item }}"
