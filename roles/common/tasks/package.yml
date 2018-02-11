@@ -1,18 +1,5 @@
 ---
 
-- name: Install testing packages
-  apt:
-    name: "{{ item }}"
-    state: latest
-    default_release: testing
-  with_items:
-    - fish
-    - git
-    - python3-dev
-    - ruby-dev
-    - vim-nox
-  become: yes
-
 - name: Install packages
   apt:
     name: "{{ item }}"
@@ -26,12 +13,17 @@
     - dh-make
     - docker-ce
     - exuberant-ctags
+    - fish
+    - git
     - nodejs
     - openssh-server
+    - python3-dev
     - ripgrep
     - rsync
+    - ruby-dev
     - tmux
     - unar
+    - vim-nox
     - yarn
   become: yes
 

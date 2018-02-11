@@ -8,25 +8,11 @@
   notify:
     - update apt cache
 
-- name: apt config
-  copy:
-    src: apt/apt.conf
-    dest: /etc/apt/
-  become: yes
-
 - name: apt preference
   copy:
     src: apt/custom.pref
     dest: /etc/apt/preferences.d/
   become: yes
-
-- name: add testing repository
-  apt_repository:
-    repo: deb http://ftp.jp.debian.org/debian/ testing main contrib non-free
-    filename: testing
-  become: yes
-  notify:
-    - update apt cache
 
 - name: add apt key of hongri_cui
   apt_key:

@@ -8,8 +8,6 @@ case $(uname) in
                   apt-transport-https \
                   curl \
                   git \
-                  libffi-dev \
-                  libssl-dev \
                   python3-dev \
                   sudo
 	EOS
@@ -20,6 +18,8 @@ case $(uname) in
         if ! id -nG | grep sudo > /dev/null; then
             echo "Add sudo group"
             su -c "usermod -aG sudo ${USER}"
+            echo 'su --login $USER'
+            su --login $USER
         fi
         # pip
         if [ ! -x ~/.local/bin/pip3 ]; then

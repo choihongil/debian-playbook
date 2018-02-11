@@ -1,15 +1,5 @@
 ---
 
-- name: Install testing packages
-  apt:
-    name: "{{ item }}"
-    state: latest
-    default_release: testing
-  with_items:
-    - dunst
-    - udiskie
-  become: yes
-
 - name: Install common packages
   apt:
     name: "{{ item }}"
@@ -18,6 +8,7 @@
     - alacritty
     - blueman
     - cups
+    - dunst
     - fcitx
     - fcitx-googlepinyin
     - fcitx-hangul
@@ -35,6 +26,7 @@
     - skypeforlinux
     - sway
     - i3status
+    - udiskie
     - wpasupplicant
     - xbacklight
   become: yes
@@ -43,7 +35,6 @@
   apt:
     name: "{{ item }}"
     state: latest
-    default_release: testing
   with_items: "{{ peculiar_packages }}"
   become: yes
 
