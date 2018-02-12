@@ -48,6 +48,20 @@
   notify:
     - update apt cache
 
+- name: add apt key of kubernetes
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    keyring: /etc/apt/trusted.gpg.d/kubernetes.gpg
+  become: yes
+
+- name: add kubernetes repository
+  apt_repository:
+    repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+    filename: kubernetes
+  become: yes
+  notify:
+    - update apt cache
+
 - name: add apt key of nodejs
   apt_key:
     url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key

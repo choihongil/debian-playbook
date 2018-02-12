@@ -15,6 +15,7 @@
     - exuberant-ctags
     - fish
     - git
+    - kubectl
     - nodejs
     - openssh-server
     - python3-dev
@@ -46,11 +47,13 @@
   file:
     path: /usr/share/rubygems-integration/all/gems/rake-12.3.0/exe
     state: directory
+  become: yes
 
 - file:
     src: /usr/bin/rake
     dest: /usr/share/rubygems-integration/all/gems/rake-12.3.0/exe/rake
     state: link
+  become: yes
 
 - name: Install gem packages
   gem:
@@ -64,18 +67,5 @@
   get_url:
     url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     dest: /usr/local/bin/minikube
-    mode: 0755
-  become: yes
-
-- name: Get latest kubectl version
-  uri:
-    url: https://storage.googleapis.com/kubernetes-release/release/stable.txt
-    return_content: yes
-  register: kubectl_version
-
-- name: Install kubectl
-  get_url:
-    url: https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_version.content | trim }}/bin/linux/amd64/kubectl
-    dest: /usr/local/bin/kubectl
     mode: 0755
   become: yes
