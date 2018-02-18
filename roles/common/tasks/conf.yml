@@ -71,6 +71,11 @@
     dest: "{{ ansible_user_dir }}/.ssh/config"
     force: no
 
+- name: kubeadm init config
+  copy:
+    src: kubeadm.yaml
+    dest: "{{ ansible_user_dir }}/.config/"
+
 - name: config pbuilder
   copy:
     src: pbuilder/pbuilderrc

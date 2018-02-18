@@ -15,7 +15,9 @@
     - exuberant-ctags
     - fish
     - git
+    - kubeadm
     - kubectl
+    - kubelet
     - nodejs
     - openssh-server
     - python3-dev
