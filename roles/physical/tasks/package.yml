@@ -19,6 +19,7 @@
     - fonts-noto-color-emoji
     - google-chrome-stable
     - linux-image-amd64
+    - mpv
     - pavucontrol
     - powertop
     - printer-driver-escpr

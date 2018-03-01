@@ -43,6 +43,7 @@
     - pgcli
     - powerline-status
     - ranger-fm
+    - you-get
     - youtube_dl
 
   # /usr/bin/ruby2.3: No such file or directory -- /usr/share/rubygems-integration/all/gems/rake-10.5.0/bin/rake (LoadError)
