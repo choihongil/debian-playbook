@@ -11,6 +11,7 @@
     - cowbuilder
     - curl
     - dh-make
+    - dnsutils
     - docker-ce
     - exuberant-ctags
     - fish

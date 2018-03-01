@@ -7,6 +7,7 @@
   with_items:
     - alacritty
     - blueman
+    - dnsmasq
     - cups
     - dunst
     - fcitx
