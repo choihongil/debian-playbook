@@ -1,11 +1,11 @@
 #
 
-# deb cdrom:[Debian GNU/Linux 9.1.0 _Stretch_ - Official amd64 NETINST 20170722-11:28]/ stretch main
+# deb cdrom:[Debian GNU/Linux testing _Buster_ - Official amd64 NETINST]/ buster main
 
-#deb cdrom:[Debian GNU/Linux 9.1.0 _Stretch_ - Official amd64 NETINST 20170722-11:28]/ stretch main
+#deb cdrom:[Debian GNU/Linux testing _Buster_ - Official amd64 NETINST ]/ buster main
 
-deb http://ftp.jp.debian.org/debian/ stable main contrib non-free
-deb-src http://ftp.jp.debian.org/debian/ stable main contrib non-free
+deb http://ftp.jp.debian.org/debian/ testing main contrib non-free
+deb-src http://ftp.jp.debian.org/debian/ testing main contrib non-free
 
-deb http://security.debian.org/debian-security stable/updates main contrib non-free
-deb-src http://security.debian.org/debian-security stable/updates main contrib non-free
+deb http://security.debian.org/debian-security testing/updates main contrib non-free
+deb-src http://security.debian.org/debian-security testing/updates main contrib non-free

@@ -1,15 +1,5 @@
 ---
 
-- name: Install testing packages
-  apt:
-    name: "{{ item }}"
-    state: latest
-    default_release: testing
-  with_items:
-    - dunst
-    - udiskie
-  become: yes
-
 - name: Install common packages
   apt:
     name: "{{ item }}"
@@ -17,7 +7,10 @@
   with_items:
     - alacritty
     - blueman
+    - dnsmasq
     - cups
+    - dunst
+    - desktop-base
     - fcitx
     - fcitx-googlepinyin
     - fcitx-hangul
@@ -27,6 +20,7 @@
     - fonts-noto-color-emoji
     - google-chrome-stable
     - linux-image-amd64
+    - mpv
     - pavucontrol
     - powertop
     - printer-driver-escpr
@@ -35,6 +29,7 @@
     - skypeforlinux
     - sway
     - i3status
+    - udiskie
     - wpasupplicant
     - xbacklight
   become: yes
@@ -43,7 +38,6 @@
   apt:
     name: "{{ item }}"
     state: latest
-    default_release: testing
   with_items: "{{ peculiar_packages }}"
   become: yes
 

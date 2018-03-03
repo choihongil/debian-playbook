@@ -55,6 +55,16 @@
     append: yes
   become: yes
 
+- name: generate ssh keys
+  user:
+    name: "{{ ansible_user_id }}"
+    generate_ssh_key: yes
+    ssh_key_file: "{{ item }}"
+  with_items:
+    - .ssh/id_rsa
+    - .ssh/id_rsa_personal
+  become: yes
+
 - name: config ranger
   copy:
     src: ranger.rc.conf
@@ -70,6 +80,20 @@
     src: ssh_config
     dest: "{{ ansible_user_dir }}/.ssh/config"
     force: no
+
+- name: kubeadm init config
+  copy:
+    src: kubeadm.yaml
+    dest: "{{ ansible_user_dir }}/.config/"
+
+- name: fs.inotify.max_user_watches
+  sysctl:
+    name: fs.inotify.max_user_watches
+    value: 524288
+    sysctl_set: yes
+    state: present
+    reload: yes
+  become: yes
 
 - name: config pbuilder
   copy:

@@ -1,7 +1,3 @@
 Package: nodejs
 Pin: origin "deb.nodesource.com"
 Pin-Priority: 990
-
-Package: blueman firmware-* fish git i965-va-driver linux-image-amd64 rofi tmux mpv python3-dev vim-nox udiskie
-Pin: release a=testing
-Pin-Priority: 990

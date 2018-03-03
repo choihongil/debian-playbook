@@ -8,25 +8,11 @@
   notify:
     - update apt cache
 
-- name: apt config
-  copy:
-    src: apt/apt.conf
-    dest: /etc/apt/
-  become: yes
-
 - name: apt preference
   copy:
     src: apt/custom.pref
     dest: /etc/apt/preferences.d/
   become: yes
-
-- name: add testing repository
-  apt_repository:
-    repo: deb http://ftp.jp.debian.org/debian/ testing main contrib non-free
-    filename: testing
-  become: yes
-  notify:
-    - update apt cache
 
 - name: add apt key of hongri_cui
   apt_key:
@@ -52,6 +38,20 @@
   apt_repository:
     repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
     filename: docker
+  become: yes
+  notify:
+    - update apt cache
+
+- name: add apt key of kubernetes
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    keyring: /etc/apt/trusted.gpg.d/kubernetes.gpg
+  become: yes
+
+- name: add kubernetes repository
+  apt_repository:
+    repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+    filename: kubernetes
   become: yes
   notify:
     - update apt cache

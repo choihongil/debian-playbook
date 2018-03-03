@@ -19,6 +19,13 @@
     src: alacritty.yml
     dest: "{{ ansible_user_dir }}/.config/alacritty/"
 
+- name: sway capabilities
+  capabilities:
+    path: /usr/bin/sway
+    capability: cap_sys_ptrace,cap_sys_tty_config+eip
+    state: present
+  become: yes
+
 - name: config sway
   copy:
     src: sway.config
@@ -28,8 +35,19 @@
   copy:
     src: start-sway
     dest: "{{ ansible_user_dir }}/.local/bin/"
+    mode: 0755
 
 - name: config mpv
   copy:
     src: mpv
     dest: "{{ ansible_user_dir }}/.config/"
+
+- name: config web2mpv
+  copy:
+    src: web2mpv/ytb.py
+    dest: "{{ ansible_user_dir }}/.local/bin/"
+    mode: 0755
+
+- copy:
+    src: web2mpv/ytb.desktop
+    dest: "{{ ansible_user_dir }}/.local/share/applications/"
