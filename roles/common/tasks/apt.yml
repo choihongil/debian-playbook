@@ -14,12 +14,6 @@
     dest: /etc/apt/preferences.d/
   become: yes
 
-- name: install gnupg
-  apt:
-    name: gnupg
-    state: latest
-  become: yes
-
 - name: add apt key of hongri_cui
   apt_key:
     url: https://packagecloud.io/hongri_cui/packages/gpgkey
