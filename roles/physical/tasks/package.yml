@@ -10,6 +10,7 @@
     - dnsmasq
     - cups
     - dunst
+    - desktop-base
     - fcitx
     - fcitx-googlepinyin
     - fcitx-hangul

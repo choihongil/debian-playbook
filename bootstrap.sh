@@ -3,17 +3,13 @@ set -eu
 
 case $(uname) in
     Linux)
-        command=$(cat <<- EOS
-            apt install --no-install-recommends --yes \
-                  apt-transport-https \
-                  git \
-                  gnupg \
-                  python3-dev \
-                  sudo
-	EOS
-        )
         echo "Install pre-required packages"
-        su -c "$command"
+        sudo apt install --no-install-recommends --yes \
+                apt-transport-https \
+                git \
+                gnupg \
+                python3-dev
+        sudo apt upgrade
         # pip
         if [ ! -x ~/.local/bin/pip3 ]; then
             echo "Install pip"

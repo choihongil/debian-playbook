@@ -55,6 +55,16 @@
     append: yes
   become: yes
 
+- name: generate ssh keys
+  user:
+    name: "{{ ansible_user_id }}"
+    generate_ssh_key: yes
+    ssh_key_file: "{{ item }}"
+  with_items:
+    - .ssh/id_rsa
+    - .ssh/id_rsa_personal
+  become: yes
+
 - name: config ranger
   copy:
     src: ranger.rc.conf

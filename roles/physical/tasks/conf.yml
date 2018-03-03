@@ -35,6 +35,7 @@
   copy:
     src: start-sway
     dest: "{{ ansible_user_dir }}/.local/bin/"
+    mode: 0755
 
 - name: config mpv
   copy:
