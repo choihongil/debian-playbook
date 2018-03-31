@@ -25,3 +25,58 @@ if status --is-interactive; and not ssh-add -l > /dev/null
     ssh-add $HOME/.ssh/id_rsa_personal
   end
 end
+
+if not set -q abbrs_initialized
+  set -U abbrs_initialized
+  echo -n Setting abbreviations...
+
+  # apt
+  abbr aa         sudo apt autoremove
+  abbr ai         sudo apt install
+  abbr ali        apt list --installed
+  abbr alu        apt list --upgradable
+  abbr ad         apt depends
+  abbr ap         apt policy
+  abbr ar         apt rdepends
+  abbr asc        apt search
+  abbr ash        apt show
+  abbr aud        sudo apt update
+  abbr aug        sudo apt upgrade
+  # git
+  abbr ga         git add
+  abbr gb         git branch
+  abbr gcf        git config
+  abbr gch        git checkout
+  abbr gcl        git clone
+  abbr gco        git commit
+  abbr gdt        git difftool
+  abbr gf         git fetch
+  abbr gl         git log
+  abbr gpl        git pull
+  abbr gps        git push
+  abbr grm        git remote
+  abbr grs        git reset
+  abbr grma       git remote add upstream
+  abbr gs         git status
+  abbr gt         git tag
+  # kubectl
+  abbr kap        kubectl apply --filename
+  abbr kat        kubectl attach
+  abbr ke         kubectl exec
+  abbr kgp        kubectl get pods
+  abbr kdp        kubectl delete pods
+  abbr kdsp       kubectl describe pods
+  abbr kl         kubectl logs
+  abbr kne        kubectl --namespace kube-system exec
+  abbr kngp       kubectl --namespace kube-system get pods
+  # systemctl
+  abbr sld        systemctl list-dependencies
+  abbr sp         systemctl poweroff
+  abbr sr         systemctl reboot
+  abbr ssu        systemctl suspend
+  abbr sst        systemctl status
+  abbr suld       systemctl --user list-dependencies
+  abbr sust       systemctl --user status
+
+  echo Done
+end

@@ -8,27 +8,28 @@
     - avahi-daemon
     - build-essential
     - cifs-utils
-    - cowbuilder
     - curl
     - dh-make
+    - git-buildpackage
+    - cowbuilder
     - dnsutils
     - docker-ce
-    - exuberant-ctags
     - fish
+    - tmux
     - git
     - kubeadm
     - kubectl
     - kubelet
     - nodejs
+    - yarn
     - openssh-server
     - python3-dev
     - ripgrep
     - rsync
     - ruby-dev
-    - tmux
     - unar
     - vim-nox
-    - yarn
+    - exuberant-ctags
   become: yes
 
 - name: Install pip packages

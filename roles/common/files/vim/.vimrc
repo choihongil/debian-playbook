@@ -18,7 +18,7 @@ set langmenu=none
 " encoding
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set encoding=utf-8
-set fileencodings=utf-8,cp932,iso-2022-jp,euc-jp,latin1
+set fileencodings=utf-8,utf-16le,cp932,iso-2022-jp,euc-jp,latin1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " indent
@@ -77,7 +77,7 @@ if exists('*minpac#init')
   " fzf
   call minpac#add('junegunn/fzf.vim')
   " language server protocol
-  "call minpac#add('autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'silent! !./install.sh' })
+  call minpac#add('autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': '!bash install.sh' })
   " emoji
   call minpac#add('junegunn/vim-emoji')
   " rails
@@ -123,20 +123,18 @@ if executable('fzf')
   " RG
   command! -bang -nargs=* RG
     \ call fzf#vim#grep(
-    \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+    \   'rg --column --line-number --no-heading --color=always '
+    \   . <q-args>, 1,
     \   <bang>0 ? fzf#vim#with_preview('up:60%')
     \           : fzf#vim#with_preview('right:50%:hidden', '?'),
     \   <bang>0)
   " Files
   command! -bang -nargs=? -complete=dir Files
-      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-  " Colors
-  command! -bang Colors
-    \ call fzf#vim#colors({'left': '15%', 'options': '--reverse --margin 30%,0'}, <bang>0)
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
   " map
   nnoremap <C-g> :RG 
-  nnoremap <C-k> :GFiles<CR>
-  nnoremap <C-l> :Files<CR>
+  nnoremap <C-j> :GFiles<CR>
+  nnoremap <C-k> :Files<CR>
 endif
 
 " NERDTree
@@ -151,13 +149,16 @@ noremap <F9> call asyncrun#quickfix_toggle(8)<cr>
 " language server protocol
 "if executable('language_server-ruby')
 "endif
-let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['javascript-typescript-stdio'],
-    \ }
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+"set hidden
+"let g:LanguageClient_serverCommands = {
+"    \ 'javascript': ['javascript-typescript-stdio'],
+"    \ 'javascript.jsx': ['javascript-typescript-stdio'],
+"    \ 'ruby': ['language_server-ruby'],
+"    \ }
+"let g:LanguageClient_loggingLevel = 'DEBUG'
+"nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+"nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+"nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 " Define user commands for updating/cleaning the plugins.
 " Each of them loads minpac, reloads .vimrc to register the

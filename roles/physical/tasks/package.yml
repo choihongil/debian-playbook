@@ -6,11 +6,8 @@
     state: latest
   with_items:
     - alacritty
-    - blueman
     - dnsmasq
     - cups
-    - dunst
-    - desktop-base
     - fcitx
     - fcitx-googlepinyin
     - fcitx-hangul
@@ -21,14 +18,17 @@
     - google-chrome-stable
     - linux-image-amd64
     - mpv
-    - pavucontrol
     - powertop
     - printer-driver-escpr
     - pulseaudio-module-bluetooth
-    - rofi
     - skypeforlinux
     - sway
+    - blueman
+    - desktop-base
+    - dunst
     - i3status
+    - pavucontrol
+    - rofi
     - udiskie
     - wpasupplicant
     - xbacklight
