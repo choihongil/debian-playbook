@@ -22,7 +22,7 @@
 
 - name: add hongri_cui repository
   apt_repository:
-    repo: deb https://packagecloud.io/hongri_cui/packages/debian/ stretch main
+    repo: deb https://packagecloud.io/hongri_cui/packages/debian/ buster main
     filename: hongri_cui_packages
   become: yes
   notify:
