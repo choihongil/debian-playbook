@@ -18,6 +18,8 @@
     - google-chrome-stable
     - linux-image-amd64
     - mpv
+    - network-manager
+    - libnm-glib-dev
     - powertop
     - printer-driver-escpr
     - pulseaudio-module-bluetooth
