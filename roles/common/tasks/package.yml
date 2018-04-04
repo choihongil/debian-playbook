@@ -17,6 +17,7 @@
     - fish
     - tmux
     - git
+    - golang
     - kubeadm
     - kubectl
     - kubelet

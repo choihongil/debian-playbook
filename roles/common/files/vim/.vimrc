@@ -80,6 +80,8 @@ if exists('*minpac#init')
   call minpac#add('autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': '!bash install.sh' })
   " emoji
   call minpac#add('junegunn/vim-emoji')
+  " go
+  call minpac#add('fatih/vim-go', { 'do': 'GoInstallBinaries' })
   " rails
   call minpac#add('tpope/vim-rails')
   " slim
@@ -136,6 +138,10 @@ if executable('fzf')
   nnoremap <C-j> :GFiles<CR>
   nnoremap <C-k> :Files<CR>
 endif
+
+" vim-go
+au FileType go nmap <leader>r <Plug>(go-run)
+
 
 " NERDTree
 nnoremap <C-n> :NERDTreeToggle<CR>

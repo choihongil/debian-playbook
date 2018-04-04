@@ -9,7 +9,7 @@ case $(uname) in
                 git \
                 gnupg \
                 python3-dev
-        sudo apt upgrade
+        sudo apt --yes upgrade
         # pip
         if [ ! -x ~/.local/bin/pip3 ]; then
             echo "Install pip"
@@ -46,4 +46,4 @@ fi
 # execute playbook
 echo "Execute ansible playbook"
 cd ~/debian-playbook
-${ANSIBLE_PLAYBOOK} -Ki local --limit localhost playbook.yml
+${ANSIBLE_PLAYBOOK} -i local --limit localhost playbook.yml
