@@ -1,58 +1,14 @@
 ---
 
-- name: be sure network settings exist
-  copy:
-    src: systemd/network/
-    dest: /etc/systemd/network/
-  become: yes
-  notify:
-    - restart systemd-networkd
+- name: "nmcli connection add type bridge ifname kube0 con-name kube0 ipv4.method manual ipv4.address 192.168.33.10"
+  nmcli:
+    type: bridge
+    conn_name: kube0
+    ifname: kube0
+    ip4: 192.168.33.10/32
+    state: present
 
-- name: be sure wpa_supplicant settings exist
-  copy:
-    src: wpa_supplicant.conf
-    dest: /etc/
-    force: no
-    owner: "{{ ansible_user_uid }}"
-    group: "{{ ansible_user_gid }}"
-  become: yes
-
-- name: be sure wpa_supplicant systemd service exist
-  copy:
-    src: systemd/system/
-    dest: /etc/systemd/system/
-  become: yes
-
-- name: be sure wpa_supplicant@.service is started when wireless network interface exists
-  systemd:
-    name: wpa_supplicant@{{ wireless_nic_name }}
-    state: started
-    enabled: yes
-  when: wireless_nic_name in ansible_interfaces
-  become: true
-
-- name: be sure networkd-resolved is started
-  systemd:
-    name: systemd-resolved
-    state: started
-    enabled: yes
-  become: yes
-
-- name: stat of resolv.conf
-  stat:
-    path: /etc/resolv.conf
-  register: resolv
-
-- name: delete /etc/resolv.conf unless symbolic link
-  file:
-    path: /etc/resolv.conf
-    state: absent
-  when: resolv.stat.exists and not resolv.stat.islnk
-  become: yes
-
-- name: make /etc/resolv.conf symbolic link
-  file:
-    src: /run/systemd/resolve/resolv.conf
-    dest: /etc/resolv.conf
-    state: link
-  become: yes
+- name: prepend name server
+  lineinfile:
+    path: /etc/dhcp/dhclient.conf
+    line: prepend domain-name-servers 192.168.33.10;

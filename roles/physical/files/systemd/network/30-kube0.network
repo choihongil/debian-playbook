@@ -1,7 +1,0 @@
-[Match]
-Name=kube0
-
-[Network]
-Address=192.168.33.10/24
-DNS=192.168.33.10
-ConfigureWithoutCarrier=yes
