@@ -7,8 +7,3 @@
     ifname: kube0
     ip4: 192.168.33.10/32
     state: present
-
-- name: prepend name server
-  lineinfile:
-    path: /etc/dhcp/dhclient.conf
-    line: prepend domain-name-servers 192.168.33.10;
