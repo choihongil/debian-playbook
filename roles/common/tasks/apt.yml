@@ -64,7 +64,7 @@
 
 - name: add nodejs repository
   apt_repository:
-    repo: deb https://deb.nodesource.com/node_8.x stretch main
+    repo: deb https://deb.nodesource.com/node_10.x buster main
     filename: nodesource
   become: yes
   notify:
