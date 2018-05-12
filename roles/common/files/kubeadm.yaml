@@ -7,3 +7,5 @@ networking:
 apiServerExtraArgs:
   admission-control: NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,DefaultTolerationSeconds,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota,PodPreset
   service-node-port-range: 1-50000
+featureGates:
+  CoreDNS: true
