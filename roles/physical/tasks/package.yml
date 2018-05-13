@@ -2,46 +2,44 @@
 
 - name: Install common packages
   apt:
-    name: "{{ item }}"
+    name:
+      - alacritty
+      - dnsmasq
+      - cups
+      - fcitx
+      - fcitx-googlepinyin
+      - fcitx-hangul
+      - fcitx-mozc
+      - feh
+      - fonts-noto
+      - fonts-noto-color-emoji
+      - firefox
+      - google-chrome-stable
+      - linux-image-amd64
+      - mpv
+      - network-manager
+      - libnm-glib-dev
+      - powertop
+      - printer-driver-escpr
+      - pulseaudio-module-bluetooth
+      - skypeforlinux
+      - sway
+      - blueman
+      - desktop-base
+      - dunst
+      - i3status
+      - pavucontrol
+      - rofi
+      - udiskie
+      - wpasupplicant
+      - xbacklight
     state: latest
-  with_items:
-    - alacritty
-    - dnsmasq
-    - cups
-    - fcitx
-    - fcitx-googlepinyin
-    - fcitx-hangul
-    - fcitx-mozc
-    - feh
-    - fonts-noto
-    - fonts-noto-color-emoji
-    - firefox
-    - google-chrome-stable
-    - linux-image-amd64
-    - mpv
-    - network-manager
-    - libnm-glib-dev
-    - powertop
-    - printer-driver-escpr
-    - pulseaudio-module-bluetooth
-    - skypeforlinux
-    - sway
-    - blueman
-    - desktop-base
-    - dunst
-    - i3status
-    - pavucontrol
-    - rofi
-    - udiskie
-    - wpasupplicant
-    - xbacklight
   become: yes
 
 - name: Install peculiar packages
   apt:
-    name: "{{ item }}"
+    name: "{{ peculiar_packages }}"
     state: latest
-  with_items: "{{ peculiar_packages }}"
   become: yes
 
 - name: ensure local font folder exists
