@@ -15,6 +15,7 @@
     - feh
     - fonts-noto
     - fonts-noto-color-emoji
+    - firefox
     - google-chrome-stable
     - linux-image-amd64
     - mpv
