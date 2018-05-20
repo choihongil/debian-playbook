@@ -8,11 +8,25 @@
   notify:
     - update apt cache
 
+- name: apt config
+  copy:
+    src: apt/apt.conf
+    dest: /etc/apt/
+  become: yes
+
 - name: apt preference
   copy:
     src: apt/custom.pref
     dest: /etc/apt/preferences.d/
   become: yes
+
+- name: add unstable repository
+  apt_repository:
+    repo: deb http://ftp.jp.debian.org/debian/ unstable main contrib non-free
+    filename: unstable
+  become: yes
+  notify:
+    - update apt cache
 
 - name: add apt key of hongri_cui
   apt_key:
@@ -64,7 +78,7 @@
 
 - name: add nodejs repository
   apt_repository:
-    repo: deb https://deb.nodesource.com/node_8.x stretch main
+    repo: deb https://deb.nodesource.com/node_10.x buster main
     filename: nodesource
   become: yes
   notify:

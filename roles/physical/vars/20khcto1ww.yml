@@ -1,0 +1,6 @@
+---
+
+peculiar_packages:
+  - firmware-iwlwifi
+
+touchpad_identifier: "2:7:SynPS/2_Synaptics_TouchPad"

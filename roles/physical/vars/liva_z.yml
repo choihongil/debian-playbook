@@ -1,6 +1,4 @@
 ---
-wireless_nic_name: wlp2s0
-wired_nic_name: enp3s0
 
 peculiar_packages:
   - firmware-realtek

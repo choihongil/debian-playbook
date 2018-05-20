@@ -2,50 +2,48 @@
 
 - name: Install packages
   apt:
-    name: "{{ item }}"
+    name:
+      - avahi-daemon
+      - build-essential
+      - cifs-utils
+      - curl
+      - dh-make
+      - git-buildpackage
+      - cowbuilder
+      - dnsutils
+      - docker-ce
+      - fish
+      - tmux
+      - git
+      - kubeadm
+      - kubectl
+      - kubelet
+      - nodejs
+      - yarn
+      - openssh-server
+      - python3-dev
+      - ripgrep
+      - rsync
+      - ruby-dev
+      - unar
+      - vim-nox
+      - exuberant-ctags
     state: latest
-  with_items:
-    - avahi-daemon
-    - build-essential
-    - cifs-utils
-    - curl
-    - dh-make
-    - git-buildpackage
-    - cowbuilder
-    - dnsutils
-    - docker-ce
-    - fish
-    - tmux
-    - git
-    - kubeadm
-    - kubectl
-    - kubelet
-    - nodejs
-    - yarn
-    - openssh-server
-    - python3-dev
-    - ripgrep
-    - rsync
-    - ruby-dev
-    - unar
-    - vim-nox
-    - exuberant-ctags
   become: yes
 
 - name: Install pip packages
   pip:
-    name: "{{ item }}"
+    name:
+      - ansible
+      - httpie
+      - mycli
+      - pgcli
+      - powerline-status
+      - ranger-fm
+      - you-get
+      - youtube_dl
     executable: "{{ ansible_user_dir }}/.local/bin/pip"
     extra_args: --user
-  with_items:
-    - ansible
-    - httpie
-    - mycli
-    - pgcli
-    - powerline-status
-    - ranger-fm
-    - you-get
-    - youtube_dl
 
   # /usr/bin/ruby2.3: No such file or directory -- /usr/share/rubygems-integration/all/gems/rake-10.5.0/bin/rake (LoadError)
 - name: symbolic link of rake

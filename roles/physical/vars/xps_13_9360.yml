@@ -1,10 +1,7 @@
 ---
-wireless_nic_name: wlp58s0
-wired_nic_name: enx00051be070f7
 
 peculiar_packages:
   - firmware-atheros
   - firmware-misc-nonfree
 
-primary_display: eDP-1
-external_display: DP-1
+touchpad_identifier: "1739:30383:DLL075B:01_06CB:76AF_Touchpad"

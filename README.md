@@ -10,7 +10,7 @@
 ```
 su -c "apt --no-install-recommends --yes install curl ca-certificates dbus-user-session sudo"
 su -c "usermod -aG sudo ${USER}"
-# logout and re-login that start systemd-logind and user@1000 service and take effect added group sudo
+# logout and re-login that start user@.service service and take effect added group sudo
 logout
 sh -c "$(curl -L https://raw.githubusercontent.com/choihongil/debian-playbook/master/bootstrap.sh)"
 ```
