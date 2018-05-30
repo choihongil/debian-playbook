@@ -27,7 +27,7 @@
       - ruby-dev
       - unar
       - vim-nox
-      - exuberant-ctags
+      - universal-ctags
     state: latest
   become: yes
 
