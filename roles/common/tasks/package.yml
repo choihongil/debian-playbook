@@ -21,6 +21,7 @@
       - nodejs
       - yarn
       - openssh-server
+      - pwgen
       - python3-dev
       - ripgrep
       - rsync

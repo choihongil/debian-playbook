@@ -4,7 +4,6 @@
   apt:
     name:
       - alacritty
-      - dnsmasq
       - cups
       - fcitx
       - fcitx-googlepinyin
@@ -46,6 +45,14 @@
   copy:
     src: firmware/
     dest: /lib/firmware/
+  become: yes
+
+- name: purge packages
+  apt:
+    name:
+      - ifupdown
+    state: absent
+    purge: yes
   become: yes
 
 - name: ensure local font folder exists
