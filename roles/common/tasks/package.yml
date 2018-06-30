@@ -45,6 +45,7 @@
       - youtube_dl
     executable: "{{ ansible_user_dir }}/.local/bin/pip"
     extra_args: --user
+    state: latest
 
   # /usr/bin/ruby2.3: No such file or directory -- /usr/share/rubygems-integration/all/gems/rake-10.5.0/bin/rake (LoadError)
 - name: symbolic link of rake
@@ -62,6 +63,7 @@
 - name: Install gem packages
   gem:
     name: "{{ item }}"
+    state: latest
   with_items:
     - package_cloud
     - rubocop
