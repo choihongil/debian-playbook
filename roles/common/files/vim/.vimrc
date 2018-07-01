@@ -84,11 +84,15 @@ if exists('*minpac#init')
   call minpac#add('tpope/vim-rails')
   " slim
   call minpac#add('slim-template/vim-slim')
+  " typescript
+  call minpac#add('leafgarland/typescript-vim')
   " javascript
   "call minpac#add('pangloss/vim-javascript')
   call minpac#add('othree/yajs.vim')
   call minpac#add('othree/es.next.syntax.vim')
   call minpac#add('maxmellon/vim-jsx-pretty')
+  " vuejs
+  call minpac#add('posva/vim-vue')
   " file explorer
   call minpac#add('scrooloose/nerdtree')
   call minpac#add('tiagofumo/vim-nerdtree-syntax-highlight')
@@ -147,18 +151,17 @@ autocmd User AsyncRunStart call asyncrun#quickfix_toggle(8, 1)
 noremap <F9> call asyncrun#quickfix_toggle(8)<cr>
 
 " language server protocol
-"if executable('language_server-ruby')
-"endif
-"set hidden
-"let g:LanguageClient_serverCommands = {
-"    \ 'javascript': ['javascript-typescript-stdio'],
-"    \ 'javascript.jsx': ['javascript-typescript-stdio'],
-"    \ 'ruby': ['language_server-ruby'],
-"    \ }
-"let g:LanguageClient_loggingLevel = 'DEBUG'
-"nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-"nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-"nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+set hidden
+let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'typescript': ['javascript-typescript-stdio'],
+    \ 'ruby': ['tcp://localhost:7658'],
+    \ }
+let g:LanguageClient_autoStop = 0
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 " Define user commands for updating/cleaning the plugins.
 " Each of them loads minpac, reloads .vimrc to register the

@@ -68,3 +68,14 @@
     - package_cloud
     - rubocop
     - rubocop-rspec
+    - solargraph
+
+
+- name: Install node.js packages
+  yarn:
+    name:
+      - "@vue/cli"
+      - javascript-typescript-langserver
+      - livedown
+    global: yes
+    state: latest
