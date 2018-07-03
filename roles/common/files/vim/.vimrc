@@ -24,9 +24,6 @@ set fileencodings=utf-8,utf-16le,cp932,iso-2022-jp,euc-jp,latin1
 " indent
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set cindent
-set shiftwidth=2
-set softtabstop=2
-set expandtab
 set pastetoggle=<F10>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -106,6 +103,9 @@ if exists('*minpac#init')
   call minpac#add('skywind3000/asyncrun.vim')
   " markdown
   call minpac#add('shime/vim-livedown', { 'do': 'silent! !yarn global add livedown' })
+  " snippets
+  call minpac#add('SirVer/ultisnips')
+  call minpac#add('honza/vim-snippets')
 endif
 
 " Plugin settings here.
@@ -150,14 +150,16 @@ nnoremap <C-h> :NERDTreeFind<CR>
 autocmd User AsyncRunStart call asyncrun#quickfix_toggle(8, 1)
 noremap <F9> call asyncrun#quickfix_toggle(8)<cr>
 
+" livedown
+nmap gm :LivedownToggle<CR>
+
 " language server protocol
 set hidden
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
-    \ 'ruby': ['tcp://localhost:7658'],
+    \ 'ruby': ['solargraph', 'stdio'],
     \ }
-let g:LanguageClient_autoStop = 0
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
