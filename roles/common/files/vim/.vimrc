@@ -24,6 +24,9 @@ set fileencodings=utf-8,utf-16le,cp932,iso-2022-jp,euc-jp,latin1
 " indent
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set cindent
+set shiftwidth=2
+set softtabstop=2
+set expandtab
 set pastetoggle=<F10>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -158,6 +161,7 @@ set hidden
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
+    \ 'vue': ['vls', '--stdio'],
     \ 'ruby': ['solargraph', 'stdio'],
     \ }
 

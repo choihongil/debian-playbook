@@ -76,6 +76,7 @@
     name:
       - "@vue/cli"
       - javascript-typescript-langserver
+      - vue-language-server
       - livedown
     global: yes
     state: latest
