@@ -5,6 +5,7 @@
     name:
       - avahi-daemon
       - build-essential
+      - cargo
       - cifs-utils
       - curl
       - dh-make
