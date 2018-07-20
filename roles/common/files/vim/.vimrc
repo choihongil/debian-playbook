@@ -93,6 +93,8 @@ if exists('*minpac#init')
   call minpac#add('maxmellon/vim-jsx-pretty')
   " vuejs
   call minpac#add('posva/vim-vue')
+  " pug
+  call minpac#add('digitaltoad/vim-pug')
   " file explorer
   call minpac#add('scrooloose/nerdtree')
   call minpac#add('tiagofumo/vim-nerdtree-syntax-highlight')
