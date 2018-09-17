@@ -98,13 +98,5 @@
   notify:
     - update apt cache
 
-- name: add ripgrep repository
-  apt_repository:
-    repo: ppa:x4121/ripgrep
-    codename: zesty
-  become: yes
-  notify:
-    - update apt cache
-
 - name: update when repository changed
   meta: flush_handlers

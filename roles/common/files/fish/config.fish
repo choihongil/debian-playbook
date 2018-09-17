@@ -52,6 +52,7 @@ if not set -q abbrs_initialized
   abbr gdt        git difftool
   abbr gf         git fetch
   abbr gl         git log
+  abbr gm         git merge
   abbr gpl        git pull
   abbr gps        git push
   abbr grm        git remote
