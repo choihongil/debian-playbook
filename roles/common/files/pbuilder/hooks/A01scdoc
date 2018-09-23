@@ -1,0 +1,2 @@
+#!/bin/bash
+cp -v /var/cache/pbuilder/result/scdoc /usr/bin/
