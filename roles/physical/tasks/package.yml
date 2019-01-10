@@ -18,7 +18,6 @@
       - linux-image-amd64
       - mpv
       - network-manager
-      - libnm-glib-dev
       - powertop
       - printer-driver-escpr
       - pulseaudio-module-bluetooth
@@ -33,6 +32,7 @@
       - udiskie
       - wpasupplicant
       - xbacklight
+      - xclip
     state: latest
   become: yes
 

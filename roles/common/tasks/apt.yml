@@ -50,7 +50,7 @@
 
 - name: add docker repository
   apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
+    repo: deb [arch=amd64] https://download.docker.com/linux/debian buster stable
     filename: docker
   become: yes
   notify:

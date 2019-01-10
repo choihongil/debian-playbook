@@ -16,6 +16,7 @@
       - fish
       - tmux
       - git
+      - golang
       - kubeadm
       - kubectl
       - kubelet
@@ -37,6 +38,7 @@
   pip:
     name:
       - ansible
+      - aws-shell
       - httpie
       - mycli
       - pgcli
@@ -74,10 +76,11 @@
 
 - name: Install node.js packages
   yarn:
-    name:
-      - "@vue/cli"
-      - javascript-typescript-langserver
-      - vue-language-server
-      - livedown
+    name: "{{ item }}"
     global: yes
     state: latest
+  with_items:
+    - "@vue/cli"
+    - javascript-typescript-langserver
+    - vue-language-server
+    - livedown

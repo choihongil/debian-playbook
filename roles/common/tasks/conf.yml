@@ -20,7 +20,7 @@
     daemon_reload: yes
     enabled: yes
     state: started
-    user: yes
+    scope: user
 
 - name: ensure config folders exists
   file:

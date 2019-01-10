@@ -1,5 +1,6 @@
 #!/bin/sh
 
+export GDK_BACKEND=wayland
 export XKB_DEFAULT_OPTIONS=caps:escape
 export CLUTTER_IM_MODULE=xim
 export QT4_IM_MODULE=fcitx
