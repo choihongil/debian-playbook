@@ -44,7 +44,6 @@
       - pgcli
       - powerline-status
       - ranger-fm
-      - you-get
       - youtube_dl
     executable: "{{ ansible_user_dir }}/.local/bin/pip"
     extra_args: --user
