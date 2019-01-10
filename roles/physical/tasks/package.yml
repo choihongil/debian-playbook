@@ -30,7 +30,6 @@
       - pavucontrol
       - rofi
       - udiskie
-      - wpasupplicant
       - xbacklight
       - xclip
     state: latest
