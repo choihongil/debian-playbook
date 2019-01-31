@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=FirefoxNightly
+Name=Firefox
 Comment=Browse the World Wide Web
 GenericName=Web Browser
-Exec=env GDK_BACKEND=wayland {{ ansible_user_dir }}/firefoxnightly/firefox %u
+Exec=env GDK_BACKEND=wayland /usr/lib/firefox/firefox %u
 Terminal=false
 X-MultipleArgs=false
 Type=Application

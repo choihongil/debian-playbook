@@ -56,7 +56,7 @@
   notify:
     - update apt cache
 
-- name: add apt key of kubernetes
+- name: add apt key of kubernetes and google-cloud-sdk
   apt_key:
     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
     keyring: /etc/apt/trusted.gpg.d/kubernetes.gpg
@@ -64,8 +64,16 @@
 
 - name: add kubernetes repository
   apt_repository:
-    repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+    repo: deb https://packages.cloud.google.com/apt kubernetes-xenial main
     filename: kubernetes
+  become: yes
+  notify:
+    - update apt cache
+
+- name: add google-cloud-sdk repository
+  apt_repository:
+    repo: deb https://packages.cloud.google.com/apt cloud-sdk-buster main
+    filename: google-cloud-sdk
   become: yes
   notify:
     - update apt cache

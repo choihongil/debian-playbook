@@ -48,7 +48,7 @@
     src: mpv
     dest: "{{ ansible_user_dir }}/.config/"
 
-- name: firefoxnightly desktop
-  template:
-    src: firefoxnightly.desktop.j2
-    dest: "{{ ansible_user_dir }}/.local/share/applications/firefoxnightly.desktop"
+- name: firefox desktop
+  copy:
+    src: firefox.desktop
+    dest: "{{ ansible_user_dir }}/.local/share/applications/"
