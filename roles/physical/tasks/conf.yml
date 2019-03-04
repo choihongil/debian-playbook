@@ -48,7 +48,7 @@
     src: mpv
     dest: "{{ ansible_user_dir }}/.config/"
 
-- name: firefox desktop
+- name: firefox wayland desktop
   copy:
-    src: firefox.desktop
+    src: firefox-wayland.desktop
     dest: "{{ ansible_user_dir }}/.local/share/applications/"

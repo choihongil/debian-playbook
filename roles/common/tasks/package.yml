@@ -41,7 +41,7 @@
       - ansible
       - aws-shell
       - httpie
-      - mycli
+      - mycli==1.18.0
       - pgcli
       - powerline-status
       - ranger-fm
