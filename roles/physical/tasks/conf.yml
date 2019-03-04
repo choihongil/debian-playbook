@@ -37,12 +37,6 @@
     dest: "{{ ansible_user_dir }}/.local/bin/"
     mode: 0755
 
-- name: Install firefox flash plugin
-  copy:
-    src: libflashplayer.so
-    dest: /usr/lib/mozilla/plugins/
-  become: yes
-
 - name: config mpv
   copy:
     src: mpv
