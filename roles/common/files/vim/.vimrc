@@ -84,6 +84,8 @@ if exists('*minpac#init')
   call minpac#add('tpope/vim-rails')
   " slim
   call minpac#add('slim-template/vim-slim')
+  " complete
+  call minpac#add('lifepillar/vim-mucomplete')
   " typescript
   call minpac#add('leafgarland/typescript-vim')
   " javascript
@@ -104,8 +106,6 @@ if exists('*minpac#init')
   call minpac#add('Yggdroot/indentLine')
   " lint
   call minpac#add('w0rp/ale')
-  " job
-  call minpac#add('skywind3000/asyncrun.vim')
   " markdown
   call minpac#add('shime/vim-livedown', { 'do': 'silent! !yarn global add livedown' })
   " snippets
@@ -125,6 +125,18 @@ if strlen($POWERLINE_ROOT) > 0
   python3 powerline_setup()
   python3 del powerline_setup
 endif
+
+"mucomplete
+set completeopt+=menuone,noselect
+let g:UltiSnipsExpandTrigger = "<f5>"        " Do not use <tab>
+
+" ale
+let g:ale_pattern_options_enabled = 1
+let g:ale_pattern_options = {
+      \ '\.min.js$': {'ale_enabled': 0},
+      \ '\.vue$': {'ale_enabled': 0},
+      \ '\.ts$': {'ale_enabled': 0},
+      \}
 
 " fzf
 if executable('fzf')
@@ -149,11 +161,6 @@ endif
 " NERDTree
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-h> :NERDTreeFind<CR>
-
-" asyncrun
-" https://github.com/skywind3000/asyncrun.vim/wiki/Quickfix-Best-Practice
-autocmd User AsyncRunStart call asyncrun#quickfix_toggle(8, 1)
-noremap <F9> call asyncrun#quickfix_toggle(8)<cr>
 
 " livedown
 nmap gm :LivedownToggle<CR>
