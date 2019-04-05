@@ -128,14 +128,14 @@ endif
 
 "mucomplete
 set completeopt+=menuone,noselect
-let g:UltiSnipsExpandTrigger = "<f5>"        " Do not use <tab>
+let g:UltiSnipsExpandTrigger = "<c-s>"        " Do not use <tab>
 
 " ale
 let g:ale_pattern_options_enabled = 1
 let g:ale_pattern_options = {
-      \ '\.min.js$': {'ale_enabled': 0},
-      \ '\.vue$': {'ale_enabled': 0},
+      \ '\.js$': {'ale_enabled': 0},
       \ '\.ts$': {'ale_enabled': 0},
+      \ '\.vue$': {'ale_enabled': 0},
       \}
 
 " fzf
