@@ -32,6 +32,7 @@
       - unar
       - vim-nox
       - universal-ctags
+      - zlib1g-dev
     state: latest
   become: yes
 
@@ -69,6 +70,7 @@
     state: latest
   with_items:
     - package_cloud
+    - pre-commit
     - rubocop
     - rubocop-rspec
     - solargraph

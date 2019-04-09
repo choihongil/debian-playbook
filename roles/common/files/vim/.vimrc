@@ -131,12 +131,7 @@ set completeopt+=menuone,noselect
 let g:UltiSnipsExpandTrigger = "<c-s>"        " Do not use <tab>
 
 " ale
-let g:ale_pattern_options_enabled = 1
-let g:ale_pattern_options = {
-      \ '\.js$': {'ale_enabled': 0},
-      \ '\.ts$': {'ale_enabled': 0},
-      \ '\.vue$': {'ale_enabled': 0},
-      \}
+let g:ale_disable_lsp = 1
 
 " fzf
 if executable('fzf')
