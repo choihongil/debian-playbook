@@ -45,6 +45,7 @@
       - mycli==1.18.0
       - pgcli
       - powerline-status
+      - python-language-server
       - ranger-fm
       - youtube_dl
     executable: "{{ ansible_user_dir }}/.local/bin/pip"

@@ -132,6 +132,14 @@ let g:UltiSnipsExpandTrigger = "<c-s>"        " Do not use <tab>
 
 " ale
 let g:ale_disable_lsp = 1
+let g:ale_fixers = {
+    \ 'javascript': ['prettier', 'eslint'],
+    \ 'typescript': ['prettier', 'eslint'],
+    \ 'vue': ['prettier'],
+    \ 'ruby': ['rubocop'],
+    \ }
+" Bind F8 to fixing problems with ALE
+nmap <F8> <Plug>(ale_fix)
 
 " fzf
 if executable('fzf')
@@ -166,6 +174,7 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
     \ 'vue': ['vls', '--stdio'],
+    \ 'python': ['pyls'],
     \ 'ruby': ['solargraph', 'stdio'],
     \ }
 
