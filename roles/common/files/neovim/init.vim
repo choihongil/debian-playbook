@@ -24,7 +24,7 @@ set softtabstop=2
 "set tabstop=2
 
 " map
-let mapleader = "<Space>"
+let mapleader = "\<Space>"
 nnoremap <Leader>p :cprevious<CR>
 nnoremap <Leader>n :cnext<CR>
 nnoremap <Leader>q :cclose<CR>
@@ -114,7 +114,8 @@ nmap <F8> <Plug>(ale_fix)
 
 " fzf
 if executable('fzf')
-  set runtimepath+=~/.fzf
+  "set runtimepath+=~/.fzf
+  source /usr/share/doc/fzf/examples/fzf.vim
   " RG
   command! -bang -nargs=* RG
     \ call fzf#vim#grep(

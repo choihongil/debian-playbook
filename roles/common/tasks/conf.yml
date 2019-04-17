@@ -114,36 +114,13 @@
     force: no
   become: yes
 
-- name: config vim
-  copy:
-    src: vim/
-    dest: "{{ ansible_user_dir }}"
+- name: install vim-plug
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: "{{ ansible_user_dir }}/.local/share/nvim/site/autoload/"
 
-- name: config minpac
-  git:
-    repo: https://github.com/k-takata/minpac.git
-    dest: "{{ ansible_user_dir }}/.vim/pack/minpac/opt/minpac"
+- name: install nvim plugins
+  shell: nvim +PlugInstall
 
-- name: clone fzf
-  git:
-    repo: https://github.com/junegunn/fzf.git
-    dest: "{{ ansible_user_dir }}/.fzf"
-    depth: 1
-
-- name: check exists of file fzf
-  stat:
-    path: "{{ ansible_user_dir }}/.fzf/bin/fzf"
-  register: fzf
-
-- name: install fzf
-  shell: "{{ ansible_user_dir }}/.fzf/install --bin"
-  when: fzf.stat.exists == False
-
-- name: check installation of vim plugins
-  stat:
-    path: "{{ ansible_user_dir }}/.vim/pack/minpac/start/fzf.vim"
-  register: minpac
-
-- name: install vim plugins
-  shell: vim +PackUpdate
-  when: minpac.stat.exists == False
+- name: install coc extensions
+  shell: nvim -c "coc-json coc-tsserver coc-vetur coc-solargraph coc-rls coc-yaml coc-python"
