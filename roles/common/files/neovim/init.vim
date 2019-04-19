@@ -25,9 +25,73 @@ set softtabstop=2
 
 " map
 let mapleader = "\<Space>"
-nnoremap <Leader>p :cprevious<CR>
-nnoremap <Leader>n :cnext<CR>
-nnoremap <Leader>q :cclose<CR>
+" ctrl-m, ctrl-k, ctrl-h, ctrl-q, ctrl-s
+
+" Buffers
+nmap <C-n> :bnext<CR>
+nmap <C-p> :bprevious<CR>
+nmap <C-j> <C-^>
+" QuickFix
+nmap [q :cprevious<CR>
+nmap ]q :cnext<CR>
+nmap \q :cclose<CR>
+" LocationList
+nmap [l :lprevious<CR>
+nmap ]l :lnext<CR>
+nmap \l :lclose<CR>
+" Common
+nmap <Leader>q :quit<CR>
+nmap <Leader>w :write<CR>
+nmap <Leader>u :nohlsearch<CR>
+" Edit config files
+nmap <Leader>ev :edit $VIMCONFIG/init.vim<CR>
+nmap <Leader>ef :edit ~/.config/fish/config.fish<CR>
+nmap <Leader>es :edit ~/.config/sway/config<CR>
+nmap <Leader>s :source $VIMCONFIG/init.vim<CR>
+" ALE
+nmap <Leader>F <Plug>(ale_fix)
+
+" Coc
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~# '\s'
+endfunction
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
+" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Use `[c` and `]c` for navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" FZF
+nmap <Leader>b :Buffers<CR>
+nmap <Leader>f :Files<CR>
+nmap <Leader>l :GFiles<CR>
+nmap <Leader>g :RG 
+" NERDTree
+nmap <Leader>t :NERDTreeToggle<CR>
+nmap <Leader>/ :NERDTreeFind<CR>
 
 " search
 set hlsearch
@@ -72,8 +136,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'mhartington/oceanic-next'
 " language packs
 Plug 'sheerun/vim-polyglot'
-" status line
-Plug 'vim-airline/vim-airline'
+" lightline
+Plug 'itchyny/lightline.vim'
 " indent
 Plug 'Yggdroot/indentLine'
 " Conquer of Completion
@@ -89,17 +153,10 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 " emoji
 Plug 'junegunn/vim-emoji'
-" rails
-Plug 'tpope/vim-rails'
 " Initialize plugin system
 call plug#end()
 
 colorscheme OceanicNext
-
-" airline
-" make airline show the diagnostic information from coc
-let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
 " ale
 let g:ale_disable_lsp = 1
@@ -109,8 +166,6 @@ let g:ale_fixers = {
     \ 'vue': ['prettier'],
     \ 'ruby': ['rubocop'],
     \ }
-" Bind F8 to fixing problems with ALE
-nmap <F8> <Plug>(ale_fix)
 
 " fzf
 if executable('fzf')
@@ -127,12 +182,24 @@ if executable('fzf')
   " Files
   command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-  " map
-  nnoremap <C-g> :RG 
-  nnoremap <C-j> :GFiles<CR>
-  nnoremap <C-k> :Files<CR>
 endif
 
-" NERDTree
-nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <C-h> :NERDTreeFind<CR>
+" coc
+" Itegration with lightline
+function! CocCurrentFunction()
+  return get(b:, 'coc_current_function', '')
+endfunction
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction'
+      \ },
+      \ }
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
