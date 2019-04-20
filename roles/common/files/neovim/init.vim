@@ -14,23 +14,24 @@ set langmenu=none
 "scriptencoding utf-8
 "
 " indent
-"set autoindent
 set cindent
-"set smartindent
 set expandtab
-set pastetoggle=<F10>
 set shiftwidth=2
-set softtabstop=2
-"set tabstop=2
+let &softtabstop=&shiftwidth
+set pastetoggle=<F10>
 
 " map
 let mapleader = "\<Space>"
-" ctrl-m, ctrl-k, ctrl-h, ctrl-q, ctrl-s
+" ctrl-m, ctrl-h, ctrl-n ctrl-p ctrl-q, ctrl-s
 
 " Buffers
-nmap <C-n> :bnext<CR>
-nmap <C-p> :bprevious<CR>
-nmap <C-j> <C-^>
+nmap <C-j> :bnext<CR>
+nmap <C-k> :bprevious<CR>
+nmap <C-l> <C-^>
+" tab
+"nmap <Leader>te :tabedit %<CR>
+"nmap <Leader>tc :tabclose<CR>
+
 " QuickFix
 nmap [q :cprevious<CR>
 nmap ]q :cnext<CR>
@@ -86,12 +87,14 @@ endfunction
 
 " FZF
 nmap <Leader>b :Buffers<CR>
+nmap <Leader>c :Commands<CR>
 nmap <Leader>f :Files<CR>
-nmap <Leader>l :GFiles<CR>
-nmap <Leader>g :RG 
+nmap <Leader>g :GFiles<CR>
+nmap <C-f> :Files<Space>
+nmap <C-g> :Rg<Space>
 " NERDTree
 nmap <Leader>t :NERDTreeToggle<CR>
-nmap <Leader>/ :NERDTreeFind<CR>
+nmap <Leader>l :NERDTreeFind<CR>
 
 " search
 set hlsearch
@@ -108,7 +111,7 @@ set splitright
 set backspace=indent,eol,start
 "set clipboard+=unnamed
 set cmdheight=2
-"set hidden
+set hidden
 set iminsert=0
 set imsearch=0
 "set laststatus=2
@@ -171,17 +174,20 @@ let g:ale_fixers = {
 if executable('fzf')
   "set runtimepath+=~/.fzf
   source /usr/share/doc/fzf/examples/fzf.vim
-  " RG
-  command! -bang -nargs=* RG
+  " Rg command with preview window
+  command! -bang -nargs=* -complete=dir Rg
     \ call fzf#vim#grep(
-    \   'rg --column --line-number --no-heading --color=always '
-    \   . <q-args>, 1,
+    \   'rg --column --line-number --no-heading --color=always --smart-case ' . <q-args>, 1,
     \   <bang>0 ? fzf#vim#with_preview('up:60%')
     \           : fzf#vim#with_preview('right:50%:hidden', '?'),
     \   <bang>0)
-  " Files
+  " Files command with preview window
   command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+  " hide statusline
+  autocmd! FileType fzf
+  autocmd  FileType fzf set laststatus=0 noshowmode noruler
+      \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 endif
 
 " coc
