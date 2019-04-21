@@ -1,18 +1,17 @@
-syntax enable
-"filetype on
+" vim-plug automatically executes `filetype plugin indent on` and `syntax enable`
 filetype plugin indent on
+syntax enable
 set termguicolors
-if exists("$TMUX")
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
+"if exists("$TMUX")
+"  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"endif
 
 " encoding
 set encoding=utf-8
 set fileencodings=utf-8,utf-16le,cp932,iso-2022-jp,euc-jp,latin1
 set langmenu=none
-"scriptencoding utf-8
-"
+
 " indent
 set cindent
 set expandtab
@@ -20,87 +19,11 @@ set shiftwidth=2
 let &softtabstop=&shiftwidth
 set pastetoggle=<F10>
 
-" map
-let mapleader = "\<Space>"
-" ctrl-m, ctrl-h, ctrl-n ctrl-p ctrl-q, ctrl-s
-
-" Buffers
-nmap <C-j> :bnext<CR>
-nmap <C-k> :bprevious<CR>
-nmap <C-l> <C-^>
-" tab
-"nmap <Leader>te :tabedit %<CR>
-"nmap <Leader>tc :tabclose<CR>
-
-" QuickFix
-nmap [q :cprevious<CR>
-nmap ]q :cnext<CR>
-nmap \q :cclose<CR>
-" LocationList
-nmap [l :lprevious<CR>
-nmap ]l :lnext<CR>
-nmap \l :lclose<CR>
-" Common
-nmap <Leader>q :quit<CR>
-nmap <Leader>w :write<CR>
-nmap <Leader>u :nohlsearch<CR>
-" Edit config files
-nmap <Leader>ev :edit $VIMCONFIG/init.vim<CR>
-nmap <Leader>ef :edit ~/.config/fish/config.fish<CR>
-nmap <Leader>es :edit ~/.config/sway/config<CR>
-nmap <Leader>s :source $VIMCONFIG/init.vim<CR>
-" ALE
-nmap <Leader>F <Plug>(ale_fix)
-
-" Coc
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1] =~# '\s'
-endfunction
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
-" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" Use `[c` and `]c` for navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-" Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" FZF
-nmap <Leader>b :Buffers<CR>
-nmap <Leader>c :Commands<CR>
-nmap <Leader>f :Files<CR>
-nmap <Leader>g :GFiles<CR>
-nmap <C-f> :Files<Space>
-nmap <C-g> :Rg<Space>
-" NERDTree
-nmap <Leader>t :NERDTreeToggle<CR>
-nmap <Leader>l :NERDTreeFind<CR>
-
 " search
 set hlsearch
 set incsearch
-"set ignorecase
-"set smartcase
+set ignorecase
+set smartcase
 
 " window split
 set splitbelow
@@ -114,11 +37,8 @@ set cmdheight=2
 set hidden
 set iminsert=0
 set imsearch=0
-"set laststatus=2
 set nobackup
-"set noerrorbells
 set noswapfile
-"set noundofile
 set nowrap
 "set nowritebackup
 set number
@@ -129,7 +49,92 @@ set showcmd
 "set title
 "set updatetime=300
 "set virtualedit=block
-"set wildmenu
+
+" map
+let mapleader = "\<Space>"
+
+" available keys
+" ctrl-m, ctrl-h, ctrl-n ctrl-p ctrl-q, ctrl-s
+" ca cd cm co cp cq cr cu cv cx cy cz
+" cA cD    cO cP cQ cR cU cV cX cY cZ
+" da dc dm dq dr du dv dx dy dz
+" dA dC    dQ
+" va vc vd vm vo vp vq vr vs vu vv vx vy vz
+" vA
+" ya yc yd ym yo yp yq yr ys yu yv yx yz
+" yA
+" gb gc gl
+" gB
+" zp zq zu zy
+
+" Buffers
+nmap <C-j> :bnext<CR>
+nmap <C-k> :bprevious<CR>
+nmap <C-l> <C-^>
+
+" Common
+nmap j gj
+nmap k gk
+nmap <Leader>w :write<CR>
+nmap \w :quit<CR>
+nmap \/ :nohlsearch<CR>
+
+" tab
+"nmap <Leader>te :tabedit %<CR>
+nmap \t :tabclose<CR>
+
+" QuickFix
+nmap [q :cprevious<CR>
+nmap ]q :cnext<CR>
+nmap \q :cclose<CR>
+
+" LocationList
+nmap [l :lprevious<CR>
+nmap ]l :lnext<CR>
+nmap \l :lclose<CR>
+
+" Edit config files
+nmap <Leader>ev :edit $VIMCONFIG/init.vim<CR>
+nmap <Leader>ef :edit ~/.config/fish/config.fish<CR>
+nmap <Leader>es :edit ~/.config/sway/config<CR>
+nmap <Leader>s :source $VIMCONFIG/init.vim<CR>
+nmap <Leader>n :enew<CR>
+
+" ALE
+nmap <Leader>F <Plug>(ale_fix)
+
+" Coc
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
+" Use <CR> for confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Use `[c` and `]c` for navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" FZF
+nmap <Leader>b :Buffers<CR>
+nmap <Leader>c :Commands<CR>
+nmap <Leader>f :Files<CR>
+nmap <Leader>g :GFiles<CR>
+nmap <C-f> :Files<Space>
+nmap <C-g> :Rg<Space>
+" NERDTree
+nmap <Leader>t :NERDTreeToggle<CR>
+nmap <Leader>l :NERDTreeFind<CR>
 
 " Vim-Plug
 " Specify a directory for plugins
@@ -191,6 +196,17 @@ if executable('fzf')
 endif
 
 " coc
+"let g:coc_global_extensions = [
+"      \ 'coc-css',
+"      \ 'coc-json',
+"      \ 'coc-python',
+"      \ 'coc-rls',
+"      \ 'coc-solargraph'
+"      \ 'coc-tsserver',
+"      \ 'coc-vetur',
+"      \ 'coc-yaml',
+"      \ ]
+
 " Itegration with lightline
 function! CocCurrentFunction()
   return get(b:, 'coc_current_function', '')
@@ -209,3 +225,16 @@ let g:lightline = {
       \ }
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" mapping functions
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~# '\s'
+endfunction
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
