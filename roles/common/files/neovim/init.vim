@@ -76,12 +76,16 @@ nmap <C-l> <C-^>
 nmap j gj
 nmap k gk
 nmap <Leader>w :write<CR>
-nmap \w :quit<CR>
-nmap \/ :nohlsearch<CR>
+nmap <Leader>/ :nohlsearch<CR>
+nmap <Leader>d :bdelete
 
 " tab
 "nmap <Leader>te :tabedit %<CR>
 nmap \t :tabclose<CR>
+
+" terminal
+:tnoremap <Esc> <C-\><C-n>
+:tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
 " QuickFix
 nmap [q :cprevious<CR>
@@ -97,7 +101,7 @@ nmap \l :lclose<CR>
 nmap <Leader>ev :edit $VIMCONFIG/init.vim<CR>
 nmap <Leader>ef :edit ~/.config/fish/config.fish<CR>
 nmap <Leader>es :edit ~/.config/sway/config<CR>
-nmap <Leader>s :source $VIMCONFIG/init.vim<CR>
+nmap <F5> :source $VIMCONFIG/init.vim<CR>
 nmap <Leader>n :enew<CR>
 
 " ALE
@@ -126,7 +130,7 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " FZF
-nmap <Leader>b :Buffers<CR>
+nmap f :Buffers<CR>
 nmap <Leader>c :Commands<CR>
 nmap <Leader>f :Files<CR>
 nmap <Leader>g :GFiles<CR>
@@ -148,6 +152,16 @@ Plug 'sheerun/vim-polyglot'
 Plug 'itchyny/lightline.vim'
 " indent
 Plug 'Yggdroot/indentLine'
+" motion
+Plug 'justinmk/vim-sneak'
+" surround
+Plug 'tpope/vim-surround'
+" autopairs
+Plug 'jiangmiao/auto-pairs'
+" comment
+Plug 'tpope/vim-commentary'
+" endwise
+"Plug 'tpope/vim-endwise'
 " Conquer of Completion
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 " fzf
