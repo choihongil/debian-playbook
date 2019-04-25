@@ -77,14 +77,14 @@ nmap j gj
 nmap k gk
 nmap <Leader>w :write<CR>
 nmap <Leader>/ :nohlsearch<CR>
-nmap <Leader>d :bdelete
+nmap <Leader>d :bdelete<CR>
 
 " tab
 "nmap <Leader>te :tabedit %<CR>
 nmap \t :tabclose<CR>
 
 " terminal
-:tnoremap <Esc> <C-\><C-n>
+:tnoremap <C-]> <C-\><C-n>
 :tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
 " QuickFix
@@ -130,7 +130,7 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " FZF
-nmap f :Buffers<CR>
+nmap <Leader><Leader> :Buffers<CR>
 nmap <Leader>c :Commands<CR>
 nmap <Leader>f :Files<CR>
 nmap <Leader>g :GFiles<CR>
