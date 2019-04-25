@@ -180,6 +180,9 @@ call plug#end()
 
 colorscheme OceanicNext
 
+" autopairs
+let g:AutoPairsFlyMode = 1
+
 " ale
 let g:ale_disable_lsp = 1
 let g:ale_fixers = {
