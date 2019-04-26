@@ -67,11 +67,6 @@ let mapleader = "\<Space>"
 " gB
 " zp zq zu zy
 
-" Buffers
-nmap <C-j> :bnext<CR>
-nmap <C-k> :bprevious<CR>
-nmap <C-l> <C-^>
-
 " Common
 nmap j gj
 nmap k gk
