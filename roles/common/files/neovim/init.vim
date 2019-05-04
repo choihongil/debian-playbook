@@ -1,16 +1,7 @@
-" vim-plug automatically executes `filetype plugin indent on` and `syntax enable`
-filetype plugin indent on
-syntax enable
 set termguicolors
-"if exists("$TMUX")
-"  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-"  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-"endif
 
 " encoding
-set encoding=utf-8
 set fileencodings=utf-8,utf-16le,cp932,iso-2022-jp,euc-jp,latin1
-set langmenu=none
 
 " indent
 set cindent
@@ -20,8 +11,6 @@ let &softtabstop=&shiftwidth
 set pastetoggle=<F10>
 
 " search
-set hlsearch
-set incsearch
 set ignorecase
 set smartcase
 
@@ -29,32 +18,20 @@ set smartcase
 set splitbelow
 set splitright
 
-" others
-"set ambiwidth=double
-set backspace=indent,eol,start
-"set clipboard+=unnamed
+" options
 set cmdheight=2
 set hidden
-set iminsert=0
-set imsearch=0
-set nobackup
 set noswapfile
 set nowrap
-"set nowritebackup
 set number
-"set shellslash
 set signcolumn=yes
-"set shortmess+=c
-set showcmd
-"set title
-"set updatetime=300
-"set virtualedit=block
+set updatetime=300
 
 " map
 let mapleader = "\<Space>"
 
 " available keys
-" ctrl-m, ctrl-h, ctrl-n ctrl-p ctrl-q, ctrl-s
+" ctrl-m, ctrl-p, ctrl-q, ctrl-s
 " ca cd cm co cp cq cr cu cv cx cy cz
 " cA cD    cO cP cQ cR cU cV cX cY cZ
 " da dc dm dq dr du dv dx dy dz
@@ -68,36 +45,29 @@ let mapleader = "\<Space>"
 " zp zq zu zy
 
 " Common
-nmap j gj
-nmap k gk
-nmap <Leader>w :write<CR>
-nmap <Leader>/ :nohlsearch<CR>
-nmap <Leader>d :bdelete<CR>
+nnoremap j gj
+nnoremap k gk
+nnoremap <Leader>w :write<CR>
+nnoremap <Leader>/ :nohlsearch<CR>
+nnoremap <Leader>d :bdelete<CR>
 
 " tab
 "nmap <Leader>te :tabedit %<CR>
-nmap \t :tabclose<CR>
+nnoremap \t :tabclose<CR>
 
 " terminal
-:tnoremap <C-]> <C-\><C-n>
-:tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+tnoremap <C-]> <C-\><C-n>
+tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
 " QuickFix
-nmap [q :cprevious<CR>
-nmap ]q :cnext<CR>
-nmap \q :cclose<CR>
+nnoremap [q :cprevious<CR>
+nnoremap ]q :cnext<CR>
+nnoremap \q :cclose<CR>
 
 " LocationList
-nmap [l :lprevious<CR>
-nmap ]l :lnext<CR>
-nmap \l :lclose<CR>
-
-" Edit config files
-nmap <Leader>ev :edit $VIMCONFIG/init.vim<CR>
-nmap <Leader>ef :edit ~/.config/fish/config.fish<CR>
-nmap <Leader>es :edit ~/.config/sway/config<CR>
-nmap <F5> :source $VIMCONFIG/init.vim<CR>
-nmap <Leader>n :enew<CR>
+nnoremap [l :lprevious<CR>
+nnoremap ]l :lnext<CR>
+nnoremap \l :lclose<CR>
 
 " ALE
 nmap <Leader>F <Plug>(ale_fix)
@@ -121,19 +91,41 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <Leader>a  <Plug>(coc-codeaction-selected)
+nmap <Leader>a  <Plug>(coc-codeaction-selected)
+" Remap for do codeAction of current line
+nmap <Leader>ac <Plug>(coc-codeaction)
+" Remap for do codeLens of current line
+nmap <Leader>lc <Plug>(coc-codelens-action)
+" Fix autofix problem of current line
+nmap <Leader>qf <Plug>(coc-fix-current)
+" Remap for rename current word
+nmap <Leader>rn <Plug>(coc-rename)
+
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+" Using CocList
+nnoremap <Leader>ca :<C-u>CocList diagnostics<CR>
+nnoremap <Leader>ce :<C-u>CocList extensions<CR>
+nnoremap <Leader>cc :<C-u>CocList commands<CR>
+nnoremap <Leader>co :<C-u>CocList outline<CR>
+nnoremap <Leader>cs :<C-u>CocList --interactive symbols<CR>
+nnoremap <Leader>cj :<C-u>CocNext<CR>
+nnoremap <Leader>ck :<C-u>CocPrev<CR>
+nnoremap <Leader>cp :<C-u>CocListResume<CR>
 
 " FZF
-nmap <Leader><Leader> :Buffers<CR>
-nmap <Leader>c :Commands<CR>
-nmap <Leader>f :Files<CR>
-nmap <Leader>g :GFiles<CR>
-nmap <C-f> :Files<Space>
-nmap <C-g> :Rg<Space>
+nnoremap <Leader><Leader> :Buffers<CR>
+nnoremap <Leader>C :Commands<CR>
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>g :GFiles<CR>
+nnoremap <C-f> :Files<Space>
+nnoremap <C-g> :Rg<Space>
 " NERDTree
-nmap <Leader>t :NERDTreeToggle<CR>
-nmap <Leader>l :NERDTreeFind<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-h> :NERDTreeFind<CR>
 
 " Vim-Plug
 " Specify a directory for plugins
@@ -159,6 +151,8 @@ Plug 'tpope/vim-commentary'
 "Plug 'tpope/vim-endwise'
 " Conquer of Completion
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+" snippets
+Plug 'honza/vim-snippets'
 " fzf
 Plug 'junegunn/fzf.vim'
 " Asynchronous linting/fixing
@@ -208,16 +202,17 @@ if executable('fzf')
 endif
 
 " coc
-"let g:coc_global_extensions = [
-"      \ 'coc-css',
-"      \ 'coc-json',
-"      \ 'coc-python',
-"      \ 'coc-rls',
-"      \ 'coc-solargraph'
-"      \ 'coc-tsserver',
-"      \ 'coc-vetur',
-"      \ 'coc-yaml',
-"      \ ]
+let g:coc_global_extensions = [
+      \ 'coc-css',
+      \ 'coc-highlight',
+      \ 'coc-json',
+      \ 'coc-python',
+      \ 'coc-rls',
+      \ 'coc-snippets',
+      \ 'coc-tsserver',
+      \ 'coc-vetur',
+      \ 'coc-yaml',
+      \ ]
 
 " Itegration with lightline
 function! CocCurrentFunction()

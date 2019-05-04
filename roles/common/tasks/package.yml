@@ -85,6 +85,4 @@
     state: latest
   with_items:
     - "@vue/cli"
-    - javascript-typescript-langserver
-    - vue-language-server
     - livedown

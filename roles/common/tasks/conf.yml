@@ -120,7 +120,4 @@
     dest: "{{ ansible_user_dir }}/.local/share/nvim/site/autoload/"
 
 - name: install nvim plugins
-  shell: nvim +PlugInstall
-
-- name: install coc extensions
-  shell: nvim -c "coc-json coc-tsserver coc-vetur coc-solargraph coc-rls coc-yaml coc-python"
+  shell: nvim +PlugUpdate +qall
