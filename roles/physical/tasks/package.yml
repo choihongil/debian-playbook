@@ -21,6 +21,7 @@
       - powertop
       - printer-driver-escpr
       - pulseaudio-module-bluetooth
+      - qutebrowser
       - skypeforlinux
       - sway
       - blueman

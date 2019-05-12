@@ -37,6 +37,16 @@
     dest: "{{ ansible_user_dir }}/.local/bin/"
     mode: 0755
 
+- name: config qutebrowser
+  copy:
+    src: qutebrowser
+    dest: "{{ ansible_user_dir }}/.config/"
+
+- name: umpv
+  copy:
+    src: umpv
+    dest: "{{ ansible_user_dir }}/.local/bin/"
+
 - name: config mpv
   copy:
     src: mpv
