@@ -19,9 +19,7 @@
       - git
       - golang
       - google-cloud-sdk
-      - kubeadm
       - kubectl
-      - kubelet
       - nodejs
       - yarn
       - openssh-server
