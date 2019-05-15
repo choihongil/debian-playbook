@@ -73,7 +73,6 @@
     - pre-commit
     - rubocop
     - rubocop-rspec
-    - solargraph
 
 
 - name: Install node.js packages
