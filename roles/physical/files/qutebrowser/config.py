@@ -10,11 +10,25 @@
 # Type: Bool
 c.auto_save.session = True
 
+# Enable JavaScript.
+# Type: Bool
+config.set('content.javascript.enabled', True, 'file://*')
+
+# Enable JavaScript.
+# Type: Bool
+config.set('content.javascript.enabled', True, 'chrome://*/*')
+
+# Enable JavaScript.
+# Type: Bool
+config.set('content.javascript.enabled', True, 'qute://*/*')
+
 # Bindings for normal mode
 config.bind(';V', 'hint --rapid links spawn umpv {hint-url}')
 config.bind(';v', 'hint links spawn umpv {hint-url}')
 config.bind('<Space><Space>', 'set-cmd-text -s :buffer')
+config.bind('<Space>d', 'close')
 config.bind('<Space>p', 'spawn umpv {url}')
+config.bind('po', 'open --private')
 config.bind('zl', 'spawn --userscript qute-pass')
 config.bind('zol', 'spawn --userscript qute-pass --otp-only')
 config.bind('zpl', 'spawn --userscript qute-pass --password-only')
