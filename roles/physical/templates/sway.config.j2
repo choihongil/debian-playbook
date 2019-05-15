@@ -7,7 +7,7 @@
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
-set $mod Mod1
+set $mod Mod4
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -64,7 +64,7 @@ input {{ touchpad_identifier|default('touchpad_id') }} {
     bindsym $mod+Shift+q kill
 
     # start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+Space exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -93,15 +93,15 @@ input {{ touchpad_identifier|default('touchpad_id') }} {
     bindsym $mod+Right focus right
 
     # _move_ the focused window with the same, but add Shift
-    bindsym Mod4+$mod+$left move left
-    bindsym Mod4+$mod+$down move down
-    bindsym Mod4+$mod+$up move up
-    bindsym Mod4+$mod+$right move right
+    bindsym $mod+Mod1+$left move left
+    bindsym $mod+Mod1+$down move down
+    bindsym $mod+Mod1+$up move up
+    bindsym $mod+Mod1+$right move right
     # ditto, with arrow keys
-    bindsym Mod4+$mod+Left move left
-    bindsym Mod4+$mod+Down move down
-    bindsym Mod4+$mod+Up move up
-    bindsym Mod4+$mod+Right move right
+    bindsym $mod+Mod1+Left move left
+    bindsym $mod+Mod1+Down move down
+    bindsym $mod+Mod1+Up move up
+    bindsym $mod+Mod1+Right move right
 #
 # Workspaces:
 #
@@ -120,27 +120,27 @@ input {{ touchpad_identifier|default('touchpad_id') }} {
     bindsym $mod+n workspace next_on_output
     bindsym $mod+b workspace back_and_forth
     # move focused container to workspace
-    bindsym Mod4+$mod+1 move container to workspace 1
-    bindsym Mod4+$mod+2 move container to workspace 2
-    bindsym Mod4+$mod+3 move container to workspace 3
-    bindsym Mod4+$mod+4 move container to workspace 4
-    bindsym Mod4+$mod+5 move container to workspace 5
-    bindsym Mod4+$mod+6 move container to workspace 6
-    bindsym Mod4+$mod+7 move container to workspace 7
-    bindsym Mod4+$mod+8 move container to workspace 8
-    bindsym Mod4+$mod+9 move container to workspace 9
-    bindsym Mod4+$mod+0 move container to workspace 10
-    bindsym Mod4+$mod+p move container to workspace prev_on_output
-    bindsym Mod4+$mod+n move container to workspace next_on_output
-    bindsym Mod4+$mod+b move container to workspace back_and_forth
+    bindsym $mod+Mod1+1 move container to workspace 1; workspace 1
+    bindsym $mod+Mod1+2 move container to workspace 2; workspace 2
+    bindsym $mod+Mod1+3 move container to workspace 3; workspace 3
+    bindsym $mod+Mod1+4 move container to workspace 4; workspace 4
+    bindsym $mod+Mod1+5 move container to workspace 5; workspace 5
+    bindsym $mod+Mod1+6 move container to workspace 6; workspace 6
+    bindsym $mod+Mod1+7 move container to workspace 7; workspace 7
+    bindsym $mod+Mod1+8 move container to workspace 8; workspace 8
+    bindsym $mod+Mod1+9 move container to workspace 9; workspace 9
+    bindsym $mod+Mod1+0 move container to workspace 10; workspace 10
+    bindsym $mod+Mod1+p move container to workspace prev_on_output; workspace prev_on_output
+    bindsym $mod+Mod1+n move container to workspace next_on_output; workspace next_on_output
+    bindsym $mod+Mod1+b move container to workspace back_and_forth; workspace back_and_forth
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 
-    # move workspace?(i3)
-    bindsym Control+Mod4+$mod+$left move workspace to left
-    bindsym Control+Mod4+$mod+$down move workspace to down
-    bindsym Control+Mod4+$mod+$up move workspace to up
-    bindsym Control+Mod4+$mod+$right move workspace to right
+    # move workspace
+    bindsym Control+$mod+Mod1+$left move workspace to output left
+    bindsym Control+$mod+Mod1+$down move workspace to output down
+    bindsym Control+$mod+Mod1+$up move workspace to output up
+    bindsym Control+$mod+Mod1+$right move workspace to output right
 #
 # Layout stuff:
 #
@@ -159,10 +159,10 @@ input {{ touchpad_identifier|default('touchpad_id') }} {
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+Shift+m floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    bindsym $mod+m focus mode_toggle
 
     # move focus to the parent container
     bindsym $mod+a focus parent

@@ -1,9 +1,0 @@
----
-
-- name: "nmcli connection add type bridge ifname kube0 con-name kube0 ipv4.method manual ipv4.address 192.168.33.10"
-  nmcli:
-    type: bridge
-    conn_name: kube0
-    ifname: kube0
-    ip4: 192.168.33.10/32
-    state: present
