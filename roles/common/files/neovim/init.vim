@@ -50,6 +50,7 @@ nnoremap k gk
 nnoremap <Leader>w :write<CR>
 nnoremap <Leader>/ :nohlsearch<CR>
 nnoremap <Leader>d :bdelete<CR>
+nnoremap <C-w>q :qall<CR>
 
 " tab
 "nmap <Leader>te :tabedit %<CR>
