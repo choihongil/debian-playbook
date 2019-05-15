@@ -2,11 +2,12 @@ set -x EDITOR vi
 
 # PATH
 if test -z "$fish_user_paths"
-  set fish_user_paths ~/.local/bin ~/.gem/ruby/2.5.0/bin ~/.yarn/bin ~/.fzf/bin
+  set fish_user_paths ~/.local/bin ~/.gem/ruby/2.5.0/bin ~/.yarn/bin (go env GOPATH)/bin
 end
 
 # fzf
-set -x FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+set -x FZF_TMUX 1
+set -x FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --no-messages --glob "!.git/*"'
 set -x FZF_DEFAULT_OPTS '--height 40% --reverse --border'
 set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
@@ -31,53 +32,53 @@ if not set -q abbrs_initialized
   echo -n Setting abbreviations...
 
   # apt
-  abbr aa         sudo apt autoremove
-  abbr ai         sudo apt install
-  abbr ali        apt list --installed
-  abbr alu        apt list --upgradable
-  abbr ad         apt depends
-  abbr ap         apt policy
-  abbr ar         apt rdepends
-  abbr asc        apt search
-  abbr ash        apt show
-  abbr aud        sudo apt update
-  abbr aug        sudo apt upgrade
+  abbr --add aa         sudo apt autoremove
+  abbr --add ai         sudo apt install
+  abbr --add ali        apt list --installed
+  abbr --add alu        apt list --upgradable
+  abbr --add ad         apt depends
+  abbr --add ap         apt policy
+  abbr --add ar         apt rdepends
+  abbr --add asc        apt search
+  abbr --add ash        apt show
+  abbr --add aud        sudo apt update
+  abbr --add aug        sudo apt upgrade
   # git
-  abbr ga         git add
-  abbr gb         git branch
-  abbr gcf        git config
-  abbr gch        git checkout
-  abbr gcl        git clone
-  abbr gco        git commit
-  abbr gdt        git difftool
-  abbr gf         git fetch
-  abbr gl         git log
-  abbr gm         git merge
-  abbr gpl        git pull
-  abbr gps        git push
-  abbr grm        git remote
-  abbr grs        git reset
-  abbr grma       git remote add upstream
-  abbr gs         git status
-  abbr gt         git tag
+  abbr --add ga         git add
+  abbr --add gb         git branch
+  abbr --add gcf        git config
+  abbr --add gch        git checkout
+  abbr --add gcl        git clone
+  abbr --add gco        git commit
+  abbr --add gdt        git difftool
+  abbr --add gf         git fetch
+  abbr --add gl         git log
+  abbr --add gm         git merge
+  abbr --add gpl        git pull
+  abbr --add gps        git push
+  abbr --add grm        git remote
+  abbr --add grs        git reset
+  abbr --add grma       git remote add upstream
+  abbr --add gs         git status
+  abbr --add gt         git tag
   # kubectl
-  abbr kap        kubectl apply --filename
-  abbr kat        kubectl attach
-  abbr ke         kubectl exec
-  abbr kgp        kubectl get pods
-  abbr kdp        kubectl delete pods
-  abbr kdsp       kubectl describe pods
-  abbr kl         kubectl logs
-  abbr kne        kubectl --namespace kube-system exec
-  abbr kngp       kubectl --namespace kube-system get pods
+  abbr -add kap        kubectl apply --filename
+  abbr -add kat        kubectl attach
+  abbr -add ke         kubectl exec
+  abbr -add kgp        kubectl get pods
+  abbr -add kdp        kubectl delete pods
+  abbr -add kdsp       kubectl describe pods
+  abbr -add kl         kubectl logs
+  abbr -add kne        kubectl --namespace kube-system exec
+  abbr -add kngp       kubectl --namespace kube-system get pods
   # systemctl
-  abbr sld        systemctl list-dependencies
-  abbr sp         systemctl poweroff
-  abbr sr         systemctl reboot
-  abbr ssu        systemctl suspend
-  abbr sst        systemctl status
-  abbr suld       systemctl --user list-dependencies
-  abbr sust       systemctl --user status
+  abbr --add sld        systemctl list-dependencies
+  abbr --add sp         systemctl poweroff
+  abbr --add sr         systemctl reboot
+  abbr --add ssu        systemctl suspend
+  abbr --add sst        systemctl status
+  abbr --add suld       systemctl --user list-dependencies
+  abbr --add sust       systemctl --user status
 
   echo Done
 end

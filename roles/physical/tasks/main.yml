@@ -6,5 +6,4 @@
 
 - import_tasks: apt.yml
 - import_tasks: package.yml
-- import_tasks: network.yml
 - import_tasks: conf.yml
