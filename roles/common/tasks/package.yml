@@ -13,14 +13,13 @@
       - cowbuilder
       - dnsutils
       - docker-ce
+      - fzf
       - fish
       - tmux
       - git
       - golang
       - google-cloud-sdk
-      - kubeadm
       - kubectl
-      - kubelet
       - nodejs
       - yarn
       - openssh-server
@@ -74,7 +73,6 @@
     - pre-commit
     - rubocop
     - rubocop-rspec
-    - solargraph
 
 
 - name: Install node.js packages
@@ -84,6 +82,4 @@
     state: latest
   with_items:
     - "@vue/cli"
-    - javascript-typescript-langserver
-    - vue-language-server
     - livedown
