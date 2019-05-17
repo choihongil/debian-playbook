@@ -246,3 +246,6 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
+" vue
+autocmd FileType vue syntax sync fromstart
