@@ -16,6 +16,7 @@
       - fwupd
       - google-chrome-stable
       - linux-image-amd64
+      - libjs-pdf
       - mpv
       - network-manager
       - powertop
