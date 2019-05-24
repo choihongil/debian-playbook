@@ -22,6 +22,15 @@ config.set('content.javascript.enabled', True, 'chrome://*/*')
 # Type: Bool
 config.set('content.javascript.enabled', True, 'qute://*/*')
 
+# When to show the tab bar.
+# Type: String
+# Valid values:
+#   - always: Always show the tab bar.
+#   - never: Always hide the tab bar.
+#   - multiple: Hide the tab bar if only one tab is open.
+#   - switching: Show the tab bar when switching tabs.
+c.tabs.show = 'never'
+
 # Bindings for normal mode
 config.bind(';V', 'hint --rapid links spawn umpv {hint-url}')
 config.bind(';v', 'hint links spawn umpv {hint-url}')
