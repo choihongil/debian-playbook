@@ -233,7 +233,7 @@ cmd - r : chunkc tiling::desktop --rotate 90
 cmd - y : chunkc tiling::desktop --mirror vertical
 
 # mirror tree x-axis
-cmd - x : chunkc tiling::desktop --mirror horizontal
+#cmd - x : chunkc tiling::desktop --mirror horizontal
 
 # toggle desktop offset
 #cmd - a : chunkc tiling::desktop --toggle offset
