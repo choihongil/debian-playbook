@@ -37,6 +37,16 @@
     dest: "{{ ansible_user_dir }}/.local/bin/"
     mode: 0755
 
+- name: i3status-rs
+  copy:
+    src: i3status-rs
+    dest: "{{ ansible_user_dir }}/.local/bin/"
+
+- name: i3status-rs config
+  copy:
+    src: i3status-rs-config.toml
+    dest: "{{ ansible_user_dir }}/.config/i3status-rs/config.toml"
+
 - name: config mpv
   copy:
     src: mpv
