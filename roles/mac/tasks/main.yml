@@ -12,6 +12,7 @@
     - google-chrome
     - google-japanese-ime
     - karabiner-elements
+    - qutebrowser
     - vagrant
     - virtualbox
 
@@ -19,6 +20,11 @@
   copy:
     src: amethyst
     dest: "{{ ansible_user_dir }}/.amethyst"
+
+- name: Config qutebrowser
+  copy:
+    src: qutebrowser/
+    dest: "{{ ansible_user_dir }}/.qutebrowser"
 
 - name: Install NerdFont
   get_url:
