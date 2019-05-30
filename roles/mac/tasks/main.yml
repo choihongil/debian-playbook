@@ -7,18 +7,12 @@
   with_items:
     - alacritty
     - alfred
-    - amethyst
     - firefox
     - google-chrome
     - google-japanese-ime
     - karabiner-elements
     - vagrant
     - virtualbox
-
-- name: Config amethyst
-  copy:
-    src: amethyst
-    dest: "{{ ansible_user_dir }}/.amethyst"
 
 - name: Install NerdFont
   get_url:
