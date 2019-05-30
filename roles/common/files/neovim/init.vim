@@ -161,6 +161,8 @@ Plug 'w0rp/ale'
 " tree explorer
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" markdown-preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 " icon
 Plug 'ryanoasis/vim-devicons'
 " emoji
@@ -249,3 +251,10 @@ endfunction
 
 " vue
 autocmd FileType vue syntax sync fromstart
+
+" markdown-preview
+let g:mkdp_open_to_the_world = 1
+let g:mkdp_echo_preview_url = 1
+
+" indentLine
+let g:indentLine_concealcursor = ''
