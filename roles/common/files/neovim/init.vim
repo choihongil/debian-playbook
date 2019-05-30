@@ -151,7 +151,7 @@ Plug 'tpope/vim-surround'
 " autopairs
 Plug 'jiangmiao/auto-pairs'
 " comment
-Plug 'tpope/vim-commentary'
+Plug 'tomtom/tcomment_vim'
 " endwise
 "Plug 'tpope/vim-endwise'
 " Conquer of Completion
