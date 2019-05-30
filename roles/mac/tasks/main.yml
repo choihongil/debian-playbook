@@ -5,12 +5,13 @@
     name: "{{ item }}"
     state: present
   with_items:
+    - alacritty
+    - alfred
     - amethyst
+    - firefox
     - google-chrome
     - google-japanese-ime
-    - iterm2
     - karabiner-elements
-    - slack
     - vagrant
     - virtualbox
 

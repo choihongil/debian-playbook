@@ -23,10 +23,10 @@
       - pulseaudio-module-bluetooth
       - skypeforlinux
       - sway
+      - swaylock
       - blueman
       - desktop-base
       - dunst
-      - i3status
       - pavucontrol
       - rofi
       - udiskie
