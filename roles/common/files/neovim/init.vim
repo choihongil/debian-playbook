@@ -128,6 +128,10 @@ nnoremap <C-g> :Rg<Space>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-h> :NERDTreeFind<CR>
 
+" GitGutter
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+
 " Vim-Plug
 " Specify a directory for plugins
 " - Avoid using standard Vim directory names like 'plugin'
@@ -161,6 +165,9 @@ Plug 'w0rp/ale'
 " tree explorer
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" git
+Plug 'airblade/vim-gitgutter'
+Plug 'jreybert/vimagit'
 " markdown-preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 " icon
