@@ -17,12 +17,14 @@ set $right l
 set $term x-terminal-emulator
 # Your preferred application launcher
 set $menu rofi -modi combi\,run -combi-modi window\,drun -show combi -sidebar-mode
+# Wallpaper
+set $wallpaper /usr/share/images/desktop-base/default
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /usr/share/images/desktop-base/default fill
+output * bg $wallpaper fill
 #
 # Example configuration:
 #
@@ -84,7 +86,7 @@ smart_gaps on
     bindsym $mod+Shift+e exit
 
     # lockscreen
-    bindsym Control+$mod+l exec swaylock -eFki /usr/share/images/desktop-base/default
+    bindsym Control+$mod+l exec swaylock -eFki $wallpaper
 #
 # Moving around:
 #
@@ -255,6 +257,12 @@ bindsym Control+$mod+Delete mode "(L)ogout, (R)eboot, (H)alt"
     exec fcitx -d
     # for dunst
     exec systemctl --user import-environment DISPLAY
+    # idle
+    exec swayidle -w \
+            timeout 300  "swaylock -efFki $wallpaper" \
+            timeout 600  "swaymsg 'output * dpms off'" \
+                  resume "swaymsg 'output * dpms on'" \
+            timeout 1800 "systemctl suspend"
 
 #
 # Status Bar:
