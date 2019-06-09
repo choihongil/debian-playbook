@@ -1,0 +1,11 @@
+{
+  "languageserver": {
+    "ruby": {
+      "host":"localhost",
+      "port": 7658,
+      "filetypes": ["ruby"]
+    }
+  },
+  "codeLens.enable": true,
+  "suggest.enablePreview": true
+}

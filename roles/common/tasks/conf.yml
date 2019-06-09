@@ -111,7 +111,7 @@
 
 - name: config neovim
   copy:
-    src: neovim/init.vim
+    src: neovim/
     dest: "{{ ansible_user_dir }}/.config/nvim/"
 
 - name: install vim-plug
