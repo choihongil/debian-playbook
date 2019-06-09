@@ -40,12 +40,14 @@
     name:
       - ansible
       - aws-shell
+      - flake8
       - httpie
       - mycli==1.18.0
       - pgcli
       - powerline-status
       - python-language-server
       - ranger-fm
+      - tldextract
       - youtube_dl
     executable: "{{ ansible_user_dir }}/.local/bin/pip"
     extra_args: --user

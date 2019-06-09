@@ -16,11 +16,13 @@
       - fwupd
       - google-chrome-stable
       - linux-image-amd64
+      - libjs-pdf
       - mpv
       - network-manager
       - powertop
       - printer-driver-escpr
       - pulseaudio-module-bluetooth
+      - qutebrowser
       - skypeforlinux
       - sway
       - swayidle
