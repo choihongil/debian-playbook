@@ -17,12 +17,14 @@ set $right l
 set $term x-terminal-emulator
 # Your preferred application launcher
 set $menu rofi -modi combi\,run -combi-modi window\,drun -show combi -sidebar-mode
+# Wallpaper
+set $wallpaper /usr/share/images/desktop-base/default
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /usr/share/images/desktop-base/default fill
+output * bg $wallpaper fill
 #
 # Example configuration:
 #
@@ -53,6 +55,10 @@ input {{ touchpad_identifier|default('touchpad_id') }} {
   tap enabled
 }
 
+### Gaps
+gaps inner 20px
+smart_gaps on
+
 ### Key bindings
 #
 # Basics:
@@ -78,6 +84,9 @@ input {{ touchpad_identifier|default('touchpad_id') }} {
 
     # exit sway (logs you out of your wayland session)
     bindsym $mod+Shift+e exit
+
+    # lockscreen
+    bindsym Control+$mod+l exec swaylock -eFki $wallpaper
 #
 # Moving around:
 #
@@ -248,20 +257,29 @@ bindsym Control+$mod+Delete mode "(L)ogout, (R)eboot, (H)alt"
     exec fcitx -d
     # for dunst
     exec systemctl --user import-environment DISPLAY
-    # CapsLock to Escape
-    exec setxkbmap -option caps:escape
+    # idle
+    exec swayidle -w \
+            timeout 300  "swaylock -efFki $wallpaper" \
+            timeout 600  "swaymsg 'output * dpms off'" \
+                  resume "swaymsg 'output * dpms on'" \
+            timeout 1800 "systemctl suspend"
 
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
+    font pango:DejaVu Sans Mono, FontAwesome 12
     position top
-    status_command i3status
+    status_command ~/.local/bin/i3status-rs ~/.config/i3status-rs/config.toml
     colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+      separator #666666
+      background #222222
+      statusline #dddddd
+      focused_workspace #0088CC #0088CC #ffffff
+      active_workspace #333333 #333333 #ffffff
+      inactive_workspace #333333 #333333 #888888
+      urgent_workspace #2f343a #900000 #ffffff
     }
 }
 

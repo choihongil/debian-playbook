@@ -128,6 +128,10 @@ nnoremap <C-g> :Rg<Space>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-h> :NERDTreeFind<CR>
 
+" GitGutter
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+
 " Vim-Plug
 " Specify a directory for plugins
 " - Avoid using standard Vim directory names like 'plugin'
@@ -147,7 +151,7 @@ Plug 'tpope/vim-surround'
 " autopairs
 Plug 'jiangmiao/auto-pairs'
 " comment
-Plug 'tpope/vim-commentary'
+Plug 'tomtom/tcomment_vim'
 " endwise
 "Plug 'tpope/vim-endwise'
 " Conquer of Completion
@@ -161,6 +165,11 @@ Plug 'w0rp/ale'
 " tree explorer
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" git
+Plug 'airblade/vim-gitgutter'
+Plug 'jreybert/vimagit'
+" markdown-preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 " icon
 Plug 'ryanoasis/vim-devicons'
 " emoji
@@ -246,3 +255,13 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
+" vue
+autocmd FileType vue syntax sync fromstart
+
+" markdown-preview
+let g:mkdp_open_to_the_world = 1
+let g:mkdp_echo_preview_url = 1
+
+" indentLine
+let g:indentLine_concealcursor = ''
