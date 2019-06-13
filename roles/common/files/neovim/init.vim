@@ -265,3 +265,6 @@ let g:mkdp_echo_preview_url = 1
 
 " indentLine
 let g:indentLine_concealcursor = ''
+
+" polyglot
+let g:polyglot_disabled = ['csv']
