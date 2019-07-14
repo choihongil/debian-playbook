@@ -1,23 +1,23 @@
 ---
 
-- name: be sure sources.list exist
-  copy:
-    src: apt/sources.list
-    dest: /etc/apt/
-  become: yes
-  notify:
-    - update apt cache
+#- name: be sure sources.list exist
+#  copy:
+#    src: apt/sources.list
+#    dest: /etc/apt/
+#  become: yes
+#  notify:
+#    - update apt cache
+
+#- name: apt preference
+#  copy:
+#    src: apt/custom.pref
+#    dest: /etc/apt/preferences.d/
+#  become: yes
 
 - name: apt config
   copy:
     src: apt/apt.conf
     dest: /etc/apt/
-  become: yes
-
-- name: apt preference
-  copy:
-    src: apt/custom.pref
-    dest: /etc/apt/preferences.d/
   become: yes
 
 - name: add unstable repository

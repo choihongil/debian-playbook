@@ -12,7 +12,6 @@
       - feh
       - fonts-noto
       - fonts-noto-color-emoji
-      - firefox
       - fwupd
       - google-chrome-stable
       - linux-image-amd64
@@ -33,9 +32,18 @@
       - pavucontrol
       - rofi
       - udiskie
+      - wl-clipboard
       - xbacklight
       - xclip
+      - xwayland
     state: latest
+  become: yes
+
+- name: Install sid packages
+  apt:
+    name: firefox
+    state: latest
+    default_release: sid
   become: yes
 
 - name: Install peculiar packages
@@ -44,19 +52,11 @@
     state: latest
   become: yes
 
-- name: Install additional firmwares
-  copy:
-    src: firmware/
-    dest: /lib/firmware/
-  become: yes
-
-- name: purge packages
-  apt:
-    name:
-      - ifupdown
-    state: absent
-    purge: yes
-  become: yes
+# - name: Install additional firmwares
+#   copy:
+#     src: firmware/
+#     dest: /lib/firmware/
+#   become: yes
 
 - name: ensure local font folder exists
   file:
@@ -76,3 +76,11 @@
 - name: fc-cache
   shell: "fc-cache -fv"
   when: font_count.stdout|int == 0
+
+- name: purge packages
+  apt:
+    name:
+      - ifupdown
+    state: absent
+    purge: yes
+  become: yes

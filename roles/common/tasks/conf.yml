@@ -1,5 +1,14 @@
 ---
 
+- name: ensure config folders exists
+  file:
+    path: "{{ ansible_user_dir }}/{{ item }}"
+    state: directory
+  with_items:
+    - .config/ranger
+    - .ssh
+    - .local/share/nvim/site/autoload
+
 - name: Allow 'sudo' group to have passwordless sudo
   lineinfile:
     path: /etc/sudoers
@@ -21,14 +30,6 @@
     enabled: yes
     state: started
     scope: user
-
-- name: ensure config folders exists
-  file:
-    path: "{{ ansible_user_dir }}/{{ item }}"
-    state: directory
-  with_items:
-    - .config/ranger
-    - .ssh
 
 - name: gitconfig
   copy:

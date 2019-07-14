@@ -5,9 +5,9 @@ icons = "awesome"
 # block = "xrandr"
 # resolution = true
 
-[[block]]
-block = "bluetooth"
-mac = "08:DF:1F:DB:2D:31"
+# [[block]]
+# block = "bluetooth"
+# mac = "08:DF:1F:DB:2D:31"
 
 [[block]]
 block = "sound"

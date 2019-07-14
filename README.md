@@ -8,9 +8,10 @@
   ```
 ## Install
 ```
-su -c "apt --no-install-recommends --yes install curl ca-certificates dbus-user-session sudo"
-su -c "usermod -aG sudo ${USER}"
-# logout and re-login that start user@.service service and take effect added group sudo
-logout
-sh -c "$(curl -L https://raw.githubusercontent.com/choihongil/debian-playbook/master/bootstrap.sh)"
+su -lc "apt --no-install-recommends --yes install sudo"
+su -lc "usermod -aG sudo ${USER}"
+# logout and re-login that take effect added group sudo
+exit
+wget https://raw.githubusercontent.com/choihongil/debian-playbook/master/bootstrap.sh
+sh bootstrap.sh
 ```

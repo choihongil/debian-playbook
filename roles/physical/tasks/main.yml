@@ -2,7 +2,7 @@
 - include_vars: "{{ item }}"
   with_first_found:
     - files: "{{ ansible_product_name | replace(' ', '_') | lower }}.yml"
-      skip: true
+      #skip: true
 
 - import_tasks: apt.yml
 - import_tasks: package.yml

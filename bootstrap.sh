@@ -3,17 +3,18 @@ set -eu
 
 case $(uname) in
     Linux)
+        # python3-distutils for pip install
+        # gnupg for add apt key
         echo "Install pre-required packages"
         sudo apt install --no-install-recommends --yes \
-                apt-transport-https \
                 git \
                 gnupg \
-                python3-dev
+                python3-distutils
         sudo apt upgrade
         # pip
         if [ ! -x ~/.local/bin/pip3 ]; then
             echo "Install pip"
-            curl -LJO https://bootstrap.pypa.io/get-pip.py
+            wget https://bootstrap.pypa.io/get-pip.py
             python3 get-pip.py --user
         fi
         # ansible
