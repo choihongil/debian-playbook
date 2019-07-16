@@ -5,18 +5,25 @@
     name:
       - alacritty
       - cups
+      - cups-browsed
       - fcitx
+      - fcitx-config-gtk
+      - fcitx-frontend-gtk3
+      - fcitx-frontend-qt5
+      - fcitx-ui-classic
       - fcitx-googlepinyin
       - fcitx-hangul
       - fcitx-mozc
       - feh
       - fonts-noto
+      - fonts-noto-cjk
       - fonts-noto-color-emoji
       - fwupd
       - google-chrome-stable
       - linux-image-amd64
       - libjs-pdf
       - mpv
+      - modemmanager
       - network-manager
       - powertop
       - printer-driver-escpr

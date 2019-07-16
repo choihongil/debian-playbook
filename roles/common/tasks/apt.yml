@@ -8,11 +8,11 @@
 #  notify:
 #    - update apt cache
 
-#- name: apt preference
-#  copy:
-#    src: apt/custom.pref
-#    dest: /etc/apt/preferences.d/
-#  become: yes
+- name: apt preference
+  copy:
+    src: apt/custom.pref
+    dest: /etc/apt/preferences.d/
+  become: yes
 
 - name: apt config
   copy:
@@ -86,7 +86,7 @@
 
 - name: add nodejs repository
   apt_repository:
-    repo: deb https://deb.nodesource.com/node_10.x buster main
+    repo: deb https://deb.nodesource.com/node_12.x buster main
     filename: nodesource
   become: yes
   notify:

@@ -4,7 +4,7 @@
   apt:
     name:
       #- avahi-daemon
-      #- build-essential
+      - build-essential
       - cargo
       #- cifs-utils
       - curl
@@ -13,6 +13,7 @@
       #- cowbuilder
       #- dnsutils
       - docker-ce
+      - fuse                    # appimages
       - fzf
       - fish
       - neovim
@@ -86,4 +87,4 @@
     state: latest
   with_items:
     - "@vue/cli"
-    #- livedown
+    - "@bitwarden/cli"
