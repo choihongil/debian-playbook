@@ -193,7 +193,6 @@ let g:ale_fixers = {
 
 " fzf
 if executable('fzf')
-  "set runtimepath+=~/.fzf
   source /usr/share/doc/fzf/examples/fzf.vim
   " Rg command with preview window
   command! -bang -nargs=* -complete=dir Rg

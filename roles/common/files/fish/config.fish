@@ -29,8 +29,6 @@ end
 
 if not set -q abbrs_initialized
   set -U abbrs_initialized
-  echo -n Setting abbreviations...
-
   # apt
   abbr --add aa         sudo apt autoremove
   abbr --add ai         sudo apt install
@@ -79,6 +77,4 @@ if not set -q abbrs_initialized
   abbr --add sst        systemctl status
   abbr --add suld       systemctl --user list-dependencies
   abbr --add sust       systemctl --user status
-
-  echo Done
 end
