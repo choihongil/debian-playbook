@@ -6,8 +6,6 @@
     codename: disco
     filename: sway
   become: yes
-  notify:
-    - update apt cache
 
 - name: Pop!_OS PPA
   apt_repository:
@@ -27,8 +25,6 @@
     repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
     filename: google-chrome
   become: yes
-  notify:
-    - update apt cache
 
 - name: add apt key of skype
   apt_key:
@@ -41,8 +37,3 @@
     repo: deb [arch=amd64] https://repo.skype.com/deb stable main
     filename: skype-stable
   become: yes
-  notify:
-    - update apt cache
-
-- name: update when repository changed
-  meta: flush_handlers
