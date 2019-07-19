@@ -31,12 +31,12 @@
     src: alacritty.yml
     dest: "{{ ansible_user_dir }}/.config/alacritty/"
 
-- name: sway capabilities
-  capabilities:
-    path: /usr/bin/sway
-    capability: cap_sys_ptrace,cap_sys_tty_config+eip
-    state: present
-  become: yes
+# - name: sway capabilities
+#   capabilities:
+#     path: /usr/bin/sway
+#     capability: cap_sys_ptrace,cap_sys_tty_config+eip
+#     state: present
+#   become: yes
 
 - name: config sway
   template:

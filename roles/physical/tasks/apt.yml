@@ -9,6 +9,13 @@
   notify:
     - update apt cache
 
+- name: Pop!_OS PPA
+  apt_repository:
+    repo: ppa:system76/pop
+    codename: disco
+    filename: system76
+  become: yes
+
 - name: add apt key of google
   apt_key:
     url: https://dl.google.com/linux/linux_signing_key.pub
