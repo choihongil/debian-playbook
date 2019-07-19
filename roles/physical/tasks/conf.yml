@@ -8,6 +8,17 @@
     - .config/sway
     - .config/i3status-rs
 
+  # Enable suspend when connected with external monitor
+- name: Ensure "HandleLidSwitchDocked=suspend" in section "[Login]" in specified file
+  ini_file:
+    path: /etc/systemd/logind.conf
+    section: Login
+    option: HandleLidSwitchDocked
+    value: suspend
+    no_extra_spaces: yes
+    backup: yes
+  become: yes
+
 - name: add lpadmin,systemd-journal groups to user
   user:
     name: "{{ ansible_user_id }}"
