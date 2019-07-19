@@ -1,5 +1,14 @@
 ---
 
+- name: Sway repository
+  apt_repository:
+    repo: ppa:samoilov-lex/sway
+    codename: disco
+    filename: sway
+  become: yes
+  notify:
+    - update apt cache
+
 - name: add apt key of google
   apt_key:
     url: https://dl.google.com/linux/linux_signing_key.pub
