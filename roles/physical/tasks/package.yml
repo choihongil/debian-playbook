@@ -18,6 +18,7 @@
       - fonts-noto
       - fonts-noto-cjk
       - fonts-noto-color-emoji
+      - firmware-misc-nonfree
       - fwupd
       - google-chrome-stable
       - linux-image-amd64
