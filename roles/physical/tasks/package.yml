@@ -29,7 +29,6 @@
       - powertop
       - printer-driver-escpr
       - pulseaudio-module-bluetooth
-      - qutebrowser
       - skypeforlinux
       - sway
       - swaybg
@@ -50,7 +49,9 @@
 
 - name: Install sid packages
   apt:
-    name: firefox
+    name:
+      - firefox
+      - qutebrowser
     state: latest
     default_release: sid
   become: yes
