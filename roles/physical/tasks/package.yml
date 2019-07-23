@@ -21,6 +21,7 @@
       - firmware-misc-nonfree
       - fwupd
       - google-chrome-stable
+      - insomnia
       - linux-image-amd64
       - libjs-pdf
       - mpv
