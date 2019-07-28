@@ -19,7 +19,6 @@
       - neovim
       - tmux
       - git
-      - golang
       - google-cloud-sdk
       - kubectl
       - nodejs
@@ -34,6 +33,13 @@
       #- vim-nox
       #- universal-ctags
       #- zlib1g-dev
+    state: latest
+  become: yes
+
+- name: Install sid packages
+  apt:
+    name:
+      - golang-1.12
     state: latest
   become: yes
 

@@ -2,7 +2,7 @@ set -x EDITOR vi
 
 # PATH
 if test -z "$fish_user_paths"
-  set fish_user_paths ~/.local/bin ~/.gem/ruby/2.5.0/bin ~/.yarn/bin (go env GOPATH)/bin
+  set fish_user_paths ~/.local/bin ~/.gem/ruby/2.5.0/bin ~/.yarn/bin /usr/lib/go-1.12/bin ~/go/bin
 end
 
 # fzf
