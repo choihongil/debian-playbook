@@ -1,18 +1,12 @@
 ---
 
-- name: be sure sources.list exist
-  copy:
-    src: apt/sources.list
-    dest: /etc/apt/
-  become: yes
-  notify:
-    - update apt cache
-
-- name: apt config
-  copy:
-    src: apt/apt.conf
-    dest: /etc/apt/
-  become: yes
+#- name: be sure sources.list exist
+#  copy:
+#    src: apt/sources.list
+#    dest: /etc/apt/
+#  become: yes
+#  notify:
+#    - update apt cache
 
 - name: apt preference
   copy:
@@ -20,27 +14,29 @@
     dest: /etc/apt/preferences.d/
   become: yes
 
+- name: apt config
+  copy:
+    src: apt/apt.conf
+    dest: /etc/apt/
+  become: yes
+
 - name: add unstable repository
   apt_repository:
     repo: deb http://ftp.jp.debian.org/debian/ unstable main contrib non-free
     filename: unstable
   become: yes
-  notify:
-    - update apt cache
 
-- name: add apt key of hongri_cui
-  apt_key:
-    url: https://packagecloud.io/hongri_cui/packages/gpgkey
-    keyring: /etc/apt/trusted.gpg.d/hongri_cui_packages.gpg
-  become: yes
-
-- name: add hongri_cui repository
-  apt_repository:
-    repo: deb https://packagecloud.io/hongri_cui/packages/debian/ buster main
-    filename: hongri_cui_packages
-  become: yes
-  notify:
-    - update apt cache
+# - name: add apt key of hongri_cui
+#   apt_key:
+#     url: https://packagecloud.io/hongri_cui/packages/gpgkey
+#     keyring: /etc/apt/trusted.gpg.d/hongri_cui_packages.gpg
+#   become: yes
+#
+# - name: add hongri_cui repository
+#   apt_repository:
+#     repo: deb https://packagecloud.io/hongri_cui/packages/debian/ buster main
+#     filename: hongri_cui_packages
+#   become: yes
 
 - name: add apt key of docker
   apt_key:
@@ -53,8 +49,6 @@
     repo: deb [arch=amd64] https://download.docker.com/linux/debian buster stable
     filename: docker
   become: yes
-  notify:
-    - update apt cache
 
 - name: add apt key of kubernetes and google-cloud-sdk
   apt_key:
@@ -67,16 +61,12 @@
     repo: deb https://packages.cloud.google.com/apt kubernetes-xenial main
     filename: kubernetes
   become: yes
-  notify:
-    - update apt cache
 
 - name: add google-cloud-sdk repository
   apt_repository:
     repo: deb https://packages.cloud.google.com/apt cloud-sdk-buster main
     filename: google-cloud-sdk
   become: yes
-  notify:
-    - update apt cache
 
 - name: add apt key of nodejs
   apt_key:
@@ -86,11 +76,9 @@
 
 - name: add nodejs repository
   apt_repository:
-    repo: deb https://deb.nodesource.com/node_10.x buster main
+    repo: deb https://deb.nodesource.com/node_12.x buster main
     filename: nodesource
   become: yes
-  notify:
-    - update apt cache
 
 - name: add apt key of yarn
   apt_key:
@@ -103,8 +91,6 @@
     repo: deb https://dl.yarnpkg.com/debian/ stable main
     filename: yarn
   become: yes
-  notify:
-    - update apt cache
 
-- name: update when repository changed
-  meta: flush_handlers
+# - name: update when repository changed
+#   meta: flush_handlers

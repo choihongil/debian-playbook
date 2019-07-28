@@ -1,5 +1,19 @@
 ---
 
+- name: Sway repository
+  apt_repository:
+    repo: ppa:samoilov-lex/sway
+    codename: disco
+    filename: sway
+  become: yes
+
+- name: Pop!_OS PPA
+  apt_repository:
+    repo: ppa:system76/pop
+    codename: disco
+    filename: system76
+  become: yes
+
 - name: add apt key of google
   apt_key:
     url: https://dl.google.com/linux/linux_signing_key.pub
@@ -11,8 +25,6 @@
     repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
     filename: google-chrome
   become: yes
-  notify:
-    - update apt cache
 
 - name: add apt key of skype
   apt_key:
@@ -25,8 +37,15 @@
     repo: deb [arch=amd64] https://repo.skype.com/deb stable main
     filename: skype-stable
   become: yes
-  notify:
-    - update apt cache
 
-- name: update when repository changed
-  meta: flush_handlers
+- name: Add apt key of insomnia
+  apt_key:
+    url: https://insomnia.rest/keys/debian-public.key.asc
+    keyring: /etc/apt/trusted.gpg.d/insomnia.gpg
+  become: yes
+
+- name: Add insomnia repository
+  apt_repository:
+    repo: deb https://dl.bintray.com/getinsomnia/Insomnia /
+    filename: insomnia
+  become: yes

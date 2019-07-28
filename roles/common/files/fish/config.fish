@@ -12,8 +12,8 @@ set -x FZF_DEFAULT_OPTS '--height 40% --reverse --border'
 set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
 # powerline
-if test -d "$HOME/.local/lib/python3.6/site-packages/powerline"
-  set -x POWERLINE_ROOT "$HOME/.local/lib/python3.6/site-packages/powerline"
+if test -d "$HOME/.local/lib/python3.7/site-packages/powerline"
+  set -x POWERLINE_ROOT "$HOME/.local/lib/python3.7/site-packages/powerline"
   set fish_function_path $fish_function_path "$POWERLINE_ROOT/bindings/fish"
   powerline-setup
 end
@@ -29,8 +29,6 @@ end
 
 if not set -q abbrs_initialized
   set -U abbrs_initialized
-  echo -n Setting abbreviations...
-
   # apt
   abbr --add aa         sudo apt autoremove
   abbr --add ai         sudo apt install
@@ -62,15 +60,15 @@ if not set -q abbrs_initialized
   abbr --add gs         git status
   abbr --add gt         git tag
   # kubectl
-  abbr -add kap        kubectl apply --filename
-  abbr -add kat        kubectl attach
-  abbr -add ke         kubectl exec
-  abbr -add kgp        kubectl get pods
-  abbr -add kdp        kubectl delete pods
-  abbr -add kdsp       kubectl describe pods
-  abbr -add kl         kubectl logs
-  abbr -add kne        kubectl --namespace kube-system exec
-  abbr -add kngp       kubectl --namespace kube-system get pods
+  abbr --add kap        kubectl apply --filename
+  abbr --add kat        kubectl attach
+  abbr --add ke         kubectl exec
+  abbr --add kgp        kubectl get pods
+  abbr --add kdp        kubectl delete pods
+  abbr --add kdsp       kubectl describe pods
+  abbr --add kl         kubectl logs
+  abbr --add kne        kubectl --namespace kube-system exec
+  abbr --add kngp       kubectl --namespace kube-system get pods
   # systemctl
   abbr --add sld        systemctl list-dependencies
   abbr --add sp         systemctl poweroff
@@ -79,6 +77,4 @@ if not set -q abbrs_initialized
   abbr --add sst        systemctl status
   abbr --add suld       systemctl --user list-dependencies
   abbr --add sust       systemctl --user status
-
-  echo Done
 end

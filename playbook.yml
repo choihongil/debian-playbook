@@ -2,19 +2,19 @@
 - hosts: local
   tasks:
     - group_by:
-        key: "{{ ansible_os_family }}-virt_{{ ansible_virtualization_role|default('none', true) }}"
+        key: "{{ ansible_os_family }}_virt_{{ ansible_virtualization_role|default('none', true) }}"
 
-- hosts: Debian-virt_host
+- hosts: Debian_virt_host
   gather_facts: false
   roles:
     - physical
 
-- hosts: Debian-virt_guest
+- hosts: Debian_virt_guest
   gather_facts: false
   roles:
     - common
 
-- hosts: Darwin-virt_none
+- hosts: Darwin_virt_none
   gather_facts: false
   roles:
     - mac

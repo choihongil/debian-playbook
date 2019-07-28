@@ -2,5 +2,3 @@
 
 peculiar_packages:
   - firmware-iwlwifi
-
-touchpad_identifier: "1739:0:Synaptics_TM3288-011"

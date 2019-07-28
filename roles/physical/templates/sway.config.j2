@@ -47,7 +47,9 @@ output DP-1 position 0,0
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
-input {{ touchpad_identifier|default('touchpad_id') }} {
+
+input type:keyboard xkb_options caps:escape,altwin:prtsc_rwin
+input type:touchpad {
   dwt enabled
   events disabled_on_external_mouse
   middle_emulation enabled
@@ -259,8 +261,8 @@ bindsym Control+$mod+Delete mode "(L)ogout, (R)eboot, (H)alt"
     exec systemctl --user import-environment DISPLAY
     # idle
     exec swayidle -w \
-            timeout 300  "swaylock -efFki $wallpaper" \
-            timeout 600  "swaymsg 'output * dpms off'" \
+            timeout 600  "swaylock -efFki $wallpaper" \
+            timeout 900  "swaymsg 'output * dpms off'" \
                   resume "swaymsg 'output * dpms on'" \
             timeout 1800 "systemctl suspend"
 

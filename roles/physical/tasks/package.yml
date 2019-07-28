@@ -5,26 +5,34 @@
     name:
       - alacritty
       - cups
+      - cups-browsed
       - fcitx
+      - fcitx-config-gtk
+      - fcitx-frontend-gtk3
+      - fcitx-frontend-qt5
+      - fcitx-ui-classic
       - fcitx-googlepinyin
       - fcitx-hangul
       - fcitx-mozc
       - feh
       - fonts-noto
+      - fonts-noto-cjk
       - fonts-noto-color-emoji
-      - firefox
+      - firmware-misc-nonfree
       - fwupd
       - google-chrome-stable
+      - insomnia
       - linux-image-amd64
       - libjs-pdf
       - mpv
+      - modemmanager
       - network-manager
       - powertop
       - printer-driver-escpr
       - pulseaudio-module-bluetooth
-      - qutebrowser
       - skypeforlinux
       - sway
+      - swaybg
       - swayidle
       - swaylock
       - blueman
@@ -33,9 +41,20 @@
       - pavucontrol
       - rofi
       - udiskie
+      - wl-clipboard
       - xbacklight
       - xclip
+      - xwayland
     state: latest
+  become: yes
+
+- name: Install sid packages
+  apt:
+    name:
+      - firefox
+      - qutebrowser
+    state: latest
+    default_release: sid
   become: yes
 
 - name: Install peculiar packages
@@ -44,19 +63,11 @@
     state: latest
   become: yes
 
-- name: Install additional firmwares
-  copy:
-    src: firmware/
-    dest: /lib/firmware/
-  become: yes
-
-- name: purge packages
-  apt:
-    name:
-      - ifupdown
-    state: absent
-    purge: yes
-  become: yes
+# - name: Install additional firmwares
+#   copy:
+#     src: firmware/
+#     dest: /lib/firmware/
+#   become: yes
 
 - name: ensure local font folder exists
   file:
@@ -76,3 +87,11 @@
 - name: fc-cache
   shell: "fc-cache -fv"
   when: font_count.stdout|int == 0
+
+- name: purge packages
+  apt:
+    name:
+      - ifupdown
+    state: absent
+    purge: yes
+  become: yes

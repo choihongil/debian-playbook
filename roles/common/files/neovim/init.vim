@@ -155,7 +155,7 @@ Plug 'tomtom/tcomment_vim'
 " endwise
 "Plug 'tpope/vim-endwise'
 " Conquer of Completion
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " snippets
 Plug 'honza/vim-snippets'
 " fzf
@@ -189,11 +189,11 @@ let g:ale_fixers = {
     \ 'typescript': ['prettier', 'eslint'],
     \ 'vue': ['prettier'],
     \ 'ruby': ['rubocop'],
+    \ 'python': ['black'],
     \ }
 
 " fzf
 if executable('fzf')
-  "set runtimepath+=~/.fzf
   source /usr/share/doc/fzf/examples/fzf.vim
   " Rg command with preview window
   command! -bang -nargs=* -complete=dir Rg
@@ -216,7 +216,6 @@ let g:coc_global_extensions = [
       \ 'coc-css',
       \ 'coc-highlight',
       \ 'coc-json',
-      \ 'coc-python',
       \ 'coc-rls',
       \ 'coc-snippets',
       \ 'coc-tsserver',

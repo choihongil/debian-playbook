@@ -3,18 +3,20 @@
 - name: Install packages
   apt:
     name:
-      - avahi-daemon
+      #- avahi-daemon
       - build-essential
       - cargo
-      - cifs-utils
+      #- cifs-utils
       - curl
-      - dh-make
-      - git-buildpackage
-      - cowbuilder
-      - dnsutils
+      #- dh-make
+      #- git-buildpackage
+      #- cowbuilder
+      #- dnsutils
       - docker-ce
+      - fuse                    # appimages
       - fzf
       - fish
+      - neovim
       - tmux
       - git
       - golang
@@ -26,12 +28,12 @@
       - pwgen
       - python3-dev
       - ripgrep
-      - rsync
-      - ruby-dev
+      #- rsync
+      - ruby-dev                # for native gems
       - unar
-      - vim-nox
-      - universal-ctags
-      - zlib1g-dev
+      #- vim-nox
+      #- universal-ctags
+      #- zlib1g-dev
     state: latest
   become: yes
 
@@ -39,21 +41,25 @@
   pip:
     name:
       - ansible
-      - aws-shell
+      - black
+      - docker-compose
+      #- aws-shell
       - flake8
-      - httpie
-      - mycli==1.18.0
-      - pgcli
+      #- httpie
+      #- mycli==1.18.0
+      #- pgcli
       - powerline-status
-      - python-language-server
+      - pre-commit
+      #- python-language-server
       - ranger-fm
-      - tldextract
+      - tldextract                    # for qute-pass
       - youtube_dl
     executable: "{{ ansible_user_dir }}/.local/bin/pip"
     extra_args: --user
     state: latest
 
-  # /usr/bin/ruby2.3: No such file or directory -- /usr/share/rubygems-integration/all/gems/rake-10.5.0/bin/rake (LoadError)
+# for install package_cloud
+# /usr/bin/ruby2.5: No such file or directory -- /usr/share/rubygems-integration/all/gems/rake-12.3.1/exe/rake (LoadError)
 - name: symbolic link of rake
   file:
     path: /usr/share/rubygems-integration/all/gems/rake-12.3.1/exe
@@ -84,4 +90,4 @@
     state: latest
   with_items:
     - "@vue/cli"
-    - livedown
+    - "@bitwarden/cli"

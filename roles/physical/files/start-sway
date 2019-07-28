@@ -1,6 +1,5 @@
 #!/bin/sh
 
-export XKB_DEFAULT_OPTIONS=caps:escape,altwin:prtsc_rwin
 export CLUTTER_IM_MODULE=xim
 export QT4_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
