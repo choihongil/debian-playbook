@@ -26,7 +26,7 @@
       - yarn
       - openssh-server
       - pwgen
-      #- python3-dev
+      - python3-dev
       - ripgrep
       #- rsync
       - ruby-dev                # for native gems
@@ -41,12 +41,15 @@
   pip:
     name:
       - ansible
+      - black
+      - docker-compose
       #- aws-shell
-      #- flake8
+      - flake8
       #- httpie
       #- mycli==1.18.0
       #- pgcli
       - powerline-status
+      - pre-commit
       #- python-language-server
       - ranger-fm
       - tldextract                    # for qute-pass
