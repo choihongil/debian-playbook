@@ -49,3 +49,15 @@
     repo: deb https://dl.bintray.com/getinsomnia/Insomnia /
     filename: insomnia
   become: yes
+
+- name: Add apt key of dbeaver-ce
+  apt_key:
+    url: https://dbeaver.io/debs/dbeaver.gpg.key
+    keyring: /etc/apt/trusted.gpg.d/dbeaver.gpg
+  become: yes
+
+- name: Add repository of dbeaver-ce
+  apt_repository:
+    repo: deb https://dbeaver.io/debs/dbeaver-ce /
+    filename: dbeaver-ce
+  become: yes

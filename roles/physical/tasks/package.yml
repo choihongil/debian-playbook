@@ -6,6 +6,8 @@
       - alacritty
       - cups
       - cups-browsed
+      - dbeaver-ce
+      - openjdk-11-jre-headless
       - fcitx
       - fcitx-config-gtk
       - fcitx-frontend-gtk3
