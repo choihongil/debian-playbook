@@ -54,6 +54,7 @@
   apt:
     name:
       - firefox
+      - linux-image-amd64
       - qutebrowser
     state: latest
     default_release: sid
