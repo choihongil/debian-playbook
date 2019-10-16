@@ -54,6 +54,8 @@
   apt:
     name:
       - firefox
+      - intel-media-va-driver
+      - vainfo
       - linux-image-amd64
       - qutebrowser
     state: latest

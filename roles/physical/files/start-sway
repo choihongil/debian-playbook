@@ -10,4 +10,7 @@ export GTK_IM_MODULE=fcitx
 # firefox
 export GDK_BACKEND=wayland
 
+# vaapi
+export LIBVA_DRIVER_NAME=iHD
+
 exec sway
