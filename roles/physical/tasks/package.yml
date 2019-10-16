@@ -54,9 +54,6 @@
   apt:
     name:
       - firefox
-      - intel-media-va-driver
-      - vainfo
-      - linux-image-amd64
       - qutebrowser
     state: latest
     default_release: sid
@@ -66,6 +63,7 @@
   apt:
     name: "{{ peculiar_packages|default([]) }}"
     state: latest
+    default_release: sid
   become: yes
 
 # - name: Install additional firmwares

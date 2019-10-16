@@ -2,3 +2,6 @@
 
 peculiar_packages:
   - firmware-iwlwifi
+  - intel-media-va-driver
+  - vainfo
+  - linux-image-amd64
