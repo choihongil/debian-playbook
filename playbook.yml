@@ -6,15 +6,21 @@
 
 - hosts: Debian_virt_host
   gather_facts: false
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
   roles:
     - physical
 
 - hosts: Debian_virt_guest
   gather_facts: false
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
   roles:
     - common
 
 - hosts: Darwin_virt_none
   gather_facts: false
+  vars:
+    ansible_python_interpreter: /usr/local/bin/python3
   roles:
     - mac
