@@ -23,12 +23,14 @@
     - alfred
     - dbeaver-community
     - firefox
+    - font-fontawesome
     - font-sourcecodepro-nerd-font
-    - google-chrome
+    #- google-chrome
     - google-japanese-ime
     - insomnia
     - java
     - karabiner-elements
+    - ubersicht
     - vagrant
     - virtualbox
 
@@ -46,3 +48,18 @@
     path: "{{ ansible_user_dir }}/vm_share"
     state: directory
     mode: 0755
+
+- name: yabairc
+  copy:
+    src: yabairc
+    dest: "{{ ansible_user_dir }}/.yabairc"
+
+- name: skhdrc
+  copy:
+    src: skhdrc
+    dest: "{{ ansible_user_dir }}/.skhdrc"
+
+# - name: ubersicht widgets
+#   copy:
+#     src: ubersicht/widgets
+#     dest: "{{ ansible_user_dir }}/Library/Application\ Support/�'\234'bersit"
