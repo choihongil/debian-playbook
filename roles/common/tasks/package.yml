@@ -16,7 +16,6 @@
       - fuse                    # appimages
       - fzf
       - fish
-      - neovim
       - tmux
       - git
       - google-cloud-sdk
@@ -40,7 +39,9 @@
   apt:
     name:
       - golang-1.12
+      - neovim
     state: latest
+    default_release: sid
   become: yes
 
 - name: Install pip packages

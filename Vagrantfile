@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "debian/testing64"
+  config.vm.box = "debian/buster64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -38,11 +38,12 @@ Vagrant.configure("2") do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
+  config.vm.synced_folder "~/vm_share", "/vagrant_data"
   config.vm.synced_folder ".", "/vagrant", disabled: true
-  config.vm.synced_folder "~/vm_share", "/mnt/host_share",
-    type: "nfs",
-    #nfs_version: 4,
-    nfs_udp: false
+  # config.vm.synced_folder "~/vm_share", "/mnt/host_share",
+  #   type: "nfs",
+  #   #nfs_version: 4,
+  #   nfs_udp: false
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -56,6 +57,9 @@ Vagrant.configure("2") do |config|
     vb.memory = "6144"
 
     vb.customize ['modifyvm', :id, '--natdnshostresolver1', 'on']
+
+    # https://stackoverflow.com/questions/19490652/how-to-sync-time-on-host-wake-up-within-virtualbox
+    vb.customize [ "guestproperty", "set", :id, "/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold", 10000 ]
 
     { home: 50, docker: 50 }.each_with_index do |(name, size), index|
       filename = File.expand_path("~/VirtualBox VMs/#{name}.vdi")
@@ -80,7 +84,8 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
-    sudo apt install --yes --no-install-recommends apt-transport-https curl parted
+    sudo apt install --yes --no-install-recommends git gnupg python3-distutils parted
+    sudo apt upgrade
 
     # add home partition
     if ! sudo lsblk | grep sdb1 > /dev/null; then
@@ -109,7 +114,7 @@ Vagrant.configure("2") do |config|
     fi
 
     # install pip
-    curl -LJO https://bootstrap.pypa.io/get-pip.py 2>/dev/null
+    wget https://bootstrap.pypa.io/get-pip.py 2>/dev/null
     python3 get-pip.py --user
   SHELL
 

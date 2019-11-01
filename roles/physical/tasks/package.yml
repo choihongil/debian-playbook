@@ -63,6 +63,7 @@
   apt:
     name: "{{ peculiar_packages|default([]) }}"
     state: latest
+    default_release: sid
   become: yes
 
 # - name: Install additional firmwares

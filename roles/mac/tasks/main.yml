@@ -1,38 +1,45 @@
 ---
 
-- name: Install packages
-  homebrew_cask:
+- name: Tap repositories
+  homebrew_tap:
     name: "{{ item }}"
     state: present
   with_items:
+    - koekeishiya/formulae
+    - homebrew/cask-fonts
+
+- name: Install packages
+  homebrew:
+    name: ['ansible', 'jq', 'skhd', 'yabai']
+    state: present
+
+- name: Install cask packages
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+    accept_external_apps: true
+  with_items:
     - alacritty
     - alfred
+    - dbeaver-community
     - firefox
+    - font-sourcecodepro-nerd-font
     - google-chrome
     - google-japanese-ime
+    - insomnia
+    - java
     - karabiner-elements
-    - qutebrowser
     - vagrant
     - virtualbox
 
-- name: Config qutebrowser
-  copy:
-    src: qutebrowser/
-    dest: "{{ ansible_user_dir }}/.qutebrowser"
-
-- name: Install NerdFont
-  get_url:
-    url: https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Medium/complete/Sauce%20Code%20Pro%20Medium%20Nerd%20Font%20Complete.ttf
-    dest: "{{ ansible_user_dir }}/Library/Fonts/"
-
-- name: Allow 'sudo' group to have passwordless sudo
-  lineinfile:
-    path: /etc/sudoers
-    state: present
-    regexp: '^%admin'
-    line: '%admin		ALL = (ALL) NOPASSWD: ALL'
-    validate: '/usr/sbin/visudo -cf %s'
-  become: yes
+# - name: Allow 'sudo' group to have passwordless sudo
+#   lineinfile:
+#     path: /etc/sudoers
+#     state: present
+#     regexp: '^%admin'
+#     line: '%admin		ALL = (ALL) NOPASSWD: ALL'
+#     validate: '/usr/sbin/visudo -cf %s'
+#   become: yes
 
 - name: Ensure vm_share directory present
   file:

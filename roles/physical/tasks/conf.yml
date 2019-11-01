@@ -81,8 +81,3 @@
     src: umpv
     dest: "{{ ansible_user_dir }}/.local/bin/"
     mode: 0755
-
-- name: firefox wayland desktop
-  copy:
-    src: firefox-wayland.desktop
-    dest: "{{ ansible_user_dir }}/.local/share/applications/"

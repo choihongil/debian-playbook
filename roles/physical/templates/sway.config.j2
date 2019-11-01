@@ -68,6 +68,9 @@ smart_gaps on
     # start a terminal
     bindsym $mod+Return exec $term
 
+    # use mpv play url of clipboard
+    bindsym $mod+semicolon exec mpv $(wl-paste)
+
     # kill focused window
     bindsym $mod+Shift+q kill
 
