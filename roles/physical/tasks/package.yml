@@ -17,6 +17,7 @@
       - fcitx-hangul
       - fcitx-mozc
       - feh
+      - fonts-font-awesome
       - fonts-noto
       - fonts-noto-cjk
       - fonts-noto-color-emoji
