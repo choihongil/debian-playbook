@@ -39,8 +39,8 @@
 #   become: yes
 
 - name: config sway
-  template:
-    src: sway.config.j2
+  copy:
+    src: sway.config
     dest: "{{ ansible_user_dir }}/.config/sway/config"
 
 - name: start sway
