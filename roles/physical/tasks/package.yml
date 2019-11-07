@@ -38,6 +38,7 @@
       - swaybg
       - swayidle
       - swaylock
+      - i3status-rust
       - blueman
       - desktop-base
       - dunst
