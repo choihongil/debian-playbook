@@ -5,7 +5,6 @@
     name:
       #- avahi-daemon
       - build-essential
-      - cargo
       #- cifs-utils
       - curl
       #- dh-make
@@ -98,3 +97,14 @@
   with_items:
     - "@vue/cli"
     - "@bitwarden/cli"
+
+- name: check rustup installed
+  stat:
+    path: "{{ ansible_user_dir }}/.cargo/bin/rustup"
+  register: rustup
+  
+- name: Install rustup
+  shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path --component rls rust-analysis
+  args:
+    warn: no
+  when: rustup.stat.exists == False
