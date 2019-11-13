@@ -50,6 +50,12 @@
     filename: google-cloud-sdk
   become: yes
 
+- name: Add gcsfuse Repository
+  apt_repository:
+    repo: deb https://packages.cloud.google.com/apt gcsfuse-buster main
+    filename: gcsfuse
+  become: yes
+
 - name: add apt key of nodejs
   apt_key:
     url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key

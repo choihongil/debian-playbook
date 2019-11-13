@@ -17,6 +17,7 @@
       - fish
       - tmux
       - git
+      - gcsfuse
       - google-cloud-sdk
       - kubectl
       - nodejs
