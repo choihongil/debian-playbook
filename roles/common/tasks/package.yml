@@ -86,9 +86,6 @@
   with_items:
     - package_cloud
     - pre-commit
-    - rubocop
-    - rubocop-rspec
-
 
 - name: Install node.js packages
   yarn:
