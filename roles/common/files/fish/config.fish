@@ -27,11 +27,6 @@ if status --is-interactive; and not ssh-add -l > /dev/null
   end
 end
 
-# kind
-if which kind > /dev/null
-  set -x KUBECONFIG (kind get kubeconfig-path)
-end
-
 if not set -q abbrs_initialized
   set -U abbrs_initialized
   # apt
