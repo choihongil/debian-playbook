@@ -95,6 +95,7 @@
   with_items:
     - "@vue/cli"
     - "@bitwarden/cli"
+    - joplin
 
 - name: check rustup installed
   stat:
