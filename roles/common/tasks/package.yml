@@ -38,7 +38,7 @@
 - name: Install sid packages
   apt:
     name:
-      - golang-1.12
+      - golang
       - neovim
     state: latest
     default_release: sid
