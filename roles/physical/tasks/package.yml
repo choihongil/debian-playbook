@@ -4,6 +4,7 @@
   apt:
     name:
       - alacritty
+      - appimagelauncher
       - cups
       - cups-browsed
       - dbeaver-ce
