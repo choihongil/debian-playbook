@@ -24,12 +24,14 @@
     - dbeaver-community
     - firefox
     - font-cica
+    - font-fontawesome
     - google-chrome
     - google-japanese-ime
     - insomnia
     - java
     - joplin
     - karabiner-elements
+    - ubersicht
     - vagrant
     - virtualbox
 
@@ -47,3 +49,19 @@
     path: "{{ ansible_user_dir }}/vm_share"
     state: directory
     mode: 0755
+
+- name: yabairc
+  copy:
+    src: yabairc
+    dest: "{{ ansible_user_dir }}/.yabairc"
+
+- name: skhdrc
+  copy:
+    src: skhdrc
+    dest: "{{ ansible_user_dir }}/.skhdrc"
+
+- name: Übersicht widgets
+  copy:
+    src: Übersicht
+    dest: "{{ ansible_user_dir }}/Library/Application\ Support/"
+    mode: preserve
