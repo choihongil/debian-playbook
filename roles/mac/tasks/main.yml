@@ -64,3 +64,4 @@
   copy:
     src: Übersicht
     dest: "{{ ansible_user_dir }}/Library/Application\ Support/"
+    mode: preserve
