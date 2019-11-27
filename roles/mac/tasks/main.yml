@@ -25,7 +25,7 @@
     - firefox
     - font-fontawesome
     - font-sourcecodepro-nerd-font
-    #- google-chrome
+    - google-chrome
     - google-japanese-ime
     - insomnia
     - java
@@ -59,7 +59,7 @@
     src: skhdrc
     dest: "{{ ansible_user_dir }}/.skhdrc"
 
-# - name: ubersicht widgets
-#   copy:
-#     src: ubersicht/widgets
-#     dest: "{{ ansible_user_dir }}/Library/Application\ Support/�'\234'bersit"
+- name: Übersicht widgets
+  copy:
+    src: Übersicht
+    dest: "{{ ansible_user_dir }}/Library/Application\ Support/"
