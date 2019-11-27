@@ -39,19 +39,13 @@
 #   become: yes
 
 - name: config sway
-  template:
-    src: sway.config.j2
+  copy:
+    src: sway.config
     dest: "{{ ansible_user_dir }}/.config/sway/config"
 
 - name: start sway
   copy:
     src: start-sway
-    dest: "{{ ansible_user_dir }}/.local/bin/"
-    mode: 0755
-
-- name: i3status-rs
-  copy:
-    src: i3status-rs
     dest: "{{ ansible_user_dir }}/.local/bin/"
     mode: 0755
 

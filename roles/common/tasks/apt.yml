@@ -26,18 +26,6 @@
     filename: unstable
   become: yes
 
-# - name: add apt key of hongri_cui
-#   apt_key:
-#     url: https://packagecloud.io/hongri_cui/packages/gpgkey
-#     keyring: /etc/apt/trusted.gpg.d/hongri_cui_packages.gpg
-#   become: yes
-#
-# - name: add hongri_cui repository
-#   apt_repository:
-#     repo: deb https://packagecloud.io/hongri_cui/packages/debian/ buster main
-#     filename: hongri_cui_packages
-#   become: yes
-
 - name: add apt key of docker
   apt_key:
     url: https://download.docker.com/linux/debian/gpg
@@ -60,6 +48,12 @@
   apt_repository:
     repo: deb https://packages.cloud.google.com/apt cloud-sdk main
     filename: google-cloud-sdk
+  become: yes
+
+- name: Add gcsfuse Repository
+  apt_repository:
+    repo: deb https://packages.cloud.google.com/apt gcsfuse-buster main
+    filename: gcsfuse
   become: yes
 
 - name: add apt key of nodejs

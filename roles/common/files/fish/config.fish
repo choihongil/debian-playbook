@@ -2,7 +2,7 @@ set -x EDITOR vi
 
 # PATH
 if test -z "$fish_user_paths"
-  set fish_user_paths ~/.local/bin ~/.gem/ruby/2.5.0/bin ~/.yarn/bin /usr/lib/go-1.12/bin ~/go/bin
+  set fish_user_paths ~/.cargo/bin ~/.local/bin ~/.gem/ruby/2.5.0/bin ~/.yarn/bin ~/go/bin
 end
 
 # fzf
@@ -25,11 +25,6 @@ if status --is-interactive; and not ssh-add -l > /dev/null
   if test -f $HOME/.ssh/id_rsa_personal
     ssh-add $HOME/.ssh/id_rsa_personal
   end
-end
-
-# kind
-if which kind > /dev/null
-  set -x KUBECONFIG (kind get kubeconfig-path)
 end
 
 if not set -q abbrs_initialized

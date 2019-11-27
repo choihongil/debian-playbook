@@ -8,7 +8,7 @@ export XMODIFIERS=@im=fcitx
 export GTK_IM_MODULE=fcitx
 
 # firefox
-export GDK_BACKEND=wayland
+export MOZ_ENABLE_WAYLAND=1
 
 # vaapi
 export LIBVA_DRIVER_NAME=iHD

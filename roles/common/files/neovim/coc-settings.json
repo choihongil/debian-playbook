@@ -3,7 +3,10 @@
     "ruby": {
       "host":"localhost",
       "port": 7658,
-      "filetypes": ["ruby"]
+      "filetypes": ["ruby"],
+      "initializationOptions": {
+        "diagnostics": true
+      }
     }
   },
   "codeLens.enable": true,

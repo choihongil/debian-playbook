@@ -4,6 +4,7 @@
   apt:
     name:
       - alacritty
+      - appimagelauncher
       - cups
       - cups-browsed
       - dbeaver-ce
@@ -17,6 +18,7 @@
       - fcitx-hangul
       - fcitx-mozc
       - feh
+      - fonts-font-awesome
       - fonts-noto
       - fonts-noto-cjk
       - fonts-noto-color-emoji
@@ -37,6 +39,7 @@
       - swaybg
       - swayidle
       - swaylock
+      - i3status-rust
       - blueman
       - desktop-base
       - dunst
