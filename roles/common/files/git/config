@@ -1,3 +1,5 @@
+[core]
+        quotepath = false
 [user]
 	name = choihongil
 	email = choihongil@gmail.com
