@@ -40,6 +40,7 @@
     name:
       - golang
       - neovim
+      - nnn
     state: latest
     default_release: sid
   become: yes
@@ -58,7 +59,6 @@
       - powerline-status
       - pre-commit
       #- python-language-server
-      - ranger-fm
       - tldextract                    # for qute-pass
       - youtube_dl
     executable: "{{ ansible_user_dir }}/.local/bin/pip"
