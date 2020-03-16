@@ -1,5 +1,11 @@
 ---
 
+- name: syncthing preference
+  copy:
+    src: apt/syncthing.pref
+    dest: /etc/apt/preferences.d/
+  become: yes
+
 - name: add apt key of hongri_cui
   apt_key:
     url: https://packagecloud.io/hongri_cui/packages/gpgkey
@@ -72,4 +78,16 @@
   apt_repository:
     repo: deb https://dbeaver.io/debs/dbeaver-ce /
     filename: dbeaver-ce
+  become: yes
+
+- name: Add apt key of syncthing
+  apt_key:
+    url: https://syncthing.net/release-key.txt
+    keyring: /etc/apt/trusted.gpg.d/syncthing.gpg
+  become: yes
+
+- name: Add repository of syncthing
+  apt_repository:
+    repo: deb https://apt.syncthing.net/ syncthing stable
+    filename: syncthing
   become: yes

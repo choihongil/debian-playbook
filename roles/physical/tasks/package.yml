@@ -40,12 +40,11 @@
       - swayidle
       - swaylock
       - i3status-rust
-      - blueman
       - desktop-base
       - dunst
       - pavucontrol
       - rofi
-      - udiskie
+      - syncthing
       - wl-clipboard
       - xbacklight
       - xclip
@@ -56,6 +55,8 @@
 - name: Install sid packages
   apt:
     name:
+      - blueman
+      - udiskie
       - firefox
       - qutebrowser
     state: latest

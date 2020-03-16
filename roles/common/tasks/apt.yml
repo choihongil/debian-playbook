@@ -8,9 +8,9 @@
 #  notify:
 #    - update apt cache
 
-- name: apt preference
+- name: nodejs preference
   copy:
-    src: apt/custom.pref
+    src: apt/nodejs.pref
     dest: /etc/apt/preferences.d/
   become: yes
 

@@ -58,7 +58,7 @@
 - name: fcitx config
   copy:
     src: fcitx_config
-    dest: "{{ ansible_user_dir }}"/.config/fcitx/config
+    dest: "{{ ansible_user_dir }}/.config/fcitx/config"
 
 - name: config mpv
   copy:
