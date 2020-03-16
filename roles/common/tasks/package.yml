@@ -3,7 +3,7 @@
 - name: Install packages
   apt:
     name:
-      #- avahi-daemon
+      - avahi-daemon
       - build-essential
       #- cifs-utils
       - curl
