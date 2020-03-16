@@ -7,6 +7,7 @@
   with_items:
     - .config/sway
     - .config/i3status-rs
+    - .config/fcitx
 
   # Enable suspend when connected with external monitor
 - name: Ensure "HandleLidSwitchDocked=suspend" in section "[Login]" in specified file
@@ -53,6 +54,11 @@
   copy:
     src: i3status-rs-config.toml
     dest: "{{ ansible_user_dir }}/.config/i3status-rs/config.toml"
+
+- name: fcitx config
+  copy:
+    src: fcitx_config
+    dest: "{{ ansible_user_dir }}"/.config/fcitx/config
 
 - name: config mpv
   copy:
