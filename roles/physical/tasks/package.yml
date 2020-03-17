@@ -58,6 +58,7 @@
       - blueman
       - udiskie
       - firefox
+      - light
       - qutebrowser
     state: latest
     default_release: sid
