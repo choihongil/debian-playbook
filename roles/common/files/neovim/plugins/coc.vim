@@ -4,6 +4,7 @@ let g:coc_global_extensions = [
       \ 'coc-json',
       \ 'coc-rls',
       \ 'coc-snippets',
+      \ 'coc-solargraph',
       \ 'coc-tsserver',
       \ 'coc-vetur',
       \ 'coc-yaml',

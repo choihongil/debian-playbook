@@ -1,14 +1,10 @@
 {
-  "languageserver": {
-    "ruby": {
-      "host":"localhost",
-      "port": 7658,
-      "filetypes": ["ruby"],
-      "initializationOptions": {
-        "diagnostics": true
-      }
-    }
-  },
   "codeLens.enable": true,
-  "suggest.enablePreview": true
+  "suggest.enablePreview": true,
+  "solargraph.externalServer": {
+    "host": "localhost",
+    "port": 7658
+  },
+  "solargraph.transport": "external",
+  "solargraph.diagnostics": true
 }
