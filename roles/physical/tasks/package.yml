@@ -59,7 +59,6 @@
       - udiskie
       - firefox
       - light
-      - qutebrowser
     state: latest
     default_release: sid
   become: yes

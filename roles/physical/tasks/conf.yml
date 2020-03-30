@@ -64,20 +64,3 @@
   copy:
     src: mpv
     dest: "{{ ansible_user_dir }}/.config/"
-
-- name: config qutebrowser
-  copy:
-    src: qutebrowser
-    dest: "{{ ansible_user_dir }}/.config/"
-
-- name: create symbolic link to open_url_in_instance.sh
-  file:
-    src: /usr/share/qutebrowser/scripts/open_url_in_instance.sh
-    dest: "{{ ansible_user_dir }}/.local/bin/qutebrowser"
-    state: link
-
-- name: umpv
-  copy:
-    src: umpv
-    dest: "{{ ansible_user_dir }}/.local/bin/"
-    mode: 0755
