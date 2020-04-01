@@ -27,6 +27,7 @@
       - ripgrep
       #- rsync
       - ruby-dev                # for native gems
+      - socat
       - unar
       #- vim-nox
       #- universal-ctags
