@@ -47,4 +47,4 @@ fi
 # execute playbook
 echo "Execute ansible playbook"
 cd ~/debian-playbook
-${ANSIBLE_PLAYBOOK} -Ki local --limit localhost playbook.yml
+${ANSIBLE_PLAYBOOK} -Ki local playbook.yml
