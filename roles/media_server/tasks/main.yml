@@ -1,8 +1,12 @@
 ---
 
-- name: Install transmission-daemon
+- name: Install transmission-daemon, usbmount
   apt:
-    name: transmission-daemon
+    name:
+      - transmission-daemon
+      # https://superuser.com/questions/1265412/automounting-usb-drives-on-a-headless-systemd-linux-box
+      # https://github.com/rbrito/usbmount/issues/25#issuecomment-550534754
+      - usbmount
     state: latest
   become: yes
 
