@@ -1,0 +1,19 @@
+---
+
+- name: Add apt key of jellyfin
+  apt_key:
+    url: https://repo.jellyfin.org/debian/jellyfin_team.gpg.key
+    keyring: /etc/apt/trusted.gpg.d/jellyfin.gpg
+  become: yes
+
+- name: Add jellyfin repository
+  apt_repository:
+    repo: deb [arch=amd64] https://repo.jellyfin.org/debian buster main
+    filename: jellyfin
+  become: yes
+
+- name: Install jellyfin
+  apt:
+    name: jellyfin
+    state: latest
+  become: yes

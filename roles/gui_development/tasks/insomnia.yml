@@ -1,0 +1,19 @@
+---
+
+- name: Add apt key of insomnia
+  apt_key:
+    url: https://insomnia.rest/keys/debian-public.key.asc
+    keyring: /etc/apt/trusted.gpg.d/insomnia.gpg
+  become: yes
+
+- name: Add insomnia repository
+  apt_repository:
+    repo: deb https://dl.bintray.com/getinsomnia/Insomnia /
+    filename: insomnia
+  become: yes
+
+- name: Install insomnia
+  apt:
+    name: insomnia
+    state: latest
+  become: yes

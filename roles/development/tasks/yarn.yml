@@ -1,0 +1,19 @@
+---
+
+- name: Add apt key of yarn
+  apt_key:
+    url: https://dl.yarnpkg.com/debian/pubkey.gpg
+    keyring: /etc/apt/trusted.gpg.d/yarn.gpg
+  become: yes
+
+- name: Add yarn repository
+  apt_repository:
+    repo: deb https://dl.yarnpkg.com/debian/ stable main
+    filename: yarn
+  become: yes
+
+- name: Install yarn
+  apt:
+    name: yarn
+    state: latest
+  become: yes

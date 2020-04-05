@@ -1,0 +1,38 @@
+---
+
+- name: Allow 'sudo' group to have passwordless sudo
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^%sudo'
+    line: '%sudo	ALL=(ALL:ALL) NOPASSWD: ALL'
+    validate: '/usr/sbin/visudo -cf %s'
+  become: yes
+
+- name: Set fs.inotify.max_user_watches to 524288 in /etc/sysctl.conf
+  sysctl:
+    name: fs.inotify.max_user_watches
+    value: '524288'
+    sysctl_set: yes
+    state: present
+    reload: yes
+  become: yes
+
+# - name: config pbuilder
+#   copy:
+#     src: pbuilder/pbuilderrc
+#     dest: "{{ ansible_user_dir }}/.pbuilderrc"
+#
+# - name: pbuilder hooks
+#   copy:
+#     src: pbuilder/hooks
+#     dest: /var/cache/pbuilder/
+#     mode: 0755
+#   become: yes
+#
+# - name: Create Packages if not exists
+#   copy:
+#     src: pbuilder/Packages
+#     dest: /var/cache/pbuilder/result/
+#     force: no
+#   become: yes

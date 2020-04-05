@@ -1,0 +1,9 @@
+---
+
+- name: Install transmission-daemon
+  apt:
+    name: transmission-daemon
+    state: latest
+  become: yes
+
+- import_tasks: jellyfin.yml

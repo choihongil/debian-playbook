@@ -1,0 +1,28 @@
+---
+
+- name: Import Google Cloud Platform publick key
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    keyring: /etc/apt/trusted.gpg.d/cloud.google.gpg
+  become: yes
+
+- name: Add Google Cloud Sdk Repository
+  apt_repository:
+    repo: deb https://packages.cloud.google.com/apt cloud-sdk main
+    filename: google-cloud-sdk
+  become: yes
+
+- name: Add gcsfuse Repository
+  apt_repository:
+    repo: deb https://packages.cloud.google.com/apt gcsfuse-buster main
+    filename: gcsfuse
+  become: yes
+
+- name: Install google-cloud-sdk, kubectl, gcsfuse
+  apt:
+    name:
+      - gcsfuse
+      - google-cloud-sdk
+      - kubectl
+    state: latest
+  become: yes

@@ -1,0 +1,12 @@
+---
+- import_tasks: apt.yml
+- import_tasks: avahi.yml
+- import_tasks: fish.yml
+- import_tasks: openssh_server.yml
+
+- name: Add systemd-journal groups to user
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: systemd-journal
+    append: yes
+  become: yes

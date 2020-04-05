@@ -1,0 +1,24 @@
+---
+
+#- name: be sure sources.list exist
+#  copy:
+#    src: apt/sources.list
+#    dest: /etc/apt/
+#  become: yes
+#  notify:
+#    - update apt cache
+
+- name: Config apt
+  copy:
+    src: apt/apt.conf
+    dest: /etc/apt/
+  become: yes
+
+- name: Add unstable repository
+  apt_repository:
+    repo: deb http://ftp.jp.debian.org/debian/ unstable main contrib non-free
+    filename: unstable
+  become: yes
+
+# - name: update when repository changed
+#   meta: flush_handlers

@@ -1,9 +1,8 @@
 ---
 
-- name: Install packages
+- name: Install buil-essential, curl, fuse, pwgen, python3-dev, ruby-dev, socat, unar
   apt:
     name:
-      - avahi-daemon
       - build-essential
       #- cifs-utils
       - curl
@@ -11,42 +10,27 @@
       #- git-buildpackage
       #- cowbuilder
       #- dnsutils
-      - docker-ce
       - fuse                    # appimages
-      - fzf
-      - fish
-      - git
-      - gcsfuse
-      - google-cloud-sdk
-      - kubectl
-      - nodejs
-      - yarn
-      - openssh-server
       - pwgen
       - python3-dev
-      - ripgrep
-      #- rsync
       - ruby-dev                # for native gems
       - socat
       - unar
-      #- vim-nox
       #- universal-ctags
       #- zlib1g-dev
     state: latest
   become: yes
 
-- name: Install sid packages
+- name: Install golang, nnn on sid
   apt:
     name:
       - golang
-      - neovim
       - nnn
-      - tmux
     state: latest
     default_release: sid
   become: yes
 
-- name: Install pip packages
+- name: Install python packages of ansible, black, docker-compose, flake8, powerline-status, pre-commit, youtube-dl
   pip:
     name:
       - ansible
@@ -60,7 +44,6 @@
       - powerline-status
       - pre-commit
       #- python-language-server
-      - tldextract                    # for qute-pass
       - youtube_dl
     executable: "{{ ansible_user_dir }}/.local/bin/pip"
     extra_args: --user
@@ -68,19 +51,20 @@
 
 # for install package_cloud
 # /usr/bin/ruby2.5: No such file or directory -- /usr/share/rubygems-integration/all/gems/rake-12.3.1/exe/rake (LoadError)
-- name: symbolic link of rake
+- name: Ensure directory /usr/share/rubygems-integration/all/gems/rake-12.3.1/exe exist
   file:
     path: /usr/share/rubygems-integration/all/gems/rake-12.3.1/exe
     state: directory
   become: yes
 
-- file:
+- name: Create symbolic link of rake
+  file:
     src: /usr/bin/rake
     dest: /usr/share/rubygems-integration/all/gems/rake-12.3.1/exe/rake
     state: link
   become: yes
 
-- name: Install gem packages
+- name: Install ruby packages of package_cloud, pre-commit
   gem:
     name: "{{ item }}"
     state: latest
@@ -88,7 +72,7 @@
     - package_cloud
     - pre-commit
 
-- name: Install node.js packages
+- name: Install node packages of @vue/cli, @bitwarden/cli, joplin
   yarn:
     name: "{{ item }}"
     global: yes
@@ -97,14 +81,3 @@
     - "@vue/cli"
     - "@bitwarden/cli"
     - joplin
-
-- name: check rustup installed
-  stat:
-    path: "{{ ansible_user_dir }}/.cargo/bin/rustup"
-  register: rustup
-  
-- name: Install rustup
-  shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path --component rls rust-analysis
-  args:
-    warn: no
-  when: rustup.stat.exists == False

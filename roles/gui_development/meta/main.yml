@@ -1,0 +1,5 @@
+---
+
+dependencies:
+  - { role: development }
+  - { role: gui }

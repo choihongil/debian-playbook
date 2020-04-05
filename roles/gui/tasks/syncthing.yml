@@ -1,0 +1,25 @@
+---
+
+- name: Config syncthing apt preference
+  copy:
+    src: apt/syncthing.pref
+    dest: /etc/apt/preferences.d/
+  become: yes
+
+- name: Add apt key of syncthing
+  apt_key:
+    url: https://syncthing.net/release-key.txt
+    keyring: /etc/apt/trusted.gpg.d/syncthing.gpg
+  become: yes
+
+- name: Add repository of syncthing
+  apt_repository:
+    repo: deb https://apt.syncthing.net/ syncthing stable
+    filename: syncthing
+  become: yes
+
+- name: Install syncthing
+  apt:
+    name: syncthing
+    state: latest
+  become: yes

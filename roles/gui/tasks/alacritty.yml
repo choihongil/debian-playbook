@@ -1,0 +1,19 @@
+---
+
+- name: Pop!_OS PPA
+  apt_repository:
+    repo: ppa:system76/pop
+    codename: disco
+    filename: system76
+  become: yes
+
+- name: Install alacritty
+  apt:
+    name: alacritty
+    state: latest
+  become: yes
+
+- name: config alacritty
+  copy:
+    src: alacritty.yml
+    dest: "{{ ansible_user_dir }}/.config/alacritty/"

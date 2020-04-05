@@ -9,14 +9,14 @@
   vars:
     ansible_python_interpreter: /usr/bin/python3
   roles:
-    - physical
+    - gui_development
 
 - hosts: Debian_virt_guest
   gather_facts: false
   vars:
     ansible_python_interpreter: /usr/bin/python3
   roles:
-    - common
+    - development
 
 - hosts: Darwin_virt_none
   gather_facts: false
