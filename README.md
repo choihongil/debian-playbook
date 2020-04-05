@@ -8,7 +8,7 @@
   ```
 ## Install
 ```
-su -lc "apt --no-install-recommends --yes install sudo"
+su -lc "apt install --no-install-recommends --yes ca-certificates sudo wget"
 su -lc "usermod -aG sudo ${USER}"
 # logout and re-login that take effect added group sudo
 exit
