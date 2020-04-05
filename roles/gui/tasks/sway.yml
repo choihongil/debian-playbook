@@ -11,6 +11,8 @@
     repo: deb https://packagecloud.io/hongri_cui/packages/debian/ buster main
     filename: hongri_cui_packages
   become: yes
+  notify:
+    - update apt cache
 
 - name: Add sway repository
   apt_repository:
@@ -18,8 +20,13 @@
     codename: disco
     filename: sway
   become: yes
+  notify:
+    - update apt cache
 
-  - name: Install sway, swaybg, swayidle, swaylock, i3status-rust, rofi, dunst, wl-clipboard, xclip, xwayland, desktop-base
+- name: Update apt cache when sway repository changed
+  meta: flush_handlers
+
+- name: Install sway, swaybg, swayidle, swaylock, i3status-rust, rofi, dunst, wl-clipboard, xclip, xwayland, desktop-base
   apt:
     name:
       - sway

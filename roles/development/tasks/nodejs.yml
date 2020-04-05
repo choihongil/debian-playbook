@@ -17,6 +17,11 @@
     repo: deb https://deb.nodesource.com/node_12.x buster main
     filename: nodesource
   become: yes
+  notify:
+    - update apt cache
+
+- name: Update apt cache when nodejs repository changed
+  meta: flush_handlers
 
 - name: Install nodejs
   apt:

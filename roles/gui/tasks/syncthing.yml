@@ -17,6 +17,11 @@
     repo: deb https://apt.syncthing.net/ syncthing stable
     filename: syncthing
   become: yes
+  notify:
+    - update apt cache
+
+- name: Update apt cache when syncthing repository changed
+  meta: flush_handlers
 
 - name: Install syncthing
   apt:

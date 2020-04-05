@@ -11,6 +11,11 @@
     repo: deb https://dbeaver.io/debs/dbeaver-ce /
     filename: dbeaver-ce
   become: yes
+  notify:
+    - update apt cache
+
+- name: Update apt cache when dbeaver-ce repository changed
+  meta: flush_handlers
 
 - name: Install dbeaver-ce
   apt:

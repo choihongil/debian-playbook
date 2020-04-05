@@ -11,6 +11,11 @@
     repo: deb https://dl.yarnpkg.com/debian/ stable main
     filename: yarn
   become: yes
+  notify:
+    - update apt cache
+
+- name: Update apt cache when yarn repository changed
+  meta: flush_handlers
 
 - name: Install yarn
   apt:

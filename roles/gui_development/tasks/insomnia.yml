@@ -11,6 +11,11 @@
     repo: deb https://dl.bintray.com/getinsomnia/Insomnia /
     filename: insomnia
   become: yes
+  notify:
+    - update apt cache
+
+- name: Update apt cache when insomnia repository changed
+  meta: flush_handlers
 
 - name: Install insomnia
   apt:

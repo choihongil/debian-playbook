@@ -1,12 +1,12 @@
 ---
 
-#- name: be sure sources.list exist
-#  copy:
-#    src: apt/sources.list
-#    dest: /etc/apt/
-#  become: yes
-#  notify:
-#    - update apt cache
+# - name: be sure sources.list exist
+#   copy:
+#     src: apt/sources.list
+#     dest: /etc/apt/
+#   become: yes
+#   notify:
+#     - update apt cache
 
 - name: Config apt
   copy:
@@ -19,6 +19,5 @@
     repo: deb http://ftp.jp.debian.org/debian/ unstable main contrib non-free
     filename: unstable
   become: yes
-
-# - name: update when repository changed
-#   meta: flush_handlers
+  notify:
+    - update apt cache

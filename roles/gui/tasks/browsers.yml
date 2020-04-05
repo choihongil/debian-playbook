@@ -11,6 +11,11 @@
     repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
     filename: google-chrome
   become: yes
+  notify:
+    - update apt cache
+
+- name: Update apt cache when chrome repository changed
+  meta: flush_handlers
 
 - name: Install chrome
   apt:

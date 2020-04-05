@@ -11,6 +11,11 @@
     repo: deb [arch=amd64] https://download.docker.com/linux/debian buster stable
     filename: docker
   become: yes
+  notify:
+    - update apt cache
+
+- name: Update apt cache when docker repository changed
+  meta: flush_handlers
 
 - name: Install docker-ce
   apt:

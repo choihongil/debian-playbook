@@ -6,6 +6,11 @@
     codename: disco
     filename: system76
   become: yes
+  notify:
+    - update apt cache
+
+- name: Update apt cache when alacritty repository changed
+  meta: flush_handlers
 
 - name: Install alacritty
   apt:
