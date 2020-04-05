@@ -1,8 +1,12 @@
 ---
 - import_tasks: apt.yml
+  tags: apt_configuration
 - import_tasks: avahi.yml
+  tags: avahi
 - import_tasks: fish.yml
+  tags: fish
 - import_tasks: openssh_server.yml
+  tags: openssh_server
 
 - name: Add systemd-journal groups to user
   user:

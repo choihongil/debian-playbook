@@ -1,4 +1,6 @@
 ---
 
 - import_tasks: insomnia.yml
+  tags: insomnia
 - import_tasks: dbeaver_ce.yml
+  tags: dbeaver_ce

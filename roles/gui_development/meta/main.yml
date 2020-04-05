@@ -1,5 +1,7 @@
 ---
 
 dependencies:
-  - { role: development }
-  - { role: gui }
+  - role: development
+    tags: development
+  - role: gui
+    tags: gui

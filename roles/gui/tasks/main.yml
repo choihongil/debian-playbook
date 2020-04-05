@@ -5,16 +5,27 @@
       #skip: true
 
 - import_tasks: sway.yml
+  tags: sway
 - import_tasks: alacritty.yml
+  tags: alacritty
 - import_tasks: browsers.yml
+  tags: browsers
 - import_tasks: cups.yml
+  tags: cups
 - import_tasks: driver.yml
+  tags: driver
 - import_tasks: fcitx.yml
+  tags: fcitx
 - import_tasks: fonts.yml
+  tags: fonts
 - import_tasks: multimedia.yml
+  tags: multimedia
 - import_tasks: network.yml
+  tags: network
 - import_tasks: skype.yml
+  tags: skype
 - import_tasks: syncthing.yml
+  tags: syncthing
 
 - name: Install appimagelauncher, powertop
   apt:
