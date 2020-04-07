@@ -6,10 +6,12 @@
 - import_tasks: fish.yml
   tags: fish
 
-- name: Install openssh-server, rsync
+- name: Install fzf, openssh-server, ripgrep, rsync
   apt:
     name:
+      - fzf
       - openssh-server
+      - ripgrep
       - rsync
     state: latest
   become: yes

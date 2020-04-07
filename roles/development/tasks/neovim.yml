@@ -1,13 +1,5 @@
 ---
 
-- name: Install fzf and riggrep
-  apt:
-    name:
-      - fzf
-      - ripgrep
-    state: latest
-  become: yes
-
 - name: Install neovim
   apt:
     name: neovim
