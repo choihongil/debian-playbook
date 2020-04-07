@@ -13,5 +13,5 @@ su -lc "usermod -aG sudo ${USER}"
 # logout and re-login that take effect added group sudo
 exit
 wget https://raw.githubusercontent.com/choihongil/debian-playbook/master/bootstrap.sh
-sh bootstrap.sh
+bash bootstrap.sh
 ```
