@@ -5,8 +5,14 @@
   tags: avahi
 - import_tasks: fish.yml
   tags: fish
-- import_tasks: openssh_server.yml
-  tags: openssh_server
+
+- name: Install openssh-server, rsync
+  apt:
+    name:
+      - openssh-server
+      - rsync
+    state: latest
+  become: yes
 
 - name: Add systemd-journal groups to user
   user:
