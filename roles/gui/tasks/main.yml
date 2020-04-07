@@ -24,8 +24,6 @@
   tags: network
 - import_tasks: skype.yml
   tags: skype
-- import_tasks: syncthing.yml
-  tags: syncthing
 
 - name: Install appimagelauncher, powertop
   apt:
