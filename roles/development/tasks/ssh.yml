@@ -1,0 +1,35 @@
+---
+
+- name: Ensure .ssh folders exists
+  file:
+    path: "{{ ansible_user_dir }}/.ssh"
+    state: directory
+
+- name: Config ssh
+  copy:
+    src: ssh_config
+    dest: "{{ ansible_user_dir }}/.ssh/config"
+    force: no
+
+- name: Generate ssh keys
+  user:
+    name: "{{ ansible_user_id }}"
+    generate_ssh_key: yes
+    ssh_key_file: "{{ item }}"
+  with_items:
+    - .ssh/id_rsa
+    - .ssh/id_rsa_personal
+  become: yes
+
+- name: Copy ssh-agent.service
+  copy:
+    src: systemd/user
+    dest: "{{ ansible_user_dir }}/.config/systemd/"
+
+- name: Autostart ssh-agent.service
+  systemd:
+    name: ssh-agent
+    daemon_reload: yes
+    enabled: yes
+    state: started
+    scope: user

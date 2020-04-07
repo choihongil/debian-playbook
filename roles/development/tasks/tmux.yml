@@ -1,0 +1,13 @@
+---
+
+- name: Install tmux
+  apt:
+    name: tmux
+    state: latest
+    default_release: sid
+  become: yes
+
+- name: Config tmux
+  copy:
+    src: tmux.conf
+    dest: "{{ ansible_user_dir }}/.tmux.conf"

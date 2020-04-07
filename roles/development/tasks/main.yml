@@ -1,0 +1,22 @@
+---
+- import_tasks: conf.yml
+- import_tasks: docker.yml
+  tags: docker
+- import_tasks: git.yml
+  tags: git
+- import_tasks: google_cloud_sdk.yml
+  tags: google_cloud_sdk
+- import_tasks: neovim.yml
+  tags: neovim
+- import_tasks: nodejs.yml
+  tags: nodejs
+- import_tasks: packages.yml
+  tags: development_tools
+- import_tasks: rust.yml
+  tags: rust
+- import_tasks: ssh.yml
+  tags: ssh
+- import_tasks: tmux.yml
+  tags: tmux
+- import_tasks: yarn.yml
+  tags: yarn

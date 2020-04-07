@@ -1,0 +1,31 @@
+---
+
+- name: Add apt key of docker
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+    keyring: /etc/apt/trusted.gpg.d/docker.gpg
+  become: yes
+
+- name: Add docker repository
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/debian buster stable
+    filename: docker
+  become: yes
+  notify:
+    - update apt cache
+
+- name: Update apt cache when docker repository changed
+  meta: flush_handlers
+
+- name: Install docker-ce
+  apt:
+    name: docker-ce
+    state: latest
+  become: yes
+
+- name: Add docker group to user
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: docker
+    append: yes
+  become: yes

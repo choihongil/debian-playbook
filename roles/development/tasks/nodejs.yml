@@ -1,0 +1,30 @@
+---
+
+- name: Config apt preference of nodejs
+  copy:
+    src: apt/nodejs.pref
+    dest: /etc/apt/preferences.d/
+  become: yes
+
+- name: Add apt key of nodejs
+  apt_key:
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    keyring: /etc/apt/trusted.gpg.d/nodejs.gpg
+  become: yes
+
+- name: Add nodejs repository
+  apt_repository:
+    repo: deb https://deb.nodesource.com/node_12.x buster main
+    filename: nodesource
+  become: yes
+  notify:
+    - update apt cache
+
+- name: Update apt cache when nodejs repository changed
+  meta: flush_handlers
+
+- name: Install nodejs
+  apt:
+    name: nodejs
+    state: latest
+  become: yes

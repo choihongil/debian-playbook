@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -eu
 
 case $(uname) in
@@ -23,6 +23,26 @@ case $(uname) in
             ~/.local/bin/pip3 install --user ansible
         fi
         ANSIBLE_PLAYBOOK="${HOME}/.local/bin/ansible-playbook"
+        
+        # select machine type
+        PS3="Select machine type: "
+        options=("notebook" "media server")
+        select opt in "${options[@]}"
+        do
+            case $opt in
+                notebook)
+                    playbook="notebook.yml"
+                    break
+                    ;;
+                "media server")
+                    playbook="media_server.yml"
+                    break
+                    ;;
+                *)
+                    echo "Invalid option"
+                    ;;
+            esac
+        done
         ;;
     Darwin)
 	# brew
@@ -36,6 +56,7 @@ case $(uname) in
 	    brew install ansible
 	fi
         ANSIBLE_PLAYBOOK=/usr/local/bin/ansible-playbook
+        playbook="mac.yml"
         ;;
 esac
 
@@ -47,4 +68,4 @@ fi
 # execute playbook
 echo "Execute ansible playbook"
 cd ~/debian-playbook
-${ANSIBLE_PLAYBOOK} -Ki local --limit localhost playbook.yml
+${ANSIBLE_PLAYBOOK} -Ki local playbook.yml

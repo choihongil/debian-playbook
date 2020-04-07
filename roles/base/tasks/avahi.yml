@@ -1,0 +1,10 @@
+---
+
+- name: Install avahi
+  apt:
+    name:
+      - avahi-daemon
+      - avahi-utils
+      - libnss-mdns
+    state: latest
+  become: yes

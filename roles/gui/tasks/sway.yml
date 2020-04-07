@@ -1,0 +1,95 @@
+---
+
+- name: Add apt key of hongri_cui
+  apt_key:
+    url: https://packagecloud.io/hongri_cui/packages/gpgkey
+    keyring: /etc/apt/trusted.gpg.d/hongri_cui_packages.gpg
+  become: yes
+
+- name: Add hongri_cui repository(for i3status-rust)
+  apt_repository:
+    repo: deb https://packagecloud.io/hongri_cui/packages/debian/ buster main
+    filename: hongri_cui_packages
+  become: yes
+  notify:
+    - update apt cache
+
+- name: Add sway repository
+  apt_repository:
+    repo: ppa:samoilov-lex/sway
+    codename: disco
+    filename: sway
+  become: yes
+  notify:
+    - update apt cache
+
+- name: Update apt cache when sway repository changed
+  meta: flush_handlers
+
+- name: Install sway, swaybg, swayidle, swaylock, i3status-rust, rofi, dunst, wl-clipboard, xclip, xwayland, desktop-base
+  apt:
+    name:
+      - sway
+      - swaybg
+      - swayidle
+      - swaylock
+      - i3status-rust
+      - rofi
+      - dunst
+      - wl-clipboard
+      - xclip
+      - xwayland
+      - desktop-base
+    state: latest
+  become: yes
+
+- name: Install udiskie, light on sid
+  apt:
+    name:
+      - udiskie
+      - light
+    state: latest
+    default_release: sid
+  become: yes
+
+- name: Ensure $HOME/.config/sway, $HOME/.config/i3status-rs folders exists
+  file:
+    path: "{{ ansible_user_dir }}/{{ item }}"
+    state: directory
+  with_items:
+    - .config/sway
+    - .config/i3status-rs
+
+# - name: sway capabilities
+#   capabilities:
+#     path: /usr/bin/sway
+#     capability: cap_sys_ptrace,cap_sys_tty_config+eip
+#     state: present
+#   become: yes
+
+- name: Config sway
+  copy:
+    src: sway.config
+    dest: "{{ ansible_user_dir }}/.config/sway/config"
+
+- name: Config i3status-rs
+  copy:
+    src: i3status-rs-config.toml
+    dest: "{{ ansible_user_dir }}/.config/i3status-rs/config.toml"
+
+- name: Start sway
+  copy:
+    src: start-sway
+    dest: "{{ ansible_user_dir }}/.local/bin/"
+    mode: 0755
+
+  # Enable suspend when connected with external monitor
+- name: Ensure "HandleLidSwitchDocked=suspend" in section "[Login]" in specified file
+  ini_file:
+    path: /etc/systemd/logind.conf
+    section: Login
+    option: HandleLidSwitchDocked
+    value: suspend
+    no_extra_spaces: yes
+    backup: yes
+  become: yes

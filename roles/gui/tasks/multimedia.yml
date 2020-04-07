@@ -1,0 +1,23 @@
+---
+
+- name: Install feh, mpv, pulseaudio-module-bluetooth
+  apt:
+    name:
+      - feh
+      - mpv
+      - pulseaudio-module-bluetooth
+    state: latest
+  become: yes
+
+- name: Install blueman on sid
+  apt:
+    name:
+      - blueman
+    state: latest
+    default_release: sid
+  become: yes
+
+- name: Config mpv
+  copy:
+    src: mpv
+    dest: "{{ ansible_user_dir }}/.config/"

@@ -1,0 +1,24 @@
+---
+- import_tasks: apt.yml
+  tags: apt_configuration
+- import_tasks: avahi.yml
+  tags: avahi
+- import_tasks: fish.yml
+  tags: fish
+
+- name: Install fzf, openssh-server, ripgrep, rsync
+  apt:
+    name:
+      - fzf
+      - openssh-server
+      - ripgrep
+      - rsync
+    state: latest
+  become: yes
+
+- name: Add systemd-journal groups to user
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: systemd-journal
+    append: yes
+  become: yes

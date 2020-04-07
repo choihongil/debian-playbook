@@ -1,0 +1,31 @@
+---
+
+- name: Add apt key of google
+  apt_key:
+    url: https://dl.google.com/linux/linux_signing_key.pub
+    keyring: /etc/apt/trusted.gpg.d/google.gpg
+  become: yes
+
+- name: Add chrome repository
+  apt_repository:
+    repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+    filename: google-chrome
+  become: yes
+  notify:
+    - update apt cache
+
+- name: Update apt cache when chrome repository changed
+  meta: flush_handlers
+
+- name: Install chrome
+  apt:
+    name: google-chrome-stable
+    state: latest
+  become: yes
+
+- name: Install firefox
+  apt:
+    name: firefox
+    state: latest
+    default_release: sid
+  become: yes

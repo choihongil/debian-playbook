@@ -1,0 +1,30 @@
+---
+
+- name: Install fonts-font-awesome, fonts-noto, fonts-noto-cjk, fonts-noto-color-emoji
+  apt:
+    name:
+      - fonts-font-awesome
+      - fonts-noto
+      - fonts-noto-cjk
+      - fonts-noto-color-emoji
+    state: latest
+  become: yes
+
+- name: Ensure $HOME/.local/share/fonts folder exist
+  file:
+    path: "{{ ansible_user_dir }}/.local/share/fonts"
+    state: directory
+
+- name: Install NerdFont
+  get_url:
+    url: https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Medium/complete/Sauce%20Code%20Pro%20Medium%20Nerd%20Font%20Complete.ttf
+    dest: "{{ ansible_user_dir }}/.local/share/fonts/Sauce Code Pro Medium Nerd Font Complete.ttf"
+
+- name: Check Install NerdFont
+  shell: "fc-list | grep Sauce | wc -l"
+  register: font_count
+  changed_when: False
+
+- name: Cache fonts
+  shell: "fc-cache -fv"
+  when: font_count.stdout|int == 0

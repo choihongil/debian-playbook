@@ -1,0 +1,26 @@
+---
+
+- name: Add apt key of dbeaver-ce
+  apt_key:
+    url: https://dbeaver.io/debs/dbeaver.gpg.key
+    keyring: /etc/apt/trusted.gpg.d/dbeaver.gpg
+  become: yes
+
+- name: Add repository of dbeaver-ce
+  apt_repository:
+    repo: deb https://dbeaver.io/debs/dbeaver-ce /
+    filename: dbeaver-ce
+  become: yes
+  notify:
+    - update apt cache
+
+- name: Update apt cache when dbeaver-ce repository changed
+  meta: flush_handlers
+
+- name: Install dbeaver-ce
+  apt:
+    name:
+      - dbeaver-ce
+      - openjdk-11-jre-headless
+    state: latest
+  become: yes

@@ -1,0 +1,7 @@
+---
+
+dependencies:
+  - role: development
+    tags: development
+  - role: gui
+    tags: gui
