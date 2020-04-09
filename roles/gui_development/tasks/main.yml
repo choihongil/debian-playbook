@@ -2,5 +2,10 @@
 
 - import_tasks: insomnia.yml
   tags: insomnia
-- import_tasks: dbeaver_ce.yml
+
+- name: Install dbeaver-ce from flathub for current user
+  flatpak:
+    name: io.dbeaver.DBeaverCommunity
+    state: present
+    method: user
   tags: dbeaver_ce

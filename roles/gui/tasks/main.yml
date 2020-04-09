@@ -4,6 +4,8 @@
     - files: "{{ ansible_product_name | replace(' ', '_') | lower }}.yml"
       #skip: true
 
+- import_tasks: flatpak.yml
+  tags: flatpak
 - import_tasks: sway.yml
   tags: sway
 - import_tasks: alacritty.yml
@@ -22,7 +24,12 @@
   tags: multimedia
 - import_tasks: network.yml
   tags: network
-- import_tasks: skype.yml
+
+- name: Install skype from flathub for current user
+  flatpak:
+    name: com.skype.Client
+    state: present
+    method: user
   tags: skype
 
 - name: Install appimagelauncher, powertop

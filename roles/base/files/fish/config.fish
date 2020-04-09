@@ -29,6 +29,11 @@ if test -S "$XDG_RUNTIME_DIR/ssh-agent.socket"
   end
 end
 
+# XDG_DATA_DIRS for flatpak
+if type -q flatpak
+  set -x XDG_DATA_DIRS "$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share"
+end
+
 if not set -q abbrs_initialized
   set -U abbrs_initialized
   # apt
