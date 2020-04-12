@@ -14,43 +14,34 @@
   notify:
     - update apt cache
 
-- name: Add sway repository
-  apt_repository:
-    repo: ppa:samoilov-lex/sway
-    codename: disco
-    filename: sway
-  become: yes
-  notify:
-    - update apt cache
-
 - name: Update apt cache when sway repository changed
   meta: flush_handlers
 
-- name: Install sway, swaybg, swayidle, swaylock, i3status-rust, alacritty, rofi, dunst, wl-clipboard, xclip, xwayland, desktop-base
+- name: Install sway, swaybg, swayidle, swaylock, light, udiskie, wl-clipboard, wofi on sid
   apt:
     name:
       - sway
       - swaybg
       - swayidle
       - swaylock
+      - light
+      - udiskie
+      - wl-clipboard
+      - wofi
+    state: latest
+    default_release: sid
+  become: yes
+
+- name: Install i3status-rust, alacritty, dunst, xclip, xwayland, desktop-base
+  apt:
+    name:
       - i3status-rust
       - alacritty
-      - rofi
       - dunst
-      - wl-clipboard
       - xclip
       - xwayland
       - desktop-base
     state: latest
-  become: yes
-
-- name: Install udiskie, light on sid
-  apt:
-    name:
-      - udiskie
-      - light
-    state: latest
-    default_release: sid
   become: yes
 
 - name: Ensure $HOME/.config/sway, $HOME/.config/i3status-rs folders exists
