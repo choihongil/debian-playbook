@@ -8,8 +8,6 @@
   tags: flatpak
 - import_tasks: sway.yml
   tags: sway
-- import_tasks: alacritty.yml
-  tags: alacritty
 - import_tasks: browsers.yml
   tags: browsers
 - import_tasks: cups.yml
