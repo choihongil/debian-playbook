@@ -14,6 +14,8 @@
   tags: development_tools
 - import_tasks: python.yml
   tags: python
+- import_tasks: ruby.yml
+  tags: ruby
 - import_tasks: rust.yml
   tags: rust
 - import_tasks: ssh.yml
