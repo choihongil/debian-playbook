@@ -30,7 +30,7 @@
     default_release: sid
   become: yes
 
-- name: Install python packages of ansible, black, flake8, powerline-status, pre-commit, youtube-dl
+- name: Install python packages of ansible, black, flake8, powerline-status, pre-commit
   pip:
     name:
       - ansible
@@ -42,7 +42,6 @@
       #- pgcli
       - powerline-status
       - pre-commit
-      - pynvim
       #- python-language-server
     executable: "{{ ansible_user_dir }}/.local/bin/pip"
     extra_args: --user
