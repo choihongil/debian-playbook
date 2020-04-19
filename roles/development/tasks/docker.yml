@@ -29,3 +29,11 @@
     groups: docker
     append: yes
   become: yes
+
+- name: Install docker-compose
+  pip:
+    name: docker-compose
+    executable: "{{ ansible_user_dir }}/.local/bin/pip"
+    extra_args: --user
+    state: latest
+  

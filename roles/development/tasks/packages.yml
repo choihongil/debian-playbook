@@ -30,12 +30,11 @@
     default_release: sid
   become: yes
 
-- name: Install python packages of ansible, black, docker-compose, flake8, powerline-status, pre-commit, youtube-dl
+- name: Install python packages of ansible, black, flake8, powerline-status, pre-commit, youtube-dl
   pip:
     name:
       - ansible
       - black
-      - docker-compose
       #- aws-shell
       - flake8
       #- httpie
