@@ -1,9 +1,10 @@
 ---
 
-- name: Install buil-essential, curl, fuse, pwgen, python3-dev, ruby-dev, socat, unar
+- name: Install buil-essential, cmake, curl, fuse, pwgen, python3-dev, ruby-dev, socat, unar
   apt:
     name:
       - build-essential
+      - cmake
       #- cifs-utils
       - curl
       #- dh-make
