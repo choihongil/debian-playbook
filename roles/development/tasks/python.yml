@@ -1,10 +1,9 @@
 ---
 
-- name: Install python3-dev on sid
+- name: Install python3-dev
   apt:
     name: python3-dev
     state: latest
-    default_release: sid
   become: yes
 
 - name: Install black, flake8, pre-commit
