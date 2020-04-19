@@ -1,0 +1,9 @@
+[Unit]
+Description=Pulseaudio dlna
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/pulseaudio-dlna
+
+[Install]
+WantedBy=default.target

@@ -1,18 +1,13 @@
 ---
 
-- name: Install feh, mpv, pulseaudio-module-bluetooth
-  apt:
-    name:
-      - feh
-      - mpv
-      - pulseaudio-module-bluetooth
-    state: latest
-  become: yes
-
-- name: Install blueman on sid
+- name: Install blueman, feh, mpv, pulseaudio-module-bluetooth on sid
   apt:
     name:
       - blueman
+      - feh
+      - mpv
+      - pulseaudio-dlna
+      - pulseaudio-module-bluetooth
     state: latest
     default_release: sid
   become: yes
@@ -28,3 +23,8 @@
     executable: "{{ ansible_user_dir }}/.local/bin/pip"
     extra_args: --user
     state: latest
+
+- name: Copy pulseaudio-dlna.service
+  copy:
+    src: systemd/user/pulseaudio-dlna.service
+    dest: "{{ ansible_user_dir }}/.config/systemd/user/"
