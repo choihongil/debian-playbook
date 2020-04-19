@@ -1,6 +1,6 @@
 ---
 
-- name: Install buil-essential, cmake, curl, fuse, pwgen, python3-dev, ruby-dev, socat, unar
+- name: Install buil-essential, cmake, curl, fuse, pwgen, ruby-dev, socat, unar
   apt:
     name:
       - build-essential
@@ -13,7 +13,6 @@
       #- dnsutils
       - fuse                    # appimages
       - pwgen
-      - python3-dev
       - ruby-dev                # for native gems
       - socat
       - unar
@@ -31,19 +30,15 @@
     default_release: sid
   become: yes
 
-- name: Install python packages of ansible, black, flake8, powerline-status, pre-commit
+- name: Install python packages of ansible, powerline-status
   pip:
     name:
       - ansible
-      - black
       #- aws-shell
-      - flake8
       #- httpie
       #- mycli==1.18.0
       #- pgcli
       - powerline-status
-      - pre-commit
-      #- python-language-server
     executable: "{{ ansible_user_dir }}/.local/bin/pip"
     extra_args: --user
     state: latest

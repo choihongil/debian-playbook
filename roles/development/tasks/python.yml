@@ -1,0 +1,19 @@
+---
+
+- name: Install python3-dev on sid
+  apt:
+    name: python3-dev
+    state: latest
+    default_release: sid
+  become: yes
+
+- name: Install black, flake8, pre-commit
+  pip:
+    name:
+      - black
+      - flake8
+      - pre-commit
+      #- python-language-server
+    executable: "{{ ansible_user_dir }}/.local/bin/pip"
+    extra_args: --user
+    state: latest

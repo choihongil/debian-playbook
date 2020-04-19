@@ -12,6 +12,8 @@
   tags: nodejs
 - import_tasks: packages.yml
   tags: development_tools
+- import_tasks: python.yml
+  tags: python
 - import_tasks: rust.yml
   tags: rust
 - import_tasks: ssh.yml
