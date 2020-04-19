@@ -41,13 +41,3 @@
     executable: "{{ ansible_user_dir }}/.local/bin/pip"
     extra_args: --user
     state: latest
-
-- name: Install node packages of @vue/cli, @bitwarden/cli, joplin
-  yarn:
-    name: "{{ item }}"
-    global: yes
-    state: latest
-  with_items:
-    - "@vue/cli"
-    - "@bitwarden/cli"
-    - joplin

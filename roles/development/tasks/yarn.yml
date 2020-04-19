@@ -22,3 +22,13 @@
     name: yarn
     state: latest
   become: yes
+
+- name: Install node packages of @vue/cli, @bitwarden/cli, joplin
+  yarn:
+    name: "{{ item }}"
+    global: yes
+    state: latest
+  with_items:
+    - "@vue/cli"
+    - "@bitwarden/cli"
+    - joplin
