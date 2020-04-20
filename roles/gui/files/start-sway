@@ -20,4 +20,7 @@ export LIBVA_DRIVER_NAME=iHD
 # alacritty
 export WINIT_UNIX_BACKEND=x11
 
+# qt5
+export QT_QPA_PLATFORMTHEME=qt5ct
+
 exec sway

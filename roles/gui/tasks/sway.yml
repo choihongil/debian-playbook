@@ -17,7 +17,7 @@
 - name: Update apt cache when sway repository changed
   meta: flush_handlers
 
-- name: Install sway, swaybg, swayidle, swaylock, light, udiskie, wl-clipboard, wofi on sid
+- name: Install sway, swaybg, swayidle, swaylock, light, qt5ct, udiskie, wl-clipboard, wofi on sid
   apt:
     name:
       - sway
@@ -25,6 +25,7 @@
       - swayidle
       - swaylock
       - light
+      - qt5ct
       - udiskie
       - wl-clipboard
       - wofi
