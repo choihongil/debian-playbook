@@ -1,9 +1,23 @@
 ---
 
-- name: Install fcitx, fcitx-config-gtk, fcitx-frontend-gtk3, fcitx-frontend-qt5, fcitx-ui-classic, fcitx-googlepinyin, fcitx-hangul, fcitx-mozc
+# https://github.com/flatpak/flatpak/issues/2031
+- name: Install fcitx, fcitx-modules from sid
   apt:
     name:
       - fcitx
+      - fcitx-modules
+      # - fcitx5
+      # - fcitx5-module-dbus
+      # - fcitx5-pinyin
+      # - kde-config-fcitx5
+    default_release: sid
+    state: latest
+  become: yes
+
+- name: Install fcitx, fcitx-config-gtk, fcitx-frontend-gtk3, fcitx-frontend-qt5, fcitx-ui-classic, fcitx-googlepinyin, fcitx-hangul, fcitx-mozc
+  apt:
+    name:
+      # - fcitx
       - fcitx-config-gtk
       - fcitx-frontend-gtk3
       - fcitx-frontend-qt5

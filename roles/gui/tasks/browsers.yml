@@ -23,9 +23,15 @@
     state: latest
   become: yes
 
-- name: Install firefox
+- name: Install firefox from flathub for current user
+  flatpak:
+    name: org.mozilla.firefox
+    state: present
+    method: user
+
+# https://github.com/flatpak/flatpak/issues/2861
+- name: Install gnome-settings-daemon
   apt:
-    name: firefox
+    name: gnome-settings-daemon
     state: latest
-    default_release: sid
   become: yes
