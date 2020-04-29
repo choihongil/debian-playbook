@@ -2,7 +2,7 @@ let g:coc_global_extensions = [
       \ 'coc-css',
       \ 'coc-highlight',
       \ 'coc-json',
-      \ 'coc-rls',
+      \ 'coc-rust-analyzer',
       \ 'coc-snippets',
       \ 'coc-solargraph',
       \ 'coc-tsserver',

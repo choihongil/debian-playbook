@@ -6,7 +6,7 @@
   register: rustup
   
 - name: Install rustup
-  shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path --component rls rust-analysis
+  shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path --component rust-src
   args:
     warn: no
   when: rustup.stat.exists == False

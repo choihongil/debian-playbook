@@ -21,6 +21,7 @@ set splitright
 " options
 set cmdheight=2
 set hidden
+set nomodeline
 set noswapfile
 set nowrap
 set number
