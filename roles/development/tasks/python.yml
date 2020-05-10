@@ -2,14 +2,16 @@
 
 - name: Install python3-dev of sid
   apt:
-    name: python3-dev
+    name:
+      - python3-dev
+      - libc6-dev
     state: latest
     default_release: sid
   become: yes
 
 - name: Check install of pip
   stat:
-    path: "{{ ansible_user_dir }}/.cargo/bin/rustup"
+    path: "{{ ansible_user_dir }}/.local/bin/pip"
   register: pip
 
 - name: Install pip
