@@ -9,10 +9,13 @@
 - name: Install fzf, openssh-server, ripgrep, rsync
   apt:
     name:
+      - curl
       - fzf
       - openssh-server
+      - pwgen
       - ripgrep
       - rsync
+      - unar
     state: latest
   become: yes
 

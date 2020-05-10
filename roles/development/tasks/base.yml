@@ -6,15 +6,12 @@
       - build-essential
       - cmake
       #- cifs-utils
-      - curl
       #- dh-make
       #- git-buildpackage
       #- cowbuilder
       #- dnsutils
-      - fuse                    # appimages
-      - pwgen
+      - fuse                    # for appimages
       - socat
-      - unar
       #- universal-ctags
       #- zlib1g-dev
     state: latest
