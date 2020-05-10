@@ -29,7 +29,6 @@
     - google-chrome
     - google-japanese-ime
     - insomnia
-    # - java
     - joplin
     - karabiner-elements
     # - ubersicht
@@ -45,13 +44,7 @@
 #     line: '%admin		ALL = (ALL) NOPASSWD: ALL'
 #     validate: '/usr/sbin/visudo -cf %s'
 #   become: yes
-
-- name: Ensure vm_share directory present
-  file:
-    path: "{{ ansible_user_dir }}/vm_share"
-    state: directory
-    mode: 0755
-
+#
 # - name: yabairc
 #   copy:
 #     src: yabairc

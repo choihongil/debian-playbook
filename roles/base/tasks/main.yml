@@ -6,7 +6,7 @@
 - import_tasks: fish.yml
   tags: fish
 
-- name: Install fzf, openssh-server, ripgrep, rsync
+- name: Install curl, fzf, openssh-server, pwgen, ripgrep, rsync, unar
   apt:
     name:
       - curl

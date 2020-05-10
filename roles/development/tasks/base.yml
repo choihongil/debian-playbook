@@ -1,6 +1,6 @@
 ---
 
-- name: Install buil-essential, cmake, curl, fuse, pwgen, socat, unar
+- name: Install buil-essential, cmake, fuse, socat
   apt:
     name:
       - build-essential

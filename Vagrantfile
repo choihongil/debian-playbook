@@ -85,8 +85,7 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
     sudo apt update
-    sudo apt upgrade
-    # sudo apt install --yes --no-install-recommends git gnupg python3-distutils parted
+    sudo apt upgrade --yes
     sudo apt install --yes --no-install-recommends parted
 
     # add home partition
@@ -114,10 +113,6 @@ Vagrant.configure("2") do |config|
         sudo mv /tmp/vagrant /home
       fi
     fi
-
-    # install pip
-    # wget https://bootstrap.pypa.io/get-pip.py 2>/dev/null
-    # python3 get-pip.py --user
   SHELL
 
   config.vm.provision "ansible" do |ansible|
