@@ -84,8 +84,10 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
-    sudo apt install --yes --no-install-recommends git gnupg python3-distutils parted
+    sudo apt update
     sudo apt upgrade
+    # sudo apt install --yes --no-install-recommends git gnupg python3-distutils parted
+    sudo apt install --yes --no-install-recommends parted
 
     # add home partition
     if ! sudo lsblk | grep sdb1 > /dev/null; then
@@ -114,13 +116,13 @@ Vagrant.configure("2") do |config|
     fi
 
     # install pip
-    wget https://bootstrap.pypa.io/get-pip.py 2>/dev/null
-    python3 get-pip.py --user
+    # wget https://bootstrap.pypa.io/get-pip.py 2>/dev/null
+    # python3 get-pip.py --user
   SHELL
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "vagrant.yml"
     ansible.inventory_path = "local"
-    # ansible.limit = "vm"
+    ansible.limit = "vm"
   end
 end

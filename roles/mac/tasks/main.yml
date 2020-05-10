@@ -5,12 +5,13 @@
     name: "{{ item }}"
     state: present
   with_items:
-    - koekeishiya/formulae
+    # - koekeishiya/formulae
     - homebrew/cask-fonts
 
 - name: Install packages
   homebrew:
-    name: ['ansible', 'jq', 'skhd', 'yabai']
+    # name: ['ansible', 'jq', 'skhd', 'yabai']
+    name: ['ansible']
     state: present
 
 - name: Install cask packages
@@ -28,12 +29,13 @@
     - google-chrome
     - google-japanese-ime
     - insomnia
-    - java
+    # - java
     - joplin
     - karabiner-elements
-    - ubersicht
-    - vagrant
-    - virtualbox
+    # - ubersicht
+
+- import_tasks: vagrant.yml
+  tags: vagrant
 
 # - name: Allow 'sudo' group to have passwordless sudo
 #   lineinfile:
@@ -50,18 +52,19 @@
     state: directory
     mode: 0755
 
-- name: yabairc
-  copy:
-    src: yabairc
-    dest: "{{ ansible_user_dir }}/.yabairc"
+# - name: yabairc
+#   copy:
+#     src: yabairc
+#     dest: "{{ ansible_user_dir }}/.yabairc"
+#
+# - name: skhdrc
+#   copy:
+#     src: skhdrc
+#     dest: "{{ ansible_user_dir }}/.skhdrc"
+#
+# - name: Übersicht widgets
+#   copy:
+#     src: Übersicht
+#     dest: "{{ ansible_user_dir }}/Library/Application\ Support/"
+#     mode: preserve
 
-- name: skhdrc
-  copy:
-    src: skhdrc
-    dest: "{{ ansible_user_dir }}/.skhdrc"
-
-- name: Übersicht widgets
-  copy:
-    src: Übersicht
-    dest: "{{ ansible_user_dir }}/Library/Application\ Support/"
-    mode: preserve
