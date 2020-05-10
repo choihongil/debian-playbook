@@ -1,7 +1,0 @@
----
-
-- hosts: local
-  vars:
-    ansible_python_interpreter: /usr/local/bin/python3
-  roles:
-    - mac

@@ -1,6 +1,6 @@
 ---
 
-- name: Check rustup installed
+- name: Check install of rustup
   stat:
     path: "{{ ansible_user_dir }}/.cargo/bin/rustup"
   register: rustup

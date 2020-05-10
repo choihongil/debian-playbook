@@ -31,11 +31,11 @@ case $(uname) in
         do
             case $opt in
                 notebook)
-                    PLAYBOOK="notebook.yml"
+                    PLAYBOOK="notebook-playbook.yml"
                     break
                     ;;
                 "media server")
-                    PLAYBOOK="media_server.yml"
+                    PLAYBOOK="media_server-playbook.yml"
                     break
                     ;;
                 *)
@@ -56,7 +56,7 @@ case $(uname) in
 	    brew install ansible
 	fi
         ANSIBLE_PLAYBOOK=/usr/local/bin/ansible-playbook
-        PLAYBOOK="mac.yml"
+        PLAYBOOK="mac-playbook.yml"
         ;;
 esac
 

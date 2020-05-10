@@ -121,7 +121,7 @@ Vagrant.configure("2") do |config|
   SHELL
 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "vagrant.yml"
+    ansible.playbook = "vagrant-playbook.yml"
     ansible.inventory_path = "local"
     ansible.limit = "vm"
   end

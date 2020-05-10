@@ -6,6 +6,20 @@
     state: latest
   become: yes
 
+- name: Check install of pip
+  stat:
+    path: "{{ ansible_user_dir }}/.cargo/bin/rustup"
+  register: pip
+
+- name: Install pip
+  shell: |
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+    python3 get-pip.py --user
+    rm get-pip.py
+  args:
+    warn: no
+  when: pip.stat.exists == False
+
 - name: Install black, flake8, pre-commit
   pip:
     name:
