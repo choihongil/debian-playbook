@@ -1,6 +1,6 @@
 ---
 
-- name: Install blueman, feh, mpv, pavucontrol-qt, pulseaudio-module-bluetooth on sid
+- name: Install blueman, feh, mpv, pavucontrol-qt, pulseaudio-module-bluetooth of sid
   apt:
     name:
       - blueman

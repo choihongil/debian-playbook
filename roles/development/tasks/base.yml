@@ -20,7 +20,7 @@
     state: latest
   become: yes
 
-- name: Install golang, nnn on sid
+- name: Install golang, nnn of sid
   apt:
     name:
       - golang

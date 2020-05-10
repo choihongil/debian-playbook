@@ -1,4 +1,7 @@
 ---
+
+- import_tasks: python.yml
+  tags: python
 - import_tasks: base.yml
   tags: dev_base
 - import_tasks: docker.yml
@@ -11,8 +14,6 @@
   tags: neovim
 - import_tasks: nodejs.yml
   tags: nodejs
-- import_tasks: python.yml
-  tags: python
 - import_tasks: ruby.yml
   tags: ruby
 - import_tasks: rust.yml

@@ -1,9 +1,10 @@
 ---
 
-- name: Install python3-dev
+- name: Install python3-dev of sid
   apt:
     name: python3-dev
     state: latest
+    default_release: sid
   become: yes
 
 - name: Check install of pip
