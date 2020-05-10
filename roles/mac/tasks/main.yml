@@ -1,12 +1,11 @@
 ---
 
-- name: Tap repositories
-  homebrew_tap:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    # - koekeishiya/formulae
-    - homebrew/cask-fonts
+# - name: Tap repositories
+#   homebrew_tap:
+#     name: "{{ item }}"
+#     state: present
+#   with_items:
+#     - koekeishiya/formulae
 
 - name: Install packages
   homebrew:
@@ -20,11 +19,9 @@
     state: present
     accept_external_apps: true
   with_items:
-    - alacritty
     - alfred
     - dbeaver-community
     - firefox
-    - font-cica
     - font-fontawesome
     - google-chrome
     - google-japanese-ime
@@ -33,6 +30,8 @@
     - karabiner-elements
     # - ubersicht
 
+- import_tasks: alacritty.yml
+  tags: alacritty
 - import_tasks: vagrant.yml
   tags: vagrant
 
