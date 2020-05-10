@@ -12,8 +12,9 @@ set -x FZF_DEFAULT_OPTS '--height 40% --reverse --border'
 set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
 # powerline
-if test -d "$HOME/.local/lib/python3.7/site-packages/powerline"
-  set -x POWERLINE_ROOT "$HOME/.local/lib/python3.7/site-packages/powerline"
+set python3_version (python3 --version | awk '{ split($2, a, "."); print a[1] "." a[2] }')
+if test -d "$HOME/.local/lib/python$python3_version/site-packages/powerline"
+  set -x POWERLINE_ROOT "$HOME/.local/lib/python$python3_version/site-packages/powerline"
   set fish_function_path $fish_function_path "$POWERLINE_ROOT/bindings/fish"
   powerline-setup
 end
