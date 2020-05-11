@@ -27,11 +27,12 @@
     - google-japanese-ime
     - insomnia
     - joplin
-    - karabiner-elements
     # - ubersicht
 
 - import_tasks: alacritty.yml
   tags: alacritty
+- import_tasks: karabiner-elements
+  tags: karabiner
 - import_tasks: vagrant.yml
   tags: vagrant
 
