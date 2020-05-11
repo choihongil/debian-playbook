@@ -66,8 +66,8 @@
     dest: "{{ ansible_user_dir }}/.config/sway/config"
 
 - name: Config alacritty
-  copy:
-    src: alacritty.yml
+  template:
+    src: alacritty.yml.j2
     dest: "{{ ansible_user_dir }}/.config/alacritty/"
 
 - name: Config i3status-rs
