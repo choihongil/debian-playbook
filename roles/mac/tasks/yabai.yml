@@ -7,13 +7,19 @@
 
 - name: Install yabai, skhd, jq
   homebrew:
-    name: ['yabai', 'skhd', 'jq']
+    name:
+      - yabai
+      - skhd
+      - jq
     state: present
 
-- name: Install cask packages of ubersicht
+- name: Install cask packages of font-fontawesome, ubersicht
   homebrew_cask:
-    name: ubersicht
+    name: "{{ item }}"
     state: present
+  with_items:
+    - font-fontawesome
+    - ubersicht
 
 - name: Config yabai
   copy:
