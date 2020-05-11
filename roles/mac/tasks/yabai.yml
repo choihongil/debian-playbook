@@ -1,0 +1,32 @@
+---
+
+- name: Tap repositories
+  homebrew_tap:
+    name: koekeishiya/formulae
+    state: present
+
+- name: Install yabai, skhd, jq
+  homebrew:
+    name: ['yabai', 'skhd', 'jq']
+    state: present
+
+- name: Install cask packages of ubersicht
+  homebrew_cask:
+    name: ubersicht
+    state: present
+
+- name: Config yabai
+  copy:
+    src: yabairc
+    dest: "{{ ansible_user_dir }}/.yabairc"
+
+- name: Config skhd
+  copy:
+    src: skhdrc
+    dest: "{{ ansible_user_dir }}/.skhdrc"
+
+- name: Config Übersicht widgets
+  copy:
+    src: Übersicht
+    dest: "{{ ansible_user_dir }}/Library/Application\ Support/"
+    mode: preserve

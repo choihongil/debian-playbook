@@ -1,19 +1,11 @@
 ---
 
-# - name: Tap repositories
-#   homebrew_tap:
-#     name: "{{ item }}"
-#     state: present
-#   with_items:
-#     - koekeishiya/formulae
-
-- name: Install packages
+- name: Install ansible
   homebrew:
-    # name: ['ansible', 'jq', 'skhd', 'yabai']
-    name: ['ansible']
+    name: ansible
     state: present
 
-- name: Install cask packages
+- name: Install cask packages of alfred, dbeaver-community, firefox, google-japanese-ime, insomnia, joplin
   homebrew_cask:
     name: "{{ item }}"
     state: present
@@ -23,12 +15,13 @@
     - dbeaver-community
     - firefox
     - font-fontawesome
-    - google-chrome
+    # - google-chrome
     - google-japanese-ime
     - insomnia
     - joplin
-    # - ubersicht
 
+# - import_tasks: yabai.yml
+#   tags: yabai
 - import_tasks: alacritty.yml
   tags: alacritty
 - import_tasks: karabiner-elements.yml
@@ -44,20 +37,3 @@
 #     line: '%admin		ALL = (ALL) NOPASSWD: ALL'
 #     validate: '/usr/sbin/visudo -cf %s'
 #   become: yes
-#
-# - name: yabairc
-#   copy:
-#     src: yabairc
-#     dest: "{{ ansible_user_dir }}/.yabairc"
-#
-# - name: skhdrc
-#   copy:
-#     src: skhdrc
-#     dest: "{{ ansible_user_dir }}/.skhdrc"
-#
-# - name: Übersicht widgets
-#   copy:
-#     src: Übersicht
-#     dest: "{{ ansible_user_dir }}/Library/Application\ Support/"
-#     mode: preserve
-
