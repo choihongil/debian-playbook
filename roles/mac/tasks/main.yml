@@ -31,7 +31,7 @@
 
 - import_tasks: alacritty.yml
   tags: alacritty
-- import_tasks: karabiner-elements
+- import_tasks: karabiner-elements.yml
   tags: karabiner
 - import_tasks: vagrant.yml
   tags: vagrant
