@@ -15,11 +15,6 @@
   user:
     name: "{{ ansible_user_id }}"
     generate_ssh_key: yes
-    ssh_key_file: "{{ item }}"
-  with_items:
-    - .ssh/id_rsa
-    - .ssh/id_rsa_personal
-  become: yes
 
 - name: Copy ssh-agent.service
   copy:
