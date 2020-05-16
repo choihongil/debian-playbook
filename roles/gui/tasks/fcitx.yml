@@ -1,7 +1,7 @@
 ---
 
 # https://github.com/flatpak/flatpak/issues/2031
-- name: Install fcitx, fcitx-modules from sid
+- name: Install fcitx, fcitx-modules of sid
   apt:
     name:
       - fcitx

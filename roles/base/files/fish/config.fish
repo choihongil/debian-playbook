@@ -12,8 +12,9 @@ set -x FZF_DEFAULT_OPTS '--height 40% --reverse --border'
 set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
 # powerline
-if test -d "$HOME/.local/lib/python3.7/site-packages/powerline"
-  set -x POWERLINE_ROOT "$HOME/.local/lib/python3.7/site-packages/powerline"
+set PYTHON3_VERSION (python3 --version | awk '{ split($2, a, "."); print a[1] "." a[2] }')
+if test -d "$HOME/.local/lib/python$PYTHON3_VERSION/site-packages/powerline"
+  set -x POWERLINE_ROOT "$HOME/.local/lib/python$PYTHON3_VERSION/site-packages/powerline"
   set fish_function_path $fish_function_path "$POWERLINE_ROOT/bindings/fish"
   powerline-setup
 end
@@ -22,9 +23,8 @@ end
 if test -S "$XDG_RUNTIME_DIR/ssh-agent.socket"
   set -x SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
   if status --is-interactive; and not ssh-add -l > /dev/null
-    ssh-add
-    if test -f $HOME/.ssh/id_rsa_personal
-      ssh-add $HOME/.ssh/id_rsa_personal
+    for private_key in (ls ~/.ssh/id_rsa* | grep -v .pub\$)
+      ssh-add $private_key
     end
   end
 end
@@ -65,7 +65,16 @@ if not set -q abbrs_initialized
   abbr --add grs        git reset
   abbr --add grma       git remote add upstream
   abbr --add gs         git status
+  abbr --add gsps       git stash push
+  abbr --add gspp       git stash pop
   abbr --add gt         git tag
+  # docker
+  abbr --add da         docker attach
+  abbr --add dcp        docker-compose
+  abbr --add dct        docker container
+  abbr --add di         docker image
+  abbr --add dv         docker volume
+  abbr --add dr         docker run --rm -it
   # kubectl
   abbr --add kap        kubectl apply --filename
   abbr --add kat        kubectl attach

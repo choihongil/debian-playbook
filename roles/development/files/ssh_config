@@ -1,11 +1,6 @@
 Host *
   ServerAliveInterval 60
 
-Host me.github.com
-  HostName github.com
-  PreferredAuthentications publickey
-  IdentityFile ~/.ssh/id_rsa_personal
-
 Host github.com
   HostName github.com
   PreferredAuthentications publickey

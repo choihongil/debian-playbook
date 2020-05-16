@@ -1,39 +1,32 @@
 ---
 
-- name: Tap repositories
-  homebrew_tap:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - koekeishiya/formulae
-    - homebrew/cask-fonts
-
-- name: Install packages
+- name: Install ansible
   homebrew:
-    name: ['ansible', 'jq', 'skhd', 'yabai']
+    name: ansible
     state: present
 
-- name: Install cask packages
+- name: Install cask packages of alfred, dbeaver-community, firefox, google-japanese-ime, insomnia, joplin, karabiner-elements, slack
   homebrew_cask:
     name: "{{ item }}"
     state: present
     accept_external_apps: true
   with_items:
-    - alacritty
     - alfred
     - dbeaver-community
     - firefox
-    - font-cica
-    - font-fontawesome
-    - google-chrome
+    # - google-chrome
     - google-japanese-ime
     - insomnia
-    - java
     - joplin
     - karabiner-elements
-    - ubersicht
-    - vagrant
-    - virtualbox
+    - slack
+
+# - import_tasks: yabai.yml
+#   tags: yabai
+- import_tasks: alacritty.yml
+  tags: alacritty
+- import_tasks: vagrant.yml
+  tags: vagrant
 
 # - name: Allow 'sudo' group to have passwordless sudo
 #   lineinfile:
@@ -43,25 +36,3 @@
 #     line: '%admin		ALL = (ALL) NOPASSWD: ALL'
 #     validate: '/usr/sbin/visudo -cf %s'
 #   become: yes
-
-- name: Ensure vm_share directory present
-  file:
-    path: "{{ ansible_user_dir }}/vm_share"
-    state: directory
-    mode: 0755
-
-- name: yabairc
-  copy:
-    src: yabairc
-    dest: "{{ ansible_user_dir }}/.yabairc"
-
-- name: skhdrc
-  copy:
-    src: skhdrc
-    dest: "{{ ansible_user_dir }}/.skhdrc"
-
-- name: Übersicht widgets
-  copy:
-    src: Übersicht
-    dest: "{{ ansible_user_dir }}/Library/Application\ Support/"
-    mode: preserve

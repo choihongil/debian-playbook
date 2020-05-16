@@ -101,12 +101,6 @@
 
 # Font configuration
 #font:
-  ################################################################################
-  # For Mac
-  # font:
-  #   normal:
-  #     family: Cica
-  ################################################################################
   # Normal (roman) font face
   #normal:
     # Font family
@@ -184,6 +178,13 @@
   # This is a global setting and will require a log out or restart to take
   # effect.
   #use_thin_strokes: true
+{% if role_name == "mac" %}
+# macOS custom
+font:
+  normal:
+    family: Cica
+  size: 15.0
+{% endif %}
 
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: true
@@ -571,8 +572,12 @@
   #- { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
   #- { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
 
-  ################################################################################
-  # macOS custom
-  # key_bindings:
-  #   - { key: Key6,     mods: Control,       chars: "\x1e"            }
-  ################################################################################
+{% if role_name == "mac" %}
+# macOS custom
+key_bindings:
+  - { key: Key6,     mods: Control,       chars: "\x1e"            }
+  - { key: B,        mods: Alt,           chars: "\x1bb"           }
+  - { key: E,        mods: Alt,           chars: "\x1be"           }
+  - { key: N,        mods: Alt,           chars: "\x1bn"           }
+  - { key: P,        mods: Alt,           chars: "\x1bp"           }
+{% endif %}

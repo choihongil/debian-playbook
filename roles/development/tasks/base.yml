@@ -1,26 +1,23 @@
 ---
 
-- name: Install buil-essential, cmake, curl, fuse, pwgen, socat, unar
+- name: Install buil-essential, cmake, fuse, socat
   apt:
     name:
       - build-essential
       - cmake
       #- cifs-utils
-      - curl
       #- dh-make
       #- git-buildpackage
       #- cowbuilder
       #- dnsutils
-      - fuse                    # appimages
-      - pwgen
+      - fuse                    # for appimages
       - socat
-      - unar
       #- universal-ctags
       #- zlib1g-dev
     state: latest
   become: yes
 
-- name: Install golang, nnn on sid
+- name: Install golang, nnn of sid
   apt:
     name:
       - golang

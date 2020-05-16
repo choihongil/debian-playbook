@@ -54,7 +54,7 @@ Vagrant.configure("2") do |config|
   #   vb.gui = true
   #
     # Customize the amount of memory on the VM:
-    vb.memory = "6144"
+    vb.memory = "8192"
 
     vb.customize ['modifyvm', :id, '--natdnshostresolver1', 'on']
 
@@ -84,8 +84,9 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
-    sudo apt install --yes --no-install-recommends git gnupg python3-distutils parted
-    sudo apt upgrade
+    sudo apt update
+    sudo apt upgrade --yes
+    sudo apt install --yes --no-install-recommends parted
 
     # add home partition
     if ! sudo lsblk | grep sdb1 > /dev/null; then
@@ -112,15 +113,11 @@ Vagrant.configure("2") do |config|
         sudo mv /tmp/vagrant /home
       fi
     fi
-
-    # install pip
-    wget https://bootstrap.pypa.io/get-pip.py 2>/dev/null
-    python3 get-pip.py --user
   SHELL
 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "vagrant.yml"
+    ansible.playbook = "vagrant-playbook.yml"
     ansible.inventory_path = "local"
-    # ansible.limit = "vm"
+    ansible.limit = "vm"
   end
 end
