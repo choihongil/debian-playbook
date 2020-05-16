@@ -16,4 +16,4 @@
 - name: Config alacritty
   template:
     src: "{{ role_path | dirname }}/gui/templates/alacritty.yml.j2"
-    dest: "{{ ansible_user_dir }}/.config/alacritty/"
+    dest: "{{ ansible_user_dir }}/.config/alacritty/alacritty.yml"
