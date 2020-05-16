@@ -6,11 +6,12 @@
 - import_tasks: fish.yml
   tags: fish
 
-- name: Install curl, fzf, openssh-server, pwgen, ripgrep, rsync, unar
+- name: Install curl, fzf, htop, openssh-server, pwgen, ripgrep, rsync, unar
   apt:
     name:
       - curl
       - fzf
+      - htop
       - openssh-server
       - pwgen
       - ripgrep
@@ -18,6 +19,7 @@
       - unar
     state: latest
   become: yes
+  tags: tools
 
 - name: Add systemd-journal groups to user
   user:
