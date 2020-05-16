@@ -30,6 +30,13 @@
     method: user
   tags: skype
 
+- name: Install slack from flathub for current user
+  flatpak:
+    name: com.slack.Slack
+    state: present
+    method: user
+  tags: slack
+
 - name: Install appimagelauncher, powertop
   apt:
     name:
