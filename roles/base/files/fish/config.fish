@@ -65,7 +65,16 @@ if not set -q abbrs_initialized
   abbr --add grs        git reset
   abbr --add grma       git remote add upstream
   abbr --add gs         git status
+  abbr --add gsps       git stash push
+  abbr --add gspp       git stash pop
   abbr --add gt         git tag
+  # docker
+  abbr --add da         docker attach
+  abbr --add dcp        docker-compose
+  abbr --add dct        docker container
+  abbr --add di         docker image
+  abbr --add dv         docker volume
+  abbr --add dr         docker run --rm -it
   # kubectl
   abbr --add kap        kubectl apply --filename
   abbr --add kat        kubectl attach
