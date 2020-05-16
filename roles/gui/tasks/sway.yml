@@ -68,7 +68,7 @@
 - name: Config alacritty
   template:
     src: alacritty.yml.j2
-    dest: "{{ ansible_user_dir }}/.config/alacritty/"
+    dest: "{{ ansible_user_dir }}/.config/alacritty/alacritty.yml"
 
 - name: Config i3status-rs
   copy:
