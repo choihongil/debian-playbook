@@ -8,8 +8,8 @@
   tags: docker
 - import_tasks: git.yml
   tags: git
-- import_tasks: google_cloud_sdk.yml
-  tags: google_cloud_sdk
+- import_tasks: gcp.yml
+  tags: gcp
 - import_tasks: neovim.yml
   tags: neovim
 - import_tasks: nodejs.yml
