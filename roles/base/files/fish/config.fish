@@ -34,6 +34,17 @@ if type -q flatpak
   set -x XDG_DATA_DIRS "$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share"
 end
 
+# Enable AWS CLI Autocompletion: https://github.com/aws/aws-cli/issues/1079
+if type -q aws
+  complete --command aws --no-files --arguments '(
+    begin
+      set --local --export COMP_SHELL fish
+      set --local --export COMP_LINE (commandline)
+      aws_completer | sed \'s/ $//\'
+    end
+  )'
+end
+
 if not set -q abbrs_initialized
   set -U abbrs_initialized
   # apt
