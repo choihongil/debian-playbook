@@ -1,6 +1,0 @@
-/tags
-/.solargraph.yml
-/Dockerfile-lsp
-/docker-compose.override.yml
-/docker-entrypoint-lsp.sh
-/vendor/bundle

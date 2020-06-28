@@ -1,8 +1,0 @@
----
-
-peculiar_packages:
-  - firmware-realtek
-  - firmware-iwlwifi
-  - intel-media-va-driver
-  - vainfo
-  - linux-image-amd64
